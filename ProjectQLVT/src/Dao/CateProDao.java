@@ -67,7 +67,7 @@ public class CateProDao {
         Statement stmt;
         ResultSet rs;
         try {
-            String sql = "SELECT * FROM cateproduct ORDER BY vendorID DESC";
+            String sql = "SELECT * FROM cateproduct ORDER BY ID DESC";
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);

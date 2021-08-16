@@ -23,7 +23,7 @@ public class FXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/MenuUI.fxml"));      
+        Parent root = FXMLLoader.load(getClass().getResource("/view/product.fxml"));      
         Scene scene = new Scene(root);
 
         

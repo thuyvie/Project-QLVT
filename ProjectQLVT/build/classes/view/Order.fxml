@@ -1,8 +1,247 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-
-<Pane id="AnchorPane" prefHeight="600.0" prefWidth="724.0" style="-fx-background-color: #ffbd4a;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="controller.Page1Controller">
-    
-</Pane>
+<AnchorPane id="AnchorPane" prefHeight="706.0" prefWidth="1028.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrdController">
+   <children>
+      <Pane fx:id="order" onKeyReleased="#adddiscountKey" prefHeight="706.0" prefWidth="1025.0">
+         <children>
+            <Pane layoutX="35.0" layoutY="45.0" prefHeight="84.0" prefWidth="377.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
+               <effect>
+                  <DropShadow height="11.46" radius="3.4425" width="4.31">
+                     <color>
+                        <Color red="0.7157894968986511" green="0.6495126485824585" blue="0.6495126485824585" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Label layoutX="42.0" layoutY="11.0" prefHeight="31.0" prefWidth="82.0" text="ORDER ID" textFill="#736f6f">
+                     <font>
+                        <Font name="Symbol" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="168.0" layoutY="11.0" prefHeight="31.0" prefWidth="82.0" text="DATE" textFill="#736f6f">
+                     <font>
+                        <Font name="Symbol" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="274.0" layoutY="11.0" prefHeight="31.0" prefWidth="82.0" text="TIME" textFill="#736f6f">
+                     <font>
+                        <Font name="Symbol" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtdate" layoutX="158.0" layoutY="39.0" prefHeight="31.0" prefWidth="82.0" textFill="#d19e38">
+                     <font>
+                        <Font name="Symbol" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txttime" layoutX="259.0" layoutY="39.0" prefHeight="31.0" prefWidth="82.0" textFill="#c9942a">
+                     <font>
+                        <Font name="Symbol" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtorder" layoutX="20.0" layoutY="42.0" prefHeight="25.0" prefWidth="104.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="35.0" layoutY="140.0" prefHeight="216.0" prefWidth="377.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
+               <effect>
+                  <DropShadow height="11.46" radius="3.4425" width="4.31">
+                     <color>
+                        <Color red="0.7157894968986511" green="0.6495126485824585" blue="0.6495126485824585" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Label layoutX="14.0" layoutY="-1.0" prefHeight="31.0" prefWidth="82.0" text="CUSTOMER INFOR" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="8.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtname" layoutX="14.0" layoutY="96.0" />
+                  <Label layoutX="14.0" layoutY="55.0" prefHeight="31.0" prefWidth="82.0" text="Name Customer:" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="205.0" layoutY="55.0" prefHeight="31.0" prefWidth="82.0" text="Address:" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtaddress" layoutX="205.0" layoutY="96.0" />
+                  <Label layoutX="14.0" layoutY="121.0" prefHeight="31.0" prefWidth="82.0" text="Phone:" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtphone" layoutX="14.0" layoutY="155.0" />
+                  <TextField fx:id="txtsearchphone" layoutX="14.0" layoutY="30.0" promptText="Search By Phone" />
+                  <TextField fx:id="txtemail" layoutX="205.0" layoutY="155.0" />
+                  <Label layoutX="205.0" layoutY="121.0" prefHeight="31.0" prefWidth="82.0" text="Email:" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnsearchphone" buttonType="RAISED" layoutX="216.0" layoutY="28.0" onAction="#searchAction2" prefHeight="29.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="SEARCH">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Pane layoutX="422.0" layoutY="45.0" prefHeight="315.0" prefWidth="369.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
+               <effect>
+                  <DropShadow height="11.46" radius="3.4425" width="4.31">
+                     <color>
+                        <Color red="0.7157894968986511" green="0.6495126485824585" blue="0.6495126485824585" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Label layoutX="14.0" layoutY="-1.0" prefHeight="31.0" prefWidth="82.0" text="PRODUCT INFOR" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="8.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtitemcode" layoutX="14.0" layoutY="61.0" />
+                  <Label layoutX="14.0" layoutY="30.0" prefHeight="31.0" prefWidth="82.0" text="Item Code:" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="184.0" prefHeight="31.0" prefWidth="82.0" text="Quantity:" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtqty" layoutX="14.0" layoutY="215.0" />
+                  <Label layoutX="14.0" layoutY="99.0" prefHeight="31.0" prefWidth="82.0" text="Item Name:" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtitemname" layoutX="14.0" layoutY="130.0" />
+                  <Label layoutX="205.0" layoutY="99.0" prefHeight="31.0" prefWidth="82.0" text="Price: " textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtprice" layoutX="204.0" layoutY="130.0" />
+                  <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="202.0" layoutY="59.0" onAction="#searchAction1" prefHeight="29.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="SEARCH">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnaddcart" buttonType="RAISED" layoutX="202.0" layoutY="199.0" onAction="#addCartAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="ADD CART">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Pane fx:id="discount" layoutX="797.0" layoutY="50.0" prefHeight="305.0" prefWidth="209.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
+               <effect>
+                  <DropShadow height="11.46" radius="3.4425" width="4.31">
+                     <color>
+                        <Color red="0.7157894968986511" green="0.6495126485824585" blue="0.6495126485824585" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Label layoutX="77.0" layoutY="14.0" prefHeight="57.0" prefWidth="82.0" text="TOTAL" textFill="#c1830f">
+                     <font>
+                        <Font name="Symbol" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="88.0" prefHeight="31.0" prefWidth="45.0" text="QTY:" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtqantity" layoutX="63.0" layoutY="87.0" prefHeight="31.0" prefWidth="82.0" textFill="#b4c72b">
+                     <font>
+                        <Font name="Symbol" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="160.0" prefHeight="31.0" prefWidth="45.0" text="TOTAL:" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txttotal" layoutX="71.0" layoutY="160.0" prefHeight="31.0" prefWidth="82.0" textFill="#a9c131">
+                     <font>
+                        <Font name="Symbol" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="220.0" prefHeight="57.0" prefWidth="57.0" text="RS" textFill="#c1830f">
+                     <font>
+                        <Font name="Symbol" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtrs" layoutX="77.0" layoutY="220.0" prefHeight="57.0" prefWidth="82.0" textFill="#c1830f">
+                     <font>
+                        <Font name="Symbol" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <TableView fx:id="dtm" layoutX="46.0" layoutY="387.0" onMouseClicked="#clickTable" prefHeight="238.0" prefWidth="934.0">
+               <columns>
+                  <TableColumn fx:id="tblname" prefWidth="247.99998092651367" style="-fx-alignment: center;" text="Product Code" />
+                  <TableColumn fx:id="tblprice" minWidth="0.0" prefWidth="208.800048828125" style="-fx-alignment: center;" text="Name Product" />
+                  <TableColumn fx:id="tblqty" minWidth="0.0" prefWidth="208.800048828125" style="-fx-alignment: center;" text="Price" />
+                  <TableColumn fx:id="tblrs" minWidth="0.0" prefWidth="266.0" style="-fx-alignment: center;" text="Quantity" />
+               </columns>
+            </TableView>
+            <JFXButton fx:id="btnorder" buttonType="RAISED" layoutX="864.0" layoutY="635.0" onAction="#orderAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="ORDER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnprint" buttonType="RAISED" layoutX="739.0" layoutY="635.0" onAction="#printAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="PRINT BILL">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnremove" buttonType="RAISED" layoutX="607.0" layoutY="635.0" onAction="#deleteAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="DELETE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="28.0" layoutY="635.0" prefHeight="31.0" prefWidth="82.0" text="Employee:" textFill="#262424">
+               <font>
+                  <Font name="Symbol" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelemp" layoutX="119.0" layoutY="635.0" prefHeight="31.0" prefWidth="209.0" textFill="#e1e1e1">
+               <font>
+                  <Font name="Symbol" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="request" fitHeight="31.0" fitWidth="45.0" layoutX="28.0" layoutY="663.0" onMouseClicked="#reloadAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resouces/refresh.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow height="0.0" radius="0.0" width="0.0">
+               <color>
+                  <Color red="0.8736842274665833" green="0.6698245406150818" blue="0.6698245406150818" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>
