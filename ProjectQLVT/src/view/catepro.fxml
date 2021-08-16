@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CateproController">
+   <children>
+      <TableView fx:id="tblcate" layoutX="459.0" layoutY="75.0" onMouseClicked="#clickTable" prefHeight="224.0" prefWidth="252.0">
+         <columns>
+            <TableColumn fx:id="tblname" prefWidth="188.79999160766602" style="-fx-alignment: center;" text="Name Category Product" />
+            <TableColumn fx:id="tbldelete" prefWidth="62.4000244140625" />
+         </columns>
+      </TableView>
+      <Label layoutX="236.0" layoutY="50.0" prefHeight="27.0" prefWidth="134.0" text="Name Category Product" />
+      <TextField fx:id="txtname" layoutX="235.0" layoutY="83.0" />
+      <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="51.0" layoutY="149.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
+      <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="259.0" layoutY="149.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
+      <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="51.0" layoutY="242.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />
+      <TextField fx:id="txtid" layoutX="42.0" layoutY="83.0" />
+      <Label layoutX="42.0" layoutY="50.0" prefHeight="27.0" prefWidth="92.0" text="ID" />
+      <JFXButton fx:id="btnclear" buttonType="RAISED" layoutX="259.0" layoutY="242.0" onAction="#ClearAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #F6A9A9; -fx-background-radius: 15;" text="CLEAR" />
+   </children>
+</AnchorPane>
