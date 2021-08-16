@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.Pane?>
 
-<Pane id="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.DashBoardController">
+
+<Pane id="AnchorPane" prefHeight="600.0" prefWidth="724.0" style="-fx-background-color: #13ed29;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="menu.DashBoardController">
     
 </Pane>
+

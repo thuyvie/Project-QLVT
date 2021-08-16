@@ -114,7 +114,7 @@
                      </HBox.margin>
                      
                   </FontAwesomeIconView>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#page3" prefHeight="25.0" prefWidth="299.0" styleClass="btns" text="page 3" textFill="#b7b3b3">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#page3" prefHeight="25.0" prefWidth="299.0" styleClass="btns" text="Customer" textFill="#b7b3b3">
                      <HBox.margin>
                         <Insets bottom="10.0" />
                      </HBox.margin>
@@ -130,7 +130,7 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane prefHeight="600.0" prefWidth="724.0" style="-fx-background-color: #6e0dff;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="contentArea" prefHeight="600.0" prefWidth="724.0" style="-fx-background-color: #6e0dff;" BorderPane.alignment="CENTER">
          <children>
             <StackPane layoutY="11.0" />
          </children>

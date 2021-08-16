@@ -26,6 +26,7 @@ import javafx.scene.layout.BorderPane;
  */
 public class MenuUIController implements Initializable {
 
+    @FXML
     private AnchorPane contentArea;
     @FXML
     private BorderPane boderPane;
@@ -60,7 +61,7 @@ public class MenuUIController implements Initializable {
 
     @FXML
     private void page2(MouseEvent event) throws IOException {
-                loadUI("page2");
+        loadUI("Product");
 
     }
 
