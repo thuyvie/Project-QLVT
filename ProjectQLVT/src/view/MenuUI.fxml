@@ -106,7 +106,7 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="223.0" styleClass="btns">
                <children>
-                  <FontAwesomeIconView glyphName="FLODER" glyphStyle="-fx-fill:#7c8184" size="20">
+                  <FontAwesomeIconView glyphName="DASHBOARD" glyphStyle="-fx-fill:#7c8184" size="20">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
