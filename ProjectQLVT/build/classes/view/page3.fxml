@@ -6,6 +6,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane id="AnchorPane" prefHeight="600.0" prefWidth="724.0" style="-fx-background-color: #e00736;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.Page3Controller">
+<Pane id="AnchorPane" prefHeight="600.0" prefWidth="724.0" style="-fx-background-color: #e00736;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Page3Controller">
     
 </Pane>

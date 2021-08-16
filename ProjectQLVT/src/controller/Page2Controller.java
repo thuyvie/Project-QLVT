@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package menu;
+package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author ASUS
  */
-public class DashBoardController implements Initializable {
+public class Page2Controller implements Initializable {
 
     /**
      * Initializes the controller class.

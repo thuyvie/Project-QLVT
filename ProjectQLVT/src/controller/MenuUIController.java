@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package menu;
+package controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -51,23 +51,23 @@ public class MenuUIController implements Initializable {
 
     @FXML
     private void DashBoard(MouseEvent event) throws IOException {
-        boderPane.setCenter(null);
+        loadUI("/view/DashBoard");
     }
 
     @FXML
     private void page1(MouseEvent event) throws IOException {
-        loadUI("Order");
+        loadUI("/view/Order");
     }
 
     @FXML
     private void page2(MouseEvent event) throws IOException {
-        loadUI("Product");
+        loadUI("/view/Product");
 
     }
 
     @FXML
     private void page3(MouseEvent event) throws IOException {
-        loadUI("page3");
+        loadUI("/view/page3");
 
     }
     
@@ -81,5 +81,7 @@ public class MenuUIController implements Initializable {
         }
         boderPane.setCenter(root);
     }
+
+   
     
 }
