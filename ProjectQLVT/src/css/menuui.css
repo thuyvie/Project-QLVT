@@ -7,16 +7,38 @@
 }
 .sidebar{
     -fx-background-color: #333645;
+    -fx-background-radius: 40 0 0 40;
 }
 .btns{
     -fx-background-color: transparent;
+    
 
     
 }
 .btns:hover{
     -fx-background-color: #202332;
+    -fx-text-fill: #4d9aff;
 }
 .box{
     -fx-border-color: #7c8184;
     -fx-border-width: 1px 0px 0px 0px;
+}
+.most-contacted-layout{
+    -fx-background-radius: 0 50 50 50;
+     
+}
+.lbl{
+    -fx-background-radius: 40 0 0 0;
+}
+.search{
+    -fx-text-fill: #fff;
+}
+.anchor{
+    -fx-background-radius: 0 40 40 0;
+}
+.pane{
+    -fx-background-radius: 0 40 40 0;
+}
+.container{
+    -fx-background-color: rgba(255,255,255,0.2);
 }

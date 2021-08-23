@@ -5,6 +5,7 @@
  */
 package controller;
 
+import animatefx.animation.FadeIn;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,8 +16,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 
 /**
@@ -27,7 +28,7 @@ import javafx.scene.layout.BorderPane;
 public class MenuUIController implements Initializable {
 
     @FXML
-    private AnchorPane contentArea;
+    private Pane contentArea;
     @FXML
     private BorderPane boderPane;
     
@@ -40,48 +41,43 @@ public class MenuUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     }    
-
-    
-//    public void DashBoard(javafx.event.ActionEvent actionEvent) throws IOException {
-//        Parent fxml = FXMLLoader.load(getClass().getResource("DashBoard.fxml"));  
-//        contentArea.getChildren().removeAll();
-//        contentArea.getChildren().setAll(fxml);
-//    }
-
-
     @FXML
     private void DashBoard(MouseEvent event) throws IOException {
-        loadUI("/view/DashBoard");
+       
     }
 
     @FXML
-    private void page1(MouseEvent event) throws IOException {
-        loadUI("/view/Order");
+    private void page1(MouseEvent event) throws IOException {  
+        setUi("Order");
+        new FadeIn(contentArea).play();
     }
 
     @FXML
     private void page2(MouseEvent event) throws IOException {
-        loadUI("/view/Product");
-
+        setUi("Product");
+        new FadeIn(contentArea).play();
     }
 
     @FXML
     private void page3(MouseEvent event) throws IOException {
-        loadUI("/view/page3");
-
+       setUi("page3");
+        new FadeIn(contentArea).play();
     }
     
-    private void loadUI(String page){
-        Parent root = null;
-        
-        try {
-            root = FXMLLoader.load(getClass().getResource(page+".fxml"));
-                    } catch (IOException ex) {
-            Logger.getLogger(MenuUIController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        boderPane.setCenter(root);
+//    private void loadUI(String page){
+//        Parent root = null;
+//        
+//        try {
+//            root = FXMLLoader.load(getClass().getResource(page+".fxml"));
+//                    } catch (IOException ex) {
+//            Logger.getLogger(MenuUIController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        boderPane.setCenter(root);
+//    }
+private void setUi(String location) throws IOException{
+        contentArea.getChildren().clear();
+        contentArea.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/" + location + ".fxml")));
     }
-
    
     
 }

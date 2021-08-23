@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="725.0" style="-fx-background-radius: 40 40 40 40;" stylesheets="@../css/menuui.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductController">
+   <children>
+      <TableView fx:id="tableproductview" layoutX="9.0" layoutY="366.0" onMouseClicked="#clickTable" prefHeight="176.0" prefWidth="709.0">
+        <columns>
+          <TableColumn fx:id="tblname" prefWidth="99.33331298828125" style="-fx-alignment: center;" text="Name Product" />
+          <TableColumn fx:id="tblvendor" prefWidth="93.3333740234375" style="-fx-alignment: center;" text="Vendor Name" />
+            <TableColumn fx:id="tbldes" prefWidth="140.0" style="-fx-alignment: center;" text="Description" />
+            <TableColumn fx:id="tblsize" prefWidth="53.33331298828125" style="-fx-alignment: center;" text="Size" />
+            <TableColumn fx:id="tblprice" prefWidth="63.33331298828125" style="-fx-alignment: center;" text="Price" />
+            <TableColumn fx:id="tblqty" prefWidth="100.66659545898438" style="-fx-alignment: center;" text="Quantity" />
+            <TableColumn fx:id="tblbatch" minWidth="0.0" prefWidth="83.3333740234375" style="-fx-alignment: center;" text="Batch Code" />
+            <TableColumn fx:id="tbldelete" prefWidth="74.66668701171875" text="Name" />
+        </columns>
+      </TableView>
+      <Label layoutX="236.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" text="Name Product" />
+      <TextField fx:id="txtname" layoutX="235.0" layoutY="89.0" />
+      <Label layoutX="42.0" layoutY="123.0" prefHeight="27.0" prefWidth="92.0" text="Description" />
+      <TextField fx:id="txtdes" layoutX="42.0" layoutY="158.0" />
+      <Label layoutX="43.0" layoutY="197.0" prefHeight="27.0" prefWidth="92.0" text="Price" />
+      <TextField fx:id="txtprice" layoutX="42.0" layoutY="233.0" />
+      <Label layoutX="42.0" layoutY="270.0" prefHeight="27.0" prefWidth="92.0" text="Batch Code" />
+      <TextField fx:id="txtbatch" layoutX="42.0" layoutY="306.0" />
+      <Label layoutX="236.0" layoutY="125.0" prefHeight="27.0" prefWidth="92.0" text="Vendor" />
+      <Label layoutX="236.0" layoutY="197.0" prefHeight="27.0" prefWidth="92.0" text="Size" />
+      <TextField fx:id="txtsize" layoutX="236.0" layoutY="233.0" />
+      <Label layoutX="236.0" layoutY="270.0" prefHeight="27.0" prefWidth="92.0" text="Quantity" />
+      <TextField fx:id="txtqty" layoutX="235.0" layoutY="306.0" />
+      <JFXComboBox fx:id="cbb" layoutX="235.0" layoutY="151.0" onAction="#vendorAction" prefHeight="26.0" prefWidth="150.0" />
+      <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="433.0" layoutY="100.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
+      <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="433.0" layoutY="164.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
+      <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="433.0" layoutY="227.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />
+      <TextField fx:id="txtcodepro" layoutX="42.0" layoutY="89.0" />
+      <Label layoutX="42.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" text="Code Product" />
+      <JFXButton fx:id="btnclear" buttonType="RAISED" layoutX="433.0" layoutY="287.0" onAction="#ClearAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #F6A9A9; -fx-background-radius: 15;" text="CLEAR" />
+      <ImageView fitHeight="105.0" fitWidth="197.0" layoutX="519.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/LogoConn.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

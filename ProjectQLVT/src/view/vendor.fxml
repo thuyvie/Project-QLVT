@@ -5,32 +5,39 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VendorController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="725.0" style="-fx-background-radius: 40 40 40 40;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VendorController">
    <children>
-      <TableView fx:id="tblven" layoutX="44.0" layoutY="336.0" onMouseClicked="#clickTable" prefHeight="367.0" prefWidth="681.0">
+      <TableView fx:id="tblven" layoutX="14.0" layoutY="333.0" onMouseClicked="#clickTable" prefHeight="241.0" prefWidth="696.0">
          <columns>
-            <TableColumn fx:id="tblname" prefWidth="151.19997882843018" style="-fx-alignment: center;" text="Name" />
-            <TableColumn fx:id="tblphone" prefWidth="163.19998168945312" style="-fx-alignment: center;" text="Phone" />
-            <TableColumn fx:id="tbladdress" prefWidth="171.99996948242188" style="-fx-alignment: center;" text="Address" />
-            <TableColumn fx:id="tblemail" minWidth="0.0" prefWidth="129.60003662109375" style="-fx-alignment: center;" text="Email" />
-            <TableColumn fx:id="tbldelete" prefWidth="60.79998779296875" />
+            <TableColumn fx:id="tblname" prefWidth="147.3333387374878" style="-fx-alignment: center;" text="Name" />
+            <TableColumn fx:id="tblphone" prefWidth="167.33335876464844" style="-fx-alignment: center;" text="Phone" />
+            <TableColumn fx:id="tbladdress" prefWidth="188.00003051757812" style="-fx-alignment: center;" text="Address" />
+            <TableColumn fx:id="tblemail" minWidth="0.0" prefWidth="192.66668701171875" style="-fx-alignment: center;" text="Email" />
+            <TableColumn fx:id="tbldelete" minWidth="0.0" prefWidth="0.0" />
          </columns>
       </TableView>
-      <Label layoutX="236.0" layoutY="50.0" prefHeight="27.0" prefWidth="92.0" text="Name Vendor" />
-      <TextField fx:id="txtname" layoutX="235.0" layoutY="83.0" />
-      <Label layoutX="42.0" layoutY="119.0" prefHeight="27.0" prefWidth="92.0" text="Address" />
-      <TextField fx:id="txtaddress" layoutX="42.0" layoutY="164.0" />
-      <Label layoutX="42.0" layoutY="205.0" prefHeight="27.0" prefWidth="92.0" text="Email" />
-      <TextField fx:id="txtemail" layoutX="42.0" layoutY="252.0" />
-      <Label layoutX="236.0" layoutY="119.0" prefHeight="27.0" prefWidth="92.0" text="Phone" />
-      <TextField fx:id="txtphone" layoutX="230.0" layoutY="164.0" />
-      <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="454.0" layoutY="64.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
-      <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="454.0" layoutY="139.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
-      <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="454.0" layoutY="214.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />
-      <TextField fx:id="txtcodeven" layoutX="42.0" layoutY="83.0" />
-      <Label layoutX="42.0" layoutY="50.0" prefHeight="27.0" prefWidth="92.0" text="Code Vendor" />
-      <JFXButton fx:id="btnclear" buttonType="RAISED" layoutX="454.0" layoutY="281.0" onAction="#ClearAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #F6A9A9; -fx-background-radius: 15;" text="CLEAR" />
+      <Label layoutX="236.0" layoutY="97.0" prefHeight="27.0" prefWidth="92.0" text="Name Vendor" />
+      <TextField fx:id="txtname" layoutX="235.0" layoutY="132.0" />
+      <Label layoutX="42.0" layoutY="171.0" prefHeight="27.0" prefWidth="92.0" text="Address" />
+      <TextField fx:id="txtaddress" layoutX="42.0" layoutY="209.0" />
+      <Label layoutX="42.0" layoutY="247.0" prefHeight="27.0" prefWidth="92.0" text="Email" />
+      <TextField fx:id="txtemail" layoutX="42.0" layoutY="282.0" />
+      <Label layoutX="236.0" layoutY="171.0" prefHeight="27.0" prefWidth="92.0" text="Phone" />
+      <TextField fx:id="txtphone" layoutX="235.0" layoutY="209.0" />
+      <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="413.0" layoutY="86.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
+      <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="413.0" layoutY="145.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
+      <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="413.0" layoutY="209.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />
+      <TextField fx:id="txtcodeven" layoutX="42.0" layoutY="132.0" />
+      <Label layoutX="42.0" layoutY="97.0" prefHeight="27.0" prefWidth="92.0" text="Code Vendor" />
+      <JFXButton fx:id="btnclear" buttonType="RAISED" layoutX="413.0" layoutY="276.0" onAction="#ClearAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #F6A9A9; -fx-background-radius: 15;" text="CLEAR" />
+      <ImageView fitHeight="103.0" fitWidth="184.0" layoutX="524.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/LogoConn.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
