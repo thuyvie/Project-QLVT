@@ -38,6 +38,9 @@ import model.product;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
+import util.CrudUtil;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * FXML Controller class
@@ -110,8 +113,12 @@ public class OrdController implements Initializable {
     dtmTM dtmTM;
     @FXML
     private ImageView request;
-    @FXML
     private TextField txtorder;
+    @FXML
+    private TextField txtnote;
+    private Label txtorderid;
+    @FXML
+    private Label txtorderid2;
 
     /**
      * Initializes the controller class.
@@ -120,6 +127,7 @@ public class OrdController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         generateDateTime();
         showOrder();
+        settxtoweid();
     }
 
     public void showOrder() {
@@ -168,6 +176,7 @@ public class OrdController implements Initializable {
         txtitemname.setText(null);
         txtprice.setText(null);
         txtqty.setText(null);
+        txtorderid2.setText(null);
     }
     @FXML
     private void clickTable(MouseEvent event) {
@@ -177,11 +186,34 @@ public class OrdController implements Initializable {
 //        txtitemcode.setText(String.valueOf(c.getCode()));
     txtitemcode.setText(c.getCode());
     }
-
+    public int getRowCount() throws ClassNotFoundException, SQLException {
+        String SQL = "SELECT COUNT(OrdID) FROM orders";
+        ResultSet resultSet = CrudUtil.executeQuery(SQL);
+        if (resultSet.next()){
+            return resultSet.getInt(1);
+        }
+        return -1;
+    }
+     public void settxtoweid(){
+        try {
+             int id = getRowCount();
+//                this.txtOrderId.setText("K001");
+            if (id < 9) {
+                this.txtorderid2.setText("K00" + (id + 1));
+            } else if (id < 99) {
+                this.txtorderid2.setText("K0" + (id + 1));
+            } else {
+                this.txtorderid2.setText("K" + (id + 1));
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void orderAction(ActionEvent event) {
 //        int OrdID = Integer.parseInt(txtorder.getText());
-        String OrdID = txtorder.getText();
+        String OrdID = txtorderid2.getText();
         String NameCus = txtname.getText();
         String PhoneCus = txtphone.getText();
         String EmailCus = txtemail.getText();
@@ -190,16 +222,17 @@ public class OrdController implements Initializable {
         String timeOrd = txttime.getText();
 //        int IDEmp = Integer.parseInt(labelemp.getText());
         double amount = Double.parseDouble(txtrs.getText());
+        String note = txtnote.getText();
         try {
-            boolean placeorder = ordDao.placeOrder(new ord(OrdID,NameCus,PhoneCus,EmailCus,AddressCus,dateOrd,timeOrd,items,amount));
+            boolean placeorder = ordDao.placeOrder(new ord(OrdID,NameCus,PhoneCus,EmailCus,AddressCus,dateOrd,timeOrd,items,amount,note));
         if(placeorder){
             OrderDetailFieldRest();
             (new Alert(Alert.AlertType.CONFIRMATION, "Order Successfully", new ButtonType[]{ButtonType.OK})).show();
                 String tilte = "ORDER SUCCESS";
-                String message = "SAY THANK YOU FOR CUSTOMER";
+                String message = "THANK YOU FOR CUSTOMER";
                 tray.notification.TrayNotification tray = new TrayNotification();
                 AnimationType type = AnimationType.POPUP;
-
+                settxtoweid();
                 tray.setAnimationType(type);
                 tray.setTitle(tilte);
                 tray.setMessage(message);
@@ -246,7 +279,7 @@ public class OrdController implements Initializable {
                     txtphone.setText(cus.getPhoneCus());
                     txtemail.setText(cus.getEmailCus());
                 } else {
-                    String tilte = "Searched Product Not Found";
+                    String tilte = "Searched Customer Not Found";
                     String message = "Try Again";
                     tray.notification.TrayNotification tray = new TrayNotification();
                     AnimationType type = AnimationType.POPUP;
@@ -329,6 +362,7 @@ public class OrdController implements Initializable {
         txtitemname.setText("");
         txtprice.setText("");
         txtqty.setText("");
+        txtorderid.setText("");
     }
 
     public void setEmpID(String IDEmp){

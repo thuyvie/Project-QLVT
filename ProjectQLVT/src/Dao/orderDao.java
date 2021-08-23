@@ -106,7 +106,7 @@ public class orderDao {
                if(ordDetailAdd){
                    paymentDao payDao = new paymentDao();
                    boolean ispayAdd = payDao.insert(
-                   new payment(getRandomNumberString(),o.getNameCus(), o.getAmount(),o.getOrdID())
+                   new payment(getRandomNumberString(),o.getNameCus(), o.getAmount(),o.getOrdID(), o.getNote())
                    );
                    if(ispayAdd){
                        boolean updateStock = updateOrdStock(o.getAllOrderDetail());

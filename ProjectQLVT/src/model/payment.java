@@ -14,12 +14,20 @@ public class payment {
     String NameCus;
     Double amount;
     String OrdID;
-
+    String note;
     public payment(String payid, String NameCus, Double amount, String OrdID) {
         this.payid = payid;
         this.NameCus = NameCus;
         this.amount = amount;
         this.OrdID = OrdID;
+    }
+
+    public payment(String payid, String NameCus, Double amount, String OrdID, String note) {
+        this.payid = payid;
+        this.NameCus = NameCus;
+        this.amount = amount;
+        this.OrdID = OrdID;
+        this.note = note;
     }
     
     public payment() {
@@ -55,6 +63,14 @@ public class payment {
 
     public void setOrdID(String OrdID) {
         this.OrdID = OrdID;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
    

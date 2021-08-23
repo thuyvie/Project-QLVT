@@ -21,8 +21,8 @@ import util.DBConnect;
 public class paymentDao {
      public boolean insert(payment pay)
             throws Exception {
-        String sql = "INSERT INTO payment( payid, namecus, amount, OrdID)"
-                + "values(?,?,?,?)";
+        String sql = "INSERT INTO payment( payid, namecus, amount, OrdID, note)"
+                + "values(?,?,?,?,?)";
         try (
                 Connection con = DBConnect.getConnect();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -30,6 +30,7 @@ public class paymentDao {
                 pstmt.setString(2, pay.getNameCus());
                 pstmt.setDouble(3, pay.getAmount());
                 pstmt.setString(4, pay.getOrdID());
+                pstmt.setString(5, pay.getNote());
             return pstmt.executeUpdate() > 0;
         }
 
@@ -46,6 +47,7 @@ public class paymentDao {
                 pstmt.setString(2, pay.getNameCus());
                 pstmt.setDouble(3, pay.getAmount());
                 pstmt.setString(4, pay.getOrdID());
+                pstmt.setString(5, pay.getNote());
             return pstmt.executeUpdate() > 0;
         }
     }
@@ -63,6 +65,7 @@ public class paymentDao {
                     p.setNameCus(rs.getString("namecus"));
                     p.setAmount(rs.getDouble("amount"));
                     p.setOrdID(rs.getString("OrdID"));
+                    p.setNote(rs.getString("note"));
                     return p;
                 }
             }
@@ -85,6 +88,7 @@ public class paymentDao {
                     p.setNameCus(rs.getString("namecus"));
                     p.setAmount(rs.getDouble("amount"));
                     p.setOrdID(rs.getString("OrdID"));
+                     p.setNote(rs.getString("note"));
                 listpay.add(p);
             }
         } catch (Exception e) {

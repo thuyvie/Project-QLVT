@@ -27,6 +27,7 @@ public class ord {
     private emp e;
     private ArrayList<dtmTM> allOrderDetail;
     private Double amount;
+    String note;
     public ord() {
     }
 
@@ -115,6 +116,19 @@ public class ord {
         this.amount = amount;
     }
 
+    public ord(String OrdID, String NameCus, String PhoneCus, String EmailCus, String AddressCus, String dateOrd, String timeOrd, ArrayList<dtmTM> allOrderDetail, Double amount, String note) {
+        this.OrdID = OrdID;
+        this.NameCus = NameCus;
+        this.PhoneCus = PhoneCus;
+        this.EmailCus = EmailCus;
+        this.AddressCus = AddressCus;
+        this.dateOrd = dateOrd;
+        this.timeOrd = timeOrd;
+        this.allOrderDetail = allOrderDetail;
+        this.amount = amount;
+        this.note = note;
+    }
+    
     public String getOrdID() {
         return OrdID;
     }
@@ -232,6 +246,14 @@ public class ord {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
     
 }

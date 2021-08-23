@@ -51,7 +51,11 @@
                         <Font name="Symbol" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtorder" layoutX="20.0" layoutY="42.0" prefHeight="25.0" prefWidth="104.0" />
+                  <Label fx:id="txtorderid2" layoutX="34.0" layoutY="39.0" prefHeight="31.0" prefWidth="82.0" textFill="#d19e38">
+                     <font>
+                        <Font name="Symbol" size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="35.0" layoutY="140.0" prefHeight="216.0" prefWidth="377.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
@@ -174,12 +178,12 @@
                         <Font name="Symbol" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="160.0" prefHeight="31.0" prefWidth="45.0" text="TOTAL:" textFill="#5e5b5b">
+                  <Label layoutX="14.0" layoutY="137.0" prefHeight="31.0" prefWidth="45.0" text="TOTAL:" textFill="#5e5b5b">
                      <font>
                         <Font name="Symbol" size="11.0" />
                      </font>
                   </Label>
-                  <Label fx:id="txttotal" layoutX="71.0" layoutY="160.0" prefHeight="31.0" prefWidth="82.0" textFill="#a9c131">
+                  <Label fx:id="txttotal" layoutX="63.0" layoutY="137.0" prefHeight="31.0" prefWidth="82.0" textFill="#a9c131">
                      <font>
                         <Font name="Symbol" size="13.0" />
                      </font>
@@ -194,6 +198,12 @@
                         <Font name="Symbol" size="16.0" />
                      </font>
                   </Label>
+                  <Label layoutX="14.0" layoutY="183.0" prefHeight="31.0" prefWidth="45.0" text="NOTE: " textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtnote" layoutX="80.0" layoutY="187.0" prefHeight="25.0" prefWidth="104.0" />
                </children>
             </Pane>
             <TableView fx:id="dtm" layoutX="46.0" layoutY="387.0" onMouseClicked="#clickTable" prefHeight="238.0" prefWidth="934.0">
