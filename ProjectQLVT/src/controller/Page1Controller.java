@@ -56,7 +56,7 @@ public class Page1Controller implements Initializable {
 
     @FXML
     private void receipt(MouseEvent event) throws IOException {
-        setUi("test2");
+        setUi("OweN");
         new FadeIn(context).play();
     }
 
@@ -68,13 +68,13 @@ public class Page1Controller implements Initializable {
 
     @FXML
     private void debt(MouseEvent event) throws IOException {
-        setUi("test1");
+        setUi("DetailOwe");
         new FadeIn(context).play();
     }
 
     @FXML
     private void listdebt(MouseEvent event) throws IOException {
-        setUi("test2");
+        setUi("DsOwe");
         new FadeIn(context).play();
     }
      private void setUi(String location) throws IOException{

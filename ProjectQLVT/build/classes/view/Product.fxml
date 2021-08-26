@@ -10,7 +10,7 @@
 
 <Pane id="AnchorPane" prefHeight="600.0" prefWidth="919.0" style="-fx-background-color: #333645;" styleClass="pane" stylesheets="@../css/menuui.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Page2Controller">
    <children>
-      <VBox fx:id="pane" layoutX="8.0" layoutY="8.0" prefHeight="584.0" prefWidth="172.0" style="-fx-background-color: #fff; -fx-background-radius: 40 40 40 40;">
+      <VBox fx:id="pane" layoutX="8.0" layoutY="8.0" prefHeight="584.0" prefWidth="172.0" style="-fx-background-color: #ededed; -fx-background-radius: 40 40 40 40;">
          <children>
             <JFXButton fx:id="btnlogin" buttonType="RAISED" onMouseClicked="#product" prefHeight="89.0" prefWidth="145.0" style="-fx-background-color: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);" styleClass="most-contacted-layout" text="PRODUCT">
                            <font>

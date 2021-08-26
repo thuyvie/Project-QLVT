@@ -7,40 +7,33 @@ package menu;
 
 import java.io.IOException;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
 
 /**
  *
  * @author ASUS
  */
-public class FXMain extends Application {
-    double x,y;
+public class LoginMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-
-       Parent root = FXMLLoader.load(getClass().getResource("/view/MenuUI.fxml")); 
+        Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml")); 
 //       Parent root = FXMLLoader.load(getClass().getResource("/view/showPayment.fxml"));
         Scene scene = new Scene(root);
 
         
-        root.setOnMousePressed(event -> {
-            x = event.getSceneX();
-            y = event.getSceneY();
-        });
-        
-        root.setOnMouseDragged(event -> {
-        primaryStage.setX(event.getScreenX() - x);
-        primaryStage.setY(event.getScreenY() - y);
-        });
+       
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
 
     /**
      * @param args the command line arguments
