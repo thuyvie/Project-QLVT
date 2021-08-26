@@ -44,10 +44,10 @@ public class DBConnect {
             Connection conn = getConnect();
             ObservableList<owe> list = FXCollections.observableArrayList();
             try {
-                PreparedStatement ps = conn.prepareStatement("select * from owe");
+                PreparedStatement ps = conn.prepareStatement("SELECT detailowe.NameCus, detailowe.PhoneCus,detailowe.Paid, detailowe.Owe, detailowe.TotalDebt, detailowe.IdOwe, owe.EmailCus, owe.AddressCus,owe.PaymentForm,owe.status FROM detailowe INNER JOIN owe ON detailowe.IdOwe = owe.IdOwe ORDER BY IdOwe DESC");
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
-                    list.add(new owe(rs.getString("IdOwe"), rs.getString("NameCus"),rs.getString("PhoneCus"),rs.getString("EmailCus"),rs.getString("AddressCus"), rs.getString("PaymentForm"),rs.getString("status")));
+                    list.add(new owe(rs.getString("IdOwe"), rs.getString("NameCus"),rs.getString("PhoneCus"),rs.getString("EmailCus"),rs.getString("AddressCus"), rs.getString("PaymentForm"),rs.getString("status"),rs.getDouble("Paid"),rs.getDouble("Owe"),rs.getDouble("TotalDebt")));
                 }
             } catch (Exception e) {
             }

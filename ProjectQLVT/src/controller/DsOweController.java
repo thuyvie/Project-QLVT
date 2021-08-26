@@ -5,6 +5,7 @@
  */
 package controller;
 
+import animatefx.animation.FadeIn;
 import com.jfoenix.controls.JFXButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -35,6 +36,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -70,34 +72,45 @@ public class DsOweController implements Initializable {
     private TableColumn<owe, String> tblform;
     @FXML
     private TableColumn<owe, String> tblstt;
-    @FXML
-    private TableColumn<owe, String> tblchitiet;
+    private TableColumn<owe, Double> tblchitiet;
     @FXML
     private TextField txttimkiem;
     @FXML
     private JFXButton btnsearch;
     PreparedStatement preparedStatement = null;
     String query = null;
-    detailOwe de= null;
+    detailOwe de = null;
     Connection connection = null;
-    ResultSet resultSet = null ;
+    ResultSet resultSet = null;
     ObservableList<owe> data;
     int index = -1;
     owe o = null;
+    private TableColumn<owe, Double> tblchitiet1;
+    private TableColumn<owe, Double> tblchitiet2;
+    @FXML
+    private ImageView btnadd;
+    @FXML
+    private TableColumn<owe, Double> tblpaid;
+    @FXML
+    private TableColumn<owe, Double> tblowe;
+    @FXML
+    private TableColumn<owe, Double> tbltt;
+
     /**
      * Initializes the controller class.
+     * @return 
      */
     public ObservableList<owe> findAll() {
         ObservableList<owe> listowe = FXCollections.observableArrayList();
         Statement stmt;
         ResultSet rs;
         try {
-            String sql = "SELECT detailowe.Paid, detailowe.Owe, detailowe.TotalDebt, detailowe.IdOwe,owe.NameCus,owe.PhoneCus, owe.EmailCus, owe.AddressCus,owe.PaymentForm,owe.status FROM detailowe INNER JOIN owe ON detailowe.IdOwe = owe.IdOwe";
+            String sql = "SELECT detailowe.NameCus, detailowe.PhoneCus,detailowe.Paid, detailowe.Owe, detailowe.TotalDebt, detailowe.IdOwe, owe.EmailCus, owe.AddressCus,owe.PaymentForm,owe.status FROM detailowe INNER JOIN owe ON detailowe.IdOwe = owe.IdOwe ORDER BY IdOwe DESC";
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                owe ow= new owe();
+                owe ow = new owe();
                 ow.setIdOwe(rs.getString("IdOwe"));
                 ow.setNameCus(rs.getString("NameCus"));
                 ow.setPhoneCus(rs.getString("PhoneCus"));
@@ -115,74 +128,86 @@ public class DsOweController implements Initializable {
         }
         return listowe;
     }
-   
-    public void showOwe(){
+    private void setUi(String location) throws IOException {
+        pane.getChildren().clear();
+        pane.getChildren().add(FXMLLoader.load(this.getClass().
+                getResource("/FXML/" + location + ".fxml")));
+    }
+    public void showOwe() {
         ObservableList<owe> list = findAll();
         tblname.setCellValueFactory(new PropertyValueFactory<>("NameCus"));
         tblphone.setCellValueFactory(new PropertyValueFactory<>("PhoneCus"));
+        tblpaid.setCellValueFactory(new PropertyValueFactory<>("Paid"));
+        tblowe.setCellValueFactory(new PropertyValueFactory<>("Owe"));
+        tbltt.setCellValueFactory(new PropertyValueFactory<>("TotalDebt"));
         tblemail.setCellValueFactory(new PropertyValueFactory<>("EmailCus"));
         tbladdress.setCellValueFactory(new PropertyValueFactory<>("AddressCus"));
         tblform.setCellValueFactory(new PropertyValueFactory<>("PaymentForm"));
         tblstt.setCellValueFactory(new PropertyValueFactory<>("status"));
-        Callback<TableColumn<owe, String>, TableCell<owe, String>> cellFoctory = (TableColumn<owe, String> param) -> {
-            final TableCell<owe, String> cell = new TableCell<owe, String>() {
 
-                @Override
-                public void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (empty) {
-                        setGraphic(null);
-                        setText(null);
-
-                    } else {
-                        
-                        JFXButton add = new JFXButton("Detail");
-                        add.setPrefWidth(59);
-                        add.setPrefHeight(26);
-                        add.setStyle(
-                            "-fx-background-color: #7FC8A9;"
-                            + "-fx-background-radius: 15;"
-                        );
-                        add.setOnMouseClicked((MouseEvent event) -> {
-                            
-                                 o = tblds.getSelectionModel().getSelectedItem();
-                                FXMLLoader loader = new FXMLLoader ();
-                                loader.setLocation(getClass().getResource("/view/DetailOwe.fxml"));
-                            try {
-                                loader.load();
-                            } catch (IOException ex) {
-                                Logger.getLogger(DsOweController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            DetailOweController dtcontroller = loader.getController();
-                            dtcontroller.setfindAll(true);
-//                            dtcontroller.setTextField(o.getNameCus(),o.getPhoneCus(),o.getPaid(), o.getOwe(), o.getTotalDebt());
-                            Parent parent = loader.getRoot();
-                            Stage stage = new Stage();
-                            stage.setScene(new Scene(parent));
-                            stage.initStyle(StageStyle.UTILITY);
-                            stage.show();
-
-                        });
-
-                        HBox managebtn = new HBox(add);
-                        managebtn.setStyle("-fx-alignment:center");
-                        HBox.setMargin(add, new Insets(2, 2, 0, 3));
-
-                        setGraphic(managebtn);
-
-                        setText(null);
-
-                    }
-                }
-            };
-            return cell;
-        };
-        tblchitiet.setCellFactory(cellFoctory);
+//        Callback<TableColumn<owe, String>, TableCell<owe, String>> cellFoctory = (TableColumn<owe, String> param) -> {
+//            final TableCell<owe, String> cell = new TableCell<owe, String>() {
+//
+//                @Override
+//                public void updateItem(String item, boolean empty) {
+//                    super.updateItem(item, empty);
+//                    if (empty) {
+//                        setGraphic(null);
+//                        setText(null);
+//
+//                    } else {
+//                        
+//                        JFXButton add = new JFXButton("Detail");
+//                        add.setPrefWidth(59);
+//                        add.setPrefHeight(26);
+//                        add.setStyle(
+//                            "-fx-background-color: #7FC8A9;"
+//                            + "-fx-background-radius: 15;"
+//                        );
+//                        add.setOnMouseClicked((MouseEvent event) -> {
+//                            
+//                                 o = tblds.getSelectionModel().getSelectedItem();
+//                                FXMLLoader loader = new FXMLLoader ();
+//                                loader.setLocation(getClass().getResource("/view/DetailOwe.fxml"));
+//                            try {
+//                                loader.load();
+//                            } catch (IOException ex) {
+//                                Logger.getLogger(DsOweController.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                            DetailOweController dtcontroller = loader.getController();
+//                            dtcontroller.setfindAll(true);
+////                            dtcontroller.setTextField(o.getNameCus(),o.getPhoneCus(),o.getPaid(), o.getOwe(), o.getTotalDebt());
+//                            Parent parent = loader.getRoot();
+//                            Stage stage = new Stage();
+//                            stage.setScene(new Scene(parent));
+//                            stage.initStyle(StageStyle.UTILITY);
+//                            stage.show();
+//
+//                        });
+//
+//                        HBox managebtn = new HBox(add);
+//                        managebtn.setStyle("-fx-alignment:center");
+//                        HBox.setMargin(add, new Insets(2, 2, 0, 3));
+//
+//                        setGraphic(managebtn);
+//
+//                        setText(null);
+//
+//                    }
+//                }
+//            };
+//            return cell;
+//        };
+//        tblchitiet.setCellFactory(cellFoctory);
         tblds.setItems(list);
     }
-    public void search(){
+
+    public void search() {
         tblname.setCellValueFactory(new PropertyValueFactory<>("NameCus"));
         tblphone.setCellValueFactory(new PropertyValueFactory<>("PhoneCus"));
+        tblpaid.setCellValueFactory(new PropertyValueFactory<>("Paid"));
+        tblowe.setCellValueFactory(new PropertyValueFactory<>("Owe"));
+        tbltt.setCellValueFactory(new PropertyValueFactory<>("TotalDebt"));
         tblemail.setCellValueFactory(new PropertyValueFactory<>("EmailCus"));
         tbladdress.setCellValueFactory(new PropertyValueFactory<>("AddressCus"));
         tblform.setCellValueFactory(new PropertyValueFactory<>("PaymentForm"));
@@ -190,36 +215,55 @@ public class DsOweController implements Initializable {
         data = DBConnect.getOwe();
         tblds.setItems(data);
         FilteredList<owe> filteredData = new FilteredList<>(data, e -> true);
-            txttimkiem.textProperty().addListener((observableValue, oldValue, newValue) ->{
-                filteredData.setPredicate((Predicate<? super owe>) owe2 ->{
-                    if(newValue == null || newValue.isEmpty()){
-                        return true;
-                    }
-                    String lowerCaseFilter = newValue.toLowerCase();
-                    if(owe2.getNameCus().contains(newValue)){
-                        return true;
-                    }else if(owe2.getPhoneCus().toLowerCase().contains(lowerCaseFilter)){
-                        return true;
-                    }
-                    return false;
-                });
+        txttimkiem.textProperty().addListener((observableValue, oldValue, newValue) -> {
+            filteredData.setPredicate((Predicate<? super owe>) owe2 -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (owe2.getNameCus().contains(newValue)) {
+                    return true;
+                } else if (owe2.getPhoneCus().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
             });
-            SortedList<owe> sortedData = new SortedList<>(filteredData);
-            sortedData.comparatorProperty().bind(tblds.comparatorProperty());
-            tblds.setItems(sortedData);
-        
+        });
+        SortedList<owe> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tblds.comparatorProperty());
+        tblds.setItems(sortedData);
+
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         showOwe();
         search();
-    }    
+    }
 
     @FXML
     private void SearchAction(ActionEvent event) {
-        if(event.getSource() == btnsearch){
+        if (event.getSource() == btnsearch) {
             search();
         }
     }
-    
+
+    @FXML
+    private void AddAction(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/OweN.fxml"));
+        try {
+            loader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(DsOweController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       OweNController owecontroller = loader.getController();
+        owecontroller.setOWE(true);
+        Parent parent = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(parent));
+        stage.initStyle(StageStyle.UTILITY);
+        stage.show();
+    }
+
 }

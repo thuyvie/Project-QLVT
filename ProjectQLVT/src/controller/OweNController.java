@@ -8,6 +8,7 @@ package controller;
 import Dao.payowe;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -36,6 +37,13 @@ import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 import util.DBConnect;
 import java.sql.PreparedStatement;
+import java.util.HashMap;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * FXML Controller class
@@ -94,13 +102,15 @@ public class OweNController implements Initializable {
     int total;
     private int index;
     private boolean OWE;
-     String query = null;
+    String query = null;
     Connection connection = null;
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
-    void setOWE(boolean o){
+
+    void setOWE(boolean o) {
         this.OWE = o;
     }
+
     /**
      * Initializes the controller class.
      */
@@ -108,7 +118,8 @@ public class OweNController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         showN();
-    }    
+    }
+
     public ObservableList<detailOwe> findAll() {
         ObservableList<detailOwe> listow = FXCollections.observableArrayList();
         Statement stmt;
@@ -119,7 +130,7 @@ public class OweNController implements Initializable {
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                detailOwe ow= new detailOwe();
+                detailOwe ow = new detailOwe();
                 ow.setNameCus(rs.getString("NameCus"));
                 ow.setPhoneCus(rs.getString("PhoneCus"));
                 ow.setPaid(rs.getDouble("Paid"));
@@ -132,7 +143,8 @@ public class OweNController implements Initializable {
         }
         return listow;
     }
-    void setTextField(String NameCus, String PhoneCus, Double Paid, Double TotalDebt,String IDdOwe){
+
+    void setTextField(String NameCus, String PhoneCus, Double Paid, Double TotalDebt, String IDdOwe) {
         txtname.setText(NameCus);
         txtphone.setText(PhoneCus);
         txtpaid.setText(String.valueOf(Paid));
@@ -140,7 +152,8 @@ public class OweNController implements Initializable {
         txttotaldebt.setText(String.valueOf(TotalDebt));
         txtoweid.setText(IDdOwe);
     }
-    public void showN(){
+
+    public void showN() {
         ObservableList<detailOwe> listow = findAll();
         tblow.setCellValueFactory(new PropertyValueFactory<>("IdOwe"));
         tblname.setCellValueFactory(new PropertyValueFactory<>("NameCus"));
@@ -149,61 +162,77 @@ public class OweNController implements Initializable {
         tbltt.setCellValueFactory(new PropertyValueFactory<>("TotalDebt"));
         tblN.setItems(listow);
     }
+
     private void finalTotaladd() {
         txtrs.setText(txtowe.getText());
-        
+
     }
+
     @FXML
     private void SaveAction(ActionEvent event) {
         count += Double.parseDouble(txtpaid2.getText());
         txtpai.setText(count + "");
         double total = 0;
-        
+
         total = Double.parseDouble(txttotal.getText()) - count;
-        
+
         txtowe.setText(String.valueOf(total));
         finalTotaladd();
     }
-
 
     @FXML
     private void printAndSaveAction(ActionEvent event) {
         payowe P = new payowe();
         String IdOwe = txtoweid.getText();
-        String NameCus= txtname.getText();
+        String NameCus = txtname.getText();
         String PhoneCus = txtphone.getText();
         String status = "";
-        if(txtfull2.isSelected()){
+        if (txtfull2.isSelected()) {
             status += txtfull2.getText();
-        }else if(txtun2.isSelected()){
-        status += txtun2.getText();
+        } else if (txtun2.isSelected()) {
+            status += txtun2.getText();
         }
         double Paid = Double.parseDouble(txtpai.getText());
         double Owe = Double.parseDouble(txtowe.getText());
         double TotalDebt = Double.parseDouble(txtrs.getText());
-         try {
-            boolean printAndSave = P.placeOrder2(new owe(IdOwe,NameCus,PhoneCus,status,Paid,Owe,TotalDebt));
-            if(printAndSave){
-            (new Alert(Alert.AlertType.CONFIRMATION, "OweReceipt Successfully", new ButtonType[]{ButtonType.OK})).show();
+        try {
+            boolean printAndSave = P.placeOrder2(new owe(IdOwe, NameCus, PhoneCus, status, Paid, Owe, TotalDebt));
+            if (printAndSave) {
+                (new Alert(Alert.AlertType.CONFIRMATION, "OweReceipt Successfully", new ButtonType[]{ButtonType.OK})).show();
                 String tilte = "OweReceipt SUCCESS";
                 String message = "OweReceipt SUCCESS";
                 tray.notification.TrayNotification tray = new TrayNotification();
                 AnimationType type = AnimationType.POPUP;
-
+                showN();
                 tray.setAnimationType(type);
                 tray.setTitle(tilte);
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.SUCCESS);
                 tray.showAndDismiss(Duration.millis(3000));
-                
-        }else{
-            (new Alert(Alert.AlertType.ERROR, "OweReceipt Unsuccessfully", new ButtonType[]{ButtonType.OK})).show();
-        }
+//                try {
+//                    InputStream is = this.getClass().getResourceAsStream("/report/Bill/owe.jrxml");
+//                    JasperReport jr = JasperCompileManager.compileReport(is);
+//                    HashMap<String, Object> hs = new HashMap<>();
+//                    hs.put("amount", txtamount.getText());
+//                    hs.put("Paid", txtpaid.getText());
+//                    hs.put("NameCus", txtname.getText());
+//                    hs.put("PhoneCus", txtsearchphone.getText());
+//                    hs.put("Owe", txto.getText());
+//                    hs.put("TotalDebt", txtrs.getText());
+//                    hs.put("IdOwe", txtoweid.getText());
+//                    JasperPrint jp = JasperFillManager.fillReport(jr, hs, DBConnect.getConnect());
+//                    JasperViewer.viewReport(jp);
+//                } catch (JRException e) {
+//                    e.printStackTrace();
+//                }
+
+            } else {
+                (new Alert(Alert.AlertType.ERROR, "OweReceipt Unsuccessfully", new ButtonType[]{ButtonType.OK})).show();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
     @FXML
     private void reloadAction(MouseEvent event) {
@@ -230,5 +259,4 @@ public class OweNController implements Initializable {
         txttotaldebt.setText(String.valueOf(de.getTotalDebt()));
     }
 
-    
 }

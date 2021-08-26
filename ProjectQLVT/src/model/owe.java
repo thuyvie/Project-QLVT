@@ -129,6 +129,7 @@ public class owe {
         this.AddressCus = AddressCus;
         this.PaymentForm = PaymentForm;
         this.status = status;
+        
     }
     
     public owe() {

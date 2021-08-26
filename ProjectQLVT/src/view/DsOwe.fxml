@@ -5,28 +5,37 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="677.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DsOweController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="677.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DsOweController">
    <children>
-      <TableView fx:id="tblds" layoutX="14.0" layoutY="114.0" prefHeight="530.0" prefWidth="839.0">
+      <TableView fx:id="tblds" layoutX="14.0" layoutY="114.0" prefHeight="530.0" prefWidth="988.0">
         <columns>
           <TableColumn fx:id="tblname" prefWidth="121.60000038146973" style="-fx-alignment: center;" text="Name" />
           <TableColumn fx:id="tblphone" prefWidth="119.20001220703125" style="-fx-alignment: center;" text="Phone" />
             <TableColumn fx:id="tblemail" prefWidth="133.60003662109375" style="-fx-alignment: center;" text="Email" />
-            <TableColumn fx:id="tbladdress" prefWidth="140.00003051757812" style="-fx-alignment: center;" text="Address" />
-            <TableColumn fx:id="tblform" prefWidth="132.0" style="-fx-alignment: center;" text="Payment Form" />
-            <TableColumn fx:id="tblstt" prefWidth="122.39996337890625" style="-fx-alignment: center;" text="Status" />
-            <TableColumn fx:id="tblchitiet" prefWidth="69.5999755859375" />
+            <TableColumn fx:id="tbladdress" prefWidth="132.00003051757812" style="-fx-alignment: center;" text="Address" />
+            <TableColumn fx:id="tblform" prefWidth="121.60003662109375" style="-fx-alignment: center;" text="Payment Form" />
+            <TableColumn fx:id="tblstt" prefWidth="100.0" style="-fx-alignment: center;" text="Status" />
+            <TableColumn fx:id="tblpaid" prefWidth="94.4000244140625" style="-fx-alignment: center;" text="Paid" />
+            <TableColumn fx:id="tblowe" prefWidth="80.0001220703125" style="-fx-alignment: center;" text="Owe" />
+            <TableColumn fx:id="tbltt" prefWidth="83.199951171875" style="-fx-alignment: center;" text="TotalDebt" />
         </columns>
       </TableView>
       <TextField fx:id="txttimkiem" layoutX="45.0" layoutY="58.0" prefHeight="26.0" prefWidth="191.0" />
       <JFXButton fx:id="btnsearch" layoutX="250.0" layoutY="58.0" onAction="#SearchAction" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #93B5C6; -fx-background-radius: 15;" text="Search" />
-      <Label layoutX="378.0" layoutY="14.0" prefHeight="26.0" prefWidth="127.0" text="Debt List">
+      <Label layoutX="469.0" layoutY="14.0" prefHeight="26.0" prefWidth="127.0" text="Debt List">
          <font>
             <Font name="Comic Sans MS" size="20.0" />
          </font>
       </Label>
+      <ImageView fx:id="btnadd" fitHeight="47.0" fitWidth="66.0" layoutX="944.0" layoutY="61.0" onDragDetected="#AddAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resouces/plus.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

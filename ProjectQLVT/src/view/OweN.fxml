@@ -162,11 +162,11 @@
       </ImageView>
       <TableView fx:id="tblN" layoutX="27.0" layoutY="404.0" onMouseClicked="#clickTB" prefHeight="278.0" prefWidth="756.0">
         <columns>
-          <TableColumn fx:id="tblow" prefWidth="129.59997940063477" text="OweReceipt ID" />
-          <TableColumn fx:id="tblname" prefWidth="155.1999969482422" text="Name" />
-            <TableColumn fx:id="tblphone" prefWidth="170.4000244140625" text="Phone" />
-            <TableColumn fx:id="tblmoney" prefWidth="159.20001220703125" text="Money Paid" />
-            <TableColumn fx:id="tbltt" prefWidth="141.60003662109375" text="TotalDebt" />
+          <TableColumn fx:id="tblow" prefWidth="129.59997940063477" style="-fx-alignment: center;" text="OweReceipt ID" />
+          <TableColumn fx:id="tblname" prefWidth="155.1999969482422" style="-fx-alignment: center;" text="Name" />
+            <TableColumn fx:id="tblphone" prefWidth="170.4000244140625" style="-fx-alignment: center;" text="Phone" />
+            <TableColumn fx:id="tblmoney" prefWidth="159.20001220703125" style="-fx-alignment: center;" text="Money Paid" />
+            <TableColumn fx:id="tbltt" prefWidth="141.60003662109375" style="-fx-alignment: center;" text="TotalDebt" />
         </columns>
       </TableView>
    </children>
