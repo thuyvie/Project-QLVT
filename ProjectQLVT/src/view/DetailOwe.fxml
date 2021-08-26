@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="pan2" prefHeight="406.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DetailOweController">
+<AnchorPane id="AnchorPane" fx:id="pan2" prefHeight="406.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DetailOweController">
    <children>
-      <TableView fx:id="tblchitiet" layoutX="14.0" layoutY="79.0" prefHeight="298.0" prefWidth="718.0">
+      <TableView fx:id="tblchitiet" layoutX="14.0" layoutY="79.0" prefHeight="298.0" prefWidth="742.0">
         <columns>
-          <TableColumn fx:id="tblname1" prefWidth="146.40002822875977" text="Name" />
-          <TableColumn fx:id="tblphone1" prefWidth="151.19993591308594" text="Phone" />
-            <TableColumn fx:id="tblpaid" prefWidth="120.7999267578125" text="Paid" />
-            <TableColumn fx:id="tblowe" prefWidth="105.60003662109375" text="Owe" />
-            <TableColumn fx:id="tbltt" prefWidth="105.5999755859375" text="TotalDebt" />
-            <TableColumn fx:id="btnlap" prefWidth="82.40006103515623" />
+          <TableColumn fx:id="tblname1" prefWidth="146.40002822875977" style="-fx-alignment: center;" text="Name" />
+          <TableColumn fx:id="tblphone1" prefWidth="151.19993591308594" style="-fx-alignment: center;" text="Phone" />
+            <TableColumn fx:id="tblpaid" prefWidth="120.7999267578125" style="-fx-alignment: center;" text="Paid" />
+            <TableColumn fx:id="tblowe" prefWidth="105.60003662109375" style="-fx-alignment: center;" text="Owe" />
+            <TableColumn fx:id="tbltt" prefWidth="105.5999755859375" style="-fx-alignment: center;" text="TotalDebt" />
+            <TableColumn fx:id="btnlap" prefWidth="110.39999999999998" />
         </columns>
       </TableView>
       <Label layoutX="295.0" layoutY="26.0" prefHeight="18.0" prefWidth="106.0" text="Detail Debt">

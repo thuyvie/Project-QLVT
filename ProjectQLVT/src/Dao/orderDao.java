@@ -49,8 +49,8 @@ public class orderDao {
         }
    }
    public boolean insertOrdDetail(orderdetail ordDetail) throws Exception{
-      String sql = "INSERT INTO order_detail( OrderID, IDProduct, Amount, Price)"
-                + "values(?,?,?,?)";
+      String sql = "INSERT INTO order_detail( OrderID, IDProduct, Amount, Price, Total)"
+                + "values(?,?,?,?,?)";
         try (
                 Connection con = DBConnect.getConnect();
                 PreparedStatement pstmt = con.prepareStatement(sql);
@@ -59,12 +59,13 @@ public class orderDao {
                 pstmt.setString(2, ordDetail.getIDProduct());
                 pstmt.setString(3, ordDetail.getAmount());
                 pstmt.setString(4, ordDetail.getPrice());
+                pstmt.setDouble(5, ordDetail.getTotal());
             return pstmt.executeUpdate() > 0;
         }
    }
    private boolean addOrdDtail(ord dto) throws SQLException, ClassNotFoundException, Exception{
         for (dtmTM ord : dto.getAllOrderDetail()) {
-            orderdetail orderTable = new orderdetail(dto.getOrdID(), ord.getCode(), ord.getQTY(), ord.getPrice());
+            orderdetail orderTable = new orderdetail(dto.getOrdID(), ord.getCode(), ord.getQTY(), ord.getPrice(), ord.getTotal());
             System.out.println("");
             orddetailDao orddt = new orddetailDao();
             boolean isAddedOrderDetails = orddt.insertOrdDetail(orderTable);

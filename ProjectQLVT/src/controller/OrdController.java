@@ -7,6 +7,7 @@ package controller;
 
 import Dao.orderDao;
 import com.jfoenix.controls.JFXButton;
+import java.io.InputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -41,6 +42,14 @@ import tray.notification.TrayNotification;
 import util.CrudUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+import util.DBConnect;
 
 /**
  * FXML Controller class
@@ -89,7 +98,6 @@ public class OrdController implements Initializable {
     private JFXButton btnprint;
     @FXML
     private JFXButton btnremove;
-    @FXML
     private Label labelemp;
     @FXML
     private TextField txtsearchphone;
@@ -105,9 +113,11 @@ public class OrdController implements Initializable {
     private TableColumn<dtmTM, String> tblqty;
     @FXML
     private TableColumn<dtmTM, String> tblrs;
+    private TableColumn<dtmTM, Double> txtttttt;
     ArrayList<dtmTM> items = new ArrayList<>();
     int count;
     int total;
+    double rs;
     private int index;
     orderDao ordDao = new orderDao();
     dtmTM dtmTM;
@@ -119,7 +129,11 @@ public class OrdController implements Initializable {
     private Label txtorderid;
     @FXML
     private Label txtorderid2;
-
+    @FXML
+    private JFXButton btnok;
+    @FXML
+    private TableColumn<dtmTM, String> tblmoney;
+    
     /**
      * Initializes the controller class.
      */
@@ -135,6 +149,7 @@ public class OrdController implements Initializable {
         tblprice.setCellValueFactory(new PropertyValueFactory<>("name"));
         tblqty.setCellValueFactory(new PropertyValueFactory<>("price"));
         tblrs.setCellValueFactory(new PropertyValueFactory<>("QTY"));
+        tblmoney.setCellValueFactory(new PropertyValueFactory<> ("Total"));
     }
 
     public void generateDateTime() {
@@ -147,21 +162,30 @@ public class OrdController implements Initializable {
         timeline.play();
 
     }
-
+    
     private void finalTotaladd() {
-        txtrs.setText(txttotal.getText());
+//         double TotalPrice = 0.0;
+//         TotalPrice = dtm.getItems().stream().map(
+//            (item) -> item.getTotal()).reduce(TotalPrice, (accumulator, _item) -> accumulator + _item);
+//
+//          txtttttt.setText(String.valueOf(TotalPrice));
+            
+            txtrs.setText(txttotal.getText());
     }
 
     private void reloadTotalQty() {
         int qty = 0;
-        int total = 0;
+        double total = 0;
+         double rs = 0;
         for (dtmTM dtmTM : items) {
-            qty += Integer.parseInt(dtmTM.getQTY());
+            qty = Integer.parseInt(dtmTM.getQTY());
             double p = Double.parseDouble(dtmTM.getPrice());
-            total += p * Integer.parseInt(dtmTM.getQTY());
+            total = p * Integer.parseInt(dtmTM.getQTY());
+            rs += total ;
         }
         txtqantity.setText(qty + "");
         txttotal.setText(total + "");
+        txtrs.setText(rs + "");
     }
     public void OrderDetailFieldRest() {
         txtname.setText(null);
@@ -177,6 +201,10 @@ public class OrdController implements Initializable {
         txtprice.setText(null);
         txtqty.setText(null);
         txtorderid2.setText(null);
+        tblname.setText(null);
+        tblprice.setText(null);
+        tblqty.setText(null);
+        tblrs.setText(null);
     }
     @FXML
     private void clickTable(MouseEvent event) {
@@ -249,6 +277,22 @@ public class OrdController implements Initializable {
 
     @FXML
     private void printAction(ActionEvent event) {
+        try {
+            InputStream is = this.getClass().getResourceAsStream("/report/Bill/bill2.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport(is);
+            HashMap<String, Object> hs = new HashMap<>();
+            hs.put("itemCode", tblname.getText());
+            hs.put("namepro", tblprice.getText());
+            hs.put("Price", tblqty.getText());
+            hs.put("Amount", tblrs.getText());
+            hs.put("OrdID", txtorderid2.getText());
+            hs.put("amount", txtrs.getText());
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, hs, DBConnect.getConnect());
+            JasperViewer.viewReport(jp); 
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -335,17 +379,10 @@ public class OrdController implements Initializable {
         String name = txtitemname.getText();
         String price = txtprice.getText();
         String QTY = txtqty.getText();
-        dtmTM rowData = new dtmTM(code, name, price, QTY);
+        Double Total = Double.parseDouble(txttotal.getText());
+        dtmTM rowData = new dtmTM(code, name, price, QTY, Total);
         items.add(rowData);
         dtm.setItems(FXCollections.observableArrayList(items));
-        count += Integer.parseInt(txtqty.getText());
-        txtqantity.setText(count + "");
-        double total = 0;
-        for (int i = 0; i < count; i++) {
-            total += Double.parseDouble(txtprice.getText());
-        }
-        txttotal.setText(String.valueOf(total));
-        finalTotaladd();
     }
 
     @FXML
@@ -368,6 +405,21 @@ public class OrdController implements Initializable {
     public void setEmpID(String IDEmp){
         labelemp.setText(IDEmp);
         System.out.println(IDEmp+"IDEmp");
+    }
+
+    @FXML
+    private void OKAction(ActionEvent event) {
+        int i = 1;
+        count = Integer.parseInt(txtqty.getText());
+        txtqantity.setText(count + "");
+        double total = 0;
+
+       
+        total += Integer.parseInt(txtqty.getText()) * Double.parseDouble(txtprice.getText());
+        rs = rs + total;
+        txttotal.setText(String.valueOf(total));
+        txtrs.setText(rs + "");
+        i++;
     }
 
 }

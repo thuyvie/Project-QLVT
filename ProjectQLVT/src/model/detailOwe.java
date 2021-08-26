@@ -35,6 +35,9 @@ public class detailOwe {
         this.TotalDebt = TotalDebt;
         this.IdOwe = IdOwe;
     }
+
+    public detailOwe() {
+    }
     
     public String getID() {
         return ID;

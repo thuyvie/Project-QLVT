@@ -17,7 +17,7 @@ public class orderdetail {
     private product proid;
     String Amount;
     String Price;
-
+    Double Total;
     public orderdetail() {
     }
 
@@ -37,6 +37,16 @@ public class orderdetail {
         this.Amount = Amount;
         this.Price = Price;
     }
+
+    public orderdetail(String OrderID, String IDProduct, String Amount, String Price, Double Total) {
+        this.OrderID = OrderID;
+        this.IDProduct = IDProduct;
+        this.Amount = Amount;
+        this.Price = Price;
+        this.Total = Total;
+    }
+
+    
 
     
 
@@ -104,5 +114,14 @@ public class orderdetail {
         this.Price = Price;
     }
 
+    public Double getTotal() {
+        return Total;
+    }
+
+    public void setTotal(Double Total) {
+        this.Total = Total;
+    }
+
+   
    
 }

@@ -15,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="706.0" prefWidth="1028.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrdController">
    <children>
-      <Pane fx:id="order" onKeyReleased="#adddiscountKey" prefHeight="706.0" prefWidth="1025.0">
+      <Pane fx:id="order" onKeyReleased="#adddiscountKey" prefHeight="722.0" prefWidth="1026.0">
          <children>
             <Pane layoutX="35.0" layoutY="45.0" prefHeight="84.0" prefWidth="377.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
                <effect>
@@ -147,7 +147,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btnaddcart" buttonType="RAISED" layoutX="202.0" layoutY="199.0" onAction="#addCartAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="ADD CART">
+                  <JFXButton fx:id="btnok" buttonType="RAISED" layoutX="222.0" layoutY="191.0" onAction="#OKAction" prefHeight="57.0" prefWidth="104.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Total Amount">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -173,7 +173,7 @@
                         <Font name="Symbol" size="11.0" />
                      </font>
                   </Label>
-                  <Label fx:id="txtqantity" layoutX="63.0" layoutY="87.0" prefHeight="31.0" prefWidth="82.0" textFill="#b4c72b">
+                  <Label fx:id="txtqantity" layoutX="63.0" layoutY="88.0" prefHeight="31.0" prefWidth="82.0" textFill="#b4c72b">
                      <font>
                         <Font name="Symbol" size="13.0" />
                      </font>
@@ -183,22 +183,12 @@
                         <Font name="Symbol" size="11.0" />
                      </font>
                   </Label>
-                  <Label fx:id="txttotal" layoutX="63.0" layoutY="137.0" prefHeight="31.0" prefWidth="82.0" textFill="#a9c131">
+                  <Label fx:id="txttotal" layoutX="77.0" layoutY="137.0" prefHeight="31.0" prefWidth="82.0" textFill="#a9c131">
                      <font>
                         <Font name="Symbol" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="220.0" prefHeight="57.0" prefWidth="57.0" text="RS" textFill="#c1830f">
-                     <font>
-                        <Font name="Symbol" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="txtrs" layoutX="77.0" layoutY="220.0" prefHeight="57.0" prefWidth="82.0" textFill="#c1830f">
-                     <font>
-                        <Font name="Symbol" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="183.0" prefHeight="31.0" prefWidth="45.0" text="NOTE: " textFill="#5e5b5b">
+                  <Label layoutX="14.0" layoutY="183.0" prefHeight="31.0" prefWidth="57.0" text="PAYFORM:" textFill="#5e5b5b">
                      <font>
                         <Font name="Symbol" size="11.0" />
                      </font>
@@ -206,44 +196,50 @@
                   <TextField fx:id="txtnote" layoutX="80.0" layoutY="187.0" prefHeight="25.0" prefWidth="104.0" />
                </children>
             </Pane>
-            <TableView fx:id="dtm" layoutX="46.0" layoutY="387.0" onMouseClicked="#clickTable" prefHeight="238.0" prefWidth="934.0">
+            <TableView fx:id="dtm" layoutX="168.0" layoutY="380.0" onMouseClicked="#clickTable" prefHeight="275.0" prefWidth="835.0">
                <columns>
-                  <TableColumn fx:id="tblname" prefWidth="247.99998092651367" style="-fx-alignment: center;" text="Product Code" />
-                  <TableColumn fx:id="tblprice" minWidth="0.0" prefWidth="208.800048828125" style="-fx-alignment: center;" text="Name Product" />
-                  <TableColumn fx:id="tblqty" minWidth="0.0" prefWidth="208.800048828125" style="-fx-alignment: center;" text="Price" />
-                  <TableColumn fx:id="tblrs" minWidth="0.0" prefWidth="266.0" style="-fx-alignment: center;" text="Quantity" />
+                  <TableColumn fx:id="tblname" prefWidth="204.00000762939453" style="-fx-alignment: center;" text="Product Code" />
+                  <TableColumn fx:id="tblprice" minWidth="0.0" prefWidth="222.39996337890625" style="-fx-alignment: center;" text="Name Product" />
+                  <TableColumn fx:id="tblqty" minWidth="0.0" prefWidth="156.79998779296875" style="-fx-alignment: center;" text="Price" />
+                  <TableColumn fx:id="tblrs" minWidth="0.0" prefWidth="118.39996337890625" style="-fx-alignment: center;" text="Quantity" />
+                  <TableColumn fx:id="tblmoney" minWidth="0.0" prefWidth="131.800048828125" style="-fx-alignment: center;" text="Total" />
                </columns>
             </TableView>
-            <JFXButton fx:id="btnorder" buttonType="RAISED" layoutX="864.0" layoutY="635.0" onAction="#orderAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="ORDER">
+            <JFXButton fx:id="btnorder" buttonType="RAISED" layoutX="22.0" layoutY="648.0" onAction="#orderAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="ORDER">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnprint" buttonType="RAISED" layoutX="739.0" layoutY="635.0" onAction="#printAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="PRINT BILL">
+            <JFXButton fx:id="btnprint" buttonType="RAISED" layoutX="22.0" layoutY="577.0" onAction="#printAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="PRINT BILL">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnremove" buttonType="RAISED" layoutX="607.0" layoutY="635.0" onAction="#deleteAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="DELETE">
+            <JFXButton fx:id="btnremove" buttonType="RAISED" layoutX="22.0" layoutY="507.0" onAction="#deleteAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="DELETE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <Label layoutX="28.0" layoutY="635.0" prefHeight="31.0" prefWidth="82.0" text="Employee:" textFill="#262424">
-               <font>
-                  <Font name="Symbol" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="labelemp" layoutX="119.0" layoutY="635.0" prefHeight="31.0" prefWidth="209.0" textFill="#e1e1e1">
-               <font>
-                  <Font name="Symbol" size="14.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="request" fitHeight="31.0" fitWidth="45.0" layoutX="28.0" layoutY="663.0" onMouseClicked="#reloadAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="request" fitHeight="31.0" fitWidth="45.0" layoutX="51.0" layoutY="388.0" onMouseClicked="#reloadAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resouces/refresh.png" />
                </image>
             </ImageView>
+            <JFXButton fx:id="btnaddcart" buttonType="RAISED" layoutX="22.0" layoutY="430.0" onAction="#addCartAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="ADD CART">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="855.0" layoutY="655.0" prefHeight="57.0" prefWidth="57.0" text="RS" textFill="#c1830f">
+               <font>
+                  <Font name="Symbol" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtrs" layoutX="912.0" layoutY="655.0" prefHeight="57.0" prefWidth="82.0" textFill="#c1830f">
+               <font>
+                  <Font name="Symbol" size="16.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <DropShadow height="0.0" radius="0.0" width="0.0">

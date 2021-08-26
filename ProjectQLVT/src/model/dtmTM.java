@@ -14,7 +14,8 @@ public class dtmTM {
     String name;
     String price;
     String QTY;
-
+//    String Total;
+    Double Total;
 
     public dtmTM(String code, String name, String price, String QTY) {
         this.code = code;
@@ -22,6 +23,15 @@ public class dtmTM {
         this.price = price;
         this.QTY = QTY;
     }
+
+    public dtmTM(String code, String name, String price, String QTY, Double Total) {
+        this.code = code;
+        this.name = name;
+        this.price = price;
+        this.QTY = QTY;
+        this.Total = Total;
+    }
+
     
   
 
@@ -61,6 +71,16 @@ public class dtmTM {
     public void setQTY(String QTY) {
         this.QTY = QTY;
     }
+
+    public Double getTotal() {
+        return Total;
+    }
+
+    public void setTotal(Double Total) {
+        this.Total = Total;
+    }
+
+    
 
     
 }

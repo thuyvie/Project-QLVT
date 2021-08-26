@@ -98,11 +98,42 @@ public class owe {
         this.Owe = Owe;
         this.TotalDebt = TotalDebt;
     }
+
+    public owe(String IdOwe, String NameCus, String PhoneCus, String status, Double Paid, Double Owe, Double TotalDebt) {
+        this.IdOwe = IdOwe;
+        this.NameCus = NameCus;
+        this.PhoneCus = PhoneCus;
+        this.status = status;
+        this.Paid = Paid;
+        this.Owe = Owe;
+        this.TotalDebt = TotalDebt;
+    }
     
     public String getIdOwe() {
         return IdOwe;
     }
 
+    public owe(String NameCus, String PhoneCus, Double Paid, Double Owe, Double TotalDebt) {
+        this.NameCus = NameCus;
+        this.PhoneCus = PhoneCus;
+        this.Paid = Paid;
+        this.Owe = Owe;
+        this.TotalDebt = TotalDebt;
+    }
+
+    public owe(String IdOwe, String NameCus, String PhoneCus, String EmailCus, String AddressCus, String PaymentForm, String status) {
+        this.IdOwe = IdOwe;
+        this.NameCus = NameCus;
+        this.PhoneCus = PhoneCus;
+        this.EmailCus = EmailCus;
+        this.AddressCus = AddressCus;
+        this.PaymentForm = PaymentForm;
+        this.status = status;
+    }
+    
+    public owe() {
+    }
+    
     public void setIdOwe(String IdOwe) {
         this.IdOwe = IdOwe;
     }

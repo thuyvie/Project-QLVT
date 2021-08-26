@@ -10,6 +10,7 @@ import Dao.payowe;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -40,10 +42,17 @@ import model.dtm;
 import model.order2;
 import model.owe;
 import model.payment;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 import util.CrudUtil;
+import util.DBConnect;
 
 /**
  * FXML Controller class
@@ -331,19 +340,35 @@ public class ShowPaymentController implements Initializable {
         try {
             boolean printAndSave = PY.placeOrder(new owe(IdOwe,NameCus,PhoneCus,EmailCus,AddressCus,PaymentForm,status,Paid,Owe,TotalDebt));
             if(printAndSave){
-            (new Alert(Alert.AlertType.CONFIRMATION, "OweReceipt Successfully", new ButtonType[]{ButtonType.OK})).show();
-                String tilte = "OweReceipt SUCCESS";
-                String message = "OweReceipt SUCCESS";
-                tray.notification.TrayNotification tray = new TrayNotification();
-                AnimationType type = AnimationType.POPUP;
+//            (new Alert(Alert.AlertType.CONFIRMATION, "OweReceipt Successfully", new ButtonType[]{ButtonType.OK})).show();
+//                String tilte = "OweReceipt SUCCESS";
+//                String message = "OweReceipt SUCCESS";
+//                tray.notification.TrayNotification tray = new TrayNotification();
+//                AnimationType type = AnimationType.POPUP;
                settxtoweid();
 
-                tray.setAnimationType(type);
-                tray.setTitle(tilte);
-                tray.setMessage(message);
-                tray.setNotificationType(NotificationType.SUCCESS);
-                tray.showAndDismiss(Duration.millis(3000));
-                
+//                tray.setAnimationType(type);
+//                tray.setTitle(tilte);
+//                tray.setMessage(message);
+//                tray.setNotificationType(NotificationType.SUCCESS);
+//                tray.showAndDismiss(Duration.millis(3000));
+//                
+            try {
+            InputStream is = this.getClass().getResourceAsStream("/report/Bill/owe.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport(is);
+            HashMap<String, Object> hs = new HashMap<>();
+            hs.put("amount", txtamount.getText());
+            hs.put("Paid", txtpaid.getText());
+            hs.put("NameCus", txtname.getText());
+            hs.put("PhoneCus", txtsearchphone.getText());
+            hs.put("Owe", txto.getText());
+            hs.put("TotalDebt", txtrs.getText());
+            hs.put("IdOwe", txtoweid.getText());
+            JasperPrint jp = JasperFillManager.fillReport(jr, hs, DBConnect.getConnect());
+            JasperViewer.viewReport(jp); 
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
         }else{
             (new Alert(Alert.AlertType.ERROR, "OweReceipt Unsuccessfully", new ButtonType[]{ButtonType.OK})).show();
         }

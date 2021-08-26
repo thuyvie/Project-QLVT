@@ -9,6 +9,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import model.owe;
+import net.sf.jasperreports.engine.JRException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 /**
  *
  * @author Mun Chan
@@ -25,7 +32,7 @@ public class DBConnect {
         public static Connection getConnect (){
         try {
             connection = DriverManager.getConnection(String.format("jdbc:mysql://%s:%d/%s", HOST,PORT,DB_NAME),USERNAME,PASSWORD);
-            System.out.println("conect");
+            System.out.println("connect");
         } catch (SQLException ex) {
             Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("unconect");
@@ -33,4 +40,18 @@ public class DBConnect {
             
             return  connection;
         }
+        public static ObservableList<owe> getOwe(){
+            Connection conn = getConnect();
+            ObservableList<owe> list = FXCollections.observableArrayList();
+            try {
+                PreparedStatement ps = conn.prepareStatement("select * from owe");
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    list.add(new owe(rs.getString("IdOwe"), rs.getString("NameCus"),rs.getString("PhoneCus"),rs.getString("EmailCus"),rs.getString("AddressCus"), rs.getString("PaymentForm"),rs.getString("status")));
+                }
+            } catch (Exception e) {
+            }
+            return list;
+        }
+
 }

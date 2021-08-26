@@ -35,6 +35,16 @@ public class owe2 {
         this.PaymentForm = PaymentForm;
         this.status = status;
     }
+
+    public owe2(String IdOwe, String NameCus, String PhoneCus, String status) {
+        this.IdOwe = IdOwe;
+        this.NameCus = NameCus;
+        this.PhoneCus = PhoneCus;
+        this.status = status;
+    }
+    
+    public owe2() {
+    }
     
     public String getIdOwe() {
         return IdOwe;
