@@ -14,14 +14,14 @@
    <children>
       <TableView fx:id="tableproductview" layoutX="9.0" layoutY="366.0" onMouseClicked="#clickTable" prefHeight="176.0" prefWidth="709.0">
         <columns>
-          <TableColumn fx:id="tblname" prefWidth="99.33331298828125" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Name Product" />
-          <TableColumn fx:id="tblvendor" prefWidth="93.3333740234375" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Vendor Name" />
-            <TableColumn fx:id="tbldes" prefWidth="140.0" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Description" />
-            <TableColumn fx:id="tblsize" prefWidth="53.33331298828125" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Size" />
-            <TableColumn fx:id="tblprice" prefWidth="63.33331298828125" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Price" />
-            <TableColumn fx:id="tblqty" prefWidth="100.66659545898438" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Quantity" />
-            <TableColumn fx:id="tblbatch" minWidth="0.0" prefWidth="83.3333740234375" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Batch Code" />
-            <TableColumn fx:id="tbldelete" prefWidth="74.66668701171875" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" />
+          <TableColumn fx:id="tblname" prefWidth="99.33331298828125" style="-fx-alignment: center;" text="Name Product" />
+          <TableColumn fx:id="tblvendor" prefWidth="93.3333740234375" style="-fx-alignment: center;" text="Vendor Name" />
+            <TableColumn fx:id="tbldes" prefWidth="140.0" style="-fx-alignment: center;" text="Description" />
+            <TableColumn fx:id="tblsize" prefWidth="53.33331298828125" style="-fx-alignment: center;" text="Size" />
+            <TableColumn fx:id="tblprice" prefWidth="63.33331298828125" style="-fx-alignment: center;" text="Price" />
+            <TableColumn fx:id="tblqty" prefWidth="100.66659545898438" style="-fx-alignment: center;" text="Quantity" />
+            <TableColumn fx:id="tblbatch" minWidth="0.0" prefWidth="83.3333740234375" style="-fx-alignment: center;" text="Batch Code" />
+            <TableColumn fx:id="tbldelete" prefWidth="74.66668701171875" style="-fx-alignment: center;" />
         </columns>
       </TableView>
       <Label layoutX="236.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" text="Name Product" />

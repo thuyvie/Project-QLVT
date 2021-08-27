@@ -14,15 +14,15 @@
    <children>
       <TableView fx:id="tblds" layoutX="7.0" layoutY="125.0" prefHeight="434.0" prefWidth="712.0">
         <columns>
-          <TableColumn fx:id="tblname" prefWidth="71.3333158493042" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name" />
-          <TableColumn fx:id="tblphone" prefWidth="77.33330535888672" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Phone" />
-            <TableColumn fx:id="tblemail" prefWidth="82.66671752929688" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Email" />
-            <TableColumn fx:id="tbladdress" prefWidth="86.00001525878906" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Address" />
-            <TableColumn fx:id="tblform" prefWidth="114.0" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Payment Form" />
-            <TableColumn fx:id="tblstt" prefWidth="81.33331298828125" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Status" />
-            <TableColumn fx:id="tblpaid" prefWidth="79.33331298828125" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Paid" />
-            <TableColumn fx:id="tblowe" prefWidth="42.0" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Owe" />
-            <TableColumn fx:id="tbltt" prefWidth="75.33331298828125" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="TotalDebt" />
+          <TableColumn fx:id="tblname" prefWidth="71.3333158493042" style="-fx-alignment: center;" text="Name" />
+          <TableColumn fx:id="tblphone" prefWidth="77.33330535888672" style="-fx-alignment: center;" text="Phone" />
+            <TableColumn fx:id="tblemail" prefWidth="82.66671752929688" style="-fx-alignment: center;" text="Email" />
+            <TableColumn fx:id="tbladdress" prefWidth="86.00001525878906" style="-fx-alignment: center;" text="Address" />
+            <TableColumn fx:id="tblform" prefWidth="114.0" style="-fx-alignment: center;" text="Payment Form" />
+            <TableColumn fx:id="tblstt" prefWidth="81.33331298828125" style="-fx-alignment: center;" text="Status" />
+            <TableColumn fx:id="tblpaid" prefWidth="79.33331298828125" style="-fx-alignment: center;" text="Paid" />
+            <TableColumn fx:id="tblowe" prefWidth="42.0" style="-fx-alignment: center;" text="Owe" />
+            <TableColumn fx:id="tbltt" prefWidth="75.33331298828125" style="-fx-alignment: center;" text="TotalDebt" />
         </columns>
       </TableView>
       <TextField fx:id="txttimkiem" layoutX="49.0" layoutY="79.0" prefHeight="26.0" prefWidth="191.0" />
