@@ -78,7 +78,7 @@ public class vendorDao {
         Statement stmt;
         ResultSet rs;
         try {
-            String sql = "SELECT * FROM vendorlot ORDER BY vendorID DESC";
+            String sql = "SELECT * FROM vendor ORDER BY vendorID DESC";
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);

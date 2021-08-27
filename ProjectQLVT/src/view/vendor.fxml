@@ -13,10 +13,10 @@
    <children>
       <TableView fx:id="tblven" layoutX="14.0" layoutY="333.0" onMouseClicked="#clickTable" prefHeight="241.0" prefWidth="696.0">
          <columns>
-            <TableColumn fx:id="tblname" prefWidth="147.3333387374878" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name" />
-            <TableColumn fx:id="tblphone" prefWidth="167.33335876464844" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Phone" />
-            <TableColumn fx:id="tbladdress" prefWidth="188.00003051757812" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Address" />
-            <TableColumn fx:id="tblemail" minWidth="0.0" prefWidth="192.66668701171875" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Email" />
+            <TableColumn fx:id="tblname" prefWidth="147.3333387374878" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Name" />
+            <TableColumn fx:id="tblphone" prefWidth="167.33335876464844" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Phone" />
+            <TableColumn fx:id="tbladdress" prefWidth="188.00003051757812" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Address" />
+            <TableColumn fx:id="tblemail" minWidth="0.0" prefWidth="192.66668701171875" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Email" />
             <TableColumn fx:id="tbldelete" minWidth="0.0" prefWidth="0.0" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" />
          </columns>
       </TableView>

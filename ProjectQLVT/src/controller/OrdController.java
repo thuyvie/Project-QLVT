@@ -86,6 +86,7 @@ public class OrdController implements Initializable {
     private Label txtqantity;
     @FXML
     private Label txttotal;
+    @FXML
     private Label txtrs;
     @FXML
     private TableView<dtmTM> dtm;
@@ -131,6 +132,8 @@ public class OrdController implements Initializable {
     private JFXButton btnok;
     @FXML
     private TableColumn<dtmTM, String> tblmoney;
+    @FXML
+    private JFXButton btn;
     
     /**
      * Initializes the controller class.
@@ -371,6 +374,7 @@ public class OrdController implements Initializable {
         }
     }
 
+    @FXML
     private void addCartAction(ActionEvent event) {
         String code = txtitemcode.getText();
         String name = txtitemname.getText();

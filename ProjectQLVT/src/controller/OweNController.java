@@ -38,6 +38,9 @@ import tray.notification.TrayNotification;
 import util.DBConnect;
 import java.sql.PreparedStatement;
 import java.util.HashMap;
+import java.util.function.Predicate;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -87,17 +90,17 @@ public class OweNController implements Initializable {
     @FXML
     private Label txtowe;
     @FXML
-    private TableColumn<detailOwe, String> tblow;
+    private TableColumn<owe, String> tblow;
     @FXML
-    private TableColumn<detailOwe, String> tblname;
+    private TableColumn<owe, String> tblname;
     @FXML
-    private TableColumn<detailOwe, String> tblphone;
+    private TableColumn<owe, String> tblphone;
     @FXML
-    private TableColumn<detailOwe, String> tblmoney;
+    private TableColumn<owe, String> tblmoney;
     @FXML
-    private TableColumn<detailOwe, String> tbltt;
+    private TableColumn<owe, String> tbltt;
     @FXML
-    private TableView<detailOwe> tblN;
+    private TableView<owe> tblN;
     double count;
     int total;
     private int index;
@@ -106,7 +109,11 @@ public class OweNController implements Initializable {
     Connection connection = null;
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
-
+    @FXML
+    private TableColumn<owe, String> tblstt;
+    @FXML
+    private TextField txtsearch;
+    ObservableList<owe> data;
     void setOWE(boolean o) {
         this.OWE = o;
     }
@@ -118,24 +125,26 @@ public class OweNController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         showN();
+        search();
     }
 
-    public ObservableList<detailOwe> findAll() {
-        ObservableList<detailOwe> listow = FXCollections.observableArrayList();
+    public ObservableList<owe> findAll() {
+        ObservableList<owe> listow = FXCollections.observableArrayList();
         Statement stmt;
         ResultSet rs;
         try {
-            String sql = "SELECT NameCus, PhoneCus, Paid, TotalDebt, IdOwe FROM detailowe WHERE PhoneCus";
+            String sql = "SELECT detailowe.NameCus, detailowe.PhoneCus, detailowe.Paid, detailowe.TotalDebt, detailowe.IdOwe, owe.status FROM detailowe INNER JOIN owe ON detailowe.IdOwe = owe.IdOwe ORDER BY IdOwe DESC";
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                detailOwe ow = new detailOwe();
+                owe ow = new owe();
                 ow.setNameCus(rs.getString("NameCus"));
                 ow.setPhoneCus(rs.getString("PhoneCus"));
                 ow.setPaid(rs.getDouble("Paid"));
                 ow.setTotalDebt(rs.getDouble("TotalDebt"));
                 ow.setIdOwe(rs.getString("IdOwe"));
+                ow.setStatus(rs.getString("status"));
                 listow.add(ow);
             }
         } catch (Exception e) {
@@ -143,7 +152,35 @@ public class OweNController implements Initializable {
         }
         return listow;
     }
+     public void search() {
+        tblow.setCellValueFactory(new PropertyValueFactory<>("IdOwe"));
+        tblname.setCellValueFactory(new PropertyValueFactory<>("NameCus"));
+        tblphone.setCellValueFactory(new PropertyValueFactory<>("PhoneCus"));
+        tblmoney.setCellValueFactory(new PropertyValueFactory<>("Paid"));
+        tbltt.setCellValueFactory(new PropertyValueFactory<>("TotalDebt"));
+        tblstt.setCellValueFactory(new PropertyValueFactory<> ("status"));
+        data = DBConnect.getOwe();
+        tblN.setItems(data);
+        FilteredList<owe> filteredData = new FilteredList<>(data, e -> true);
+        txtsearch.textProperty().addListener((observableValue, oldValue, newValue) -> {
+            filteredData.setPredicate((Predicate<? super owe>) owe2 -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (owe2.getNameCus().contains(newValue)) {
+                    return true;
+                } else if (owe2.getPhoneCus().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+        SortedList<owe> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tblN.comparatorProperty());
+        tblN.setItems(sortedData);
 
+    }
     void setTextField(String NameCus, String PhoneCus, Double Paid, Double TotalDebt, String IDdOwe) {
         txtname.setText(NameCus);
         txtphone.setText(PhoneCus);
@@ -154,12 +191,13 @@ public class OweNController implements Initializable {
     }
 
     public void showN() {
-        ObservableList<detailOwe> listow = findAll();
+        ObservableList<owe> listow = findAll();
         tblow.setCellValueFactory(new PropertyValueFactory<>("IdOwe"));
         tblname.setCellValueFactory(new PropertyValueFactory<>("NameCus"));
         tblphone.setCellValueFactory(new PropertyValueFactory<>("PhoneCus"));
         tblmoney.setCellValueFactory(new PropertyValueFactory<>("Paid"));
         tbltt.setCellValueFactory(new PropertyValueFactory<>("TotalDebt"));
+        tblstt.setCellValueFactory(new PropertyValueFactory<> ("status"));
         tblN.setItems(listow);
     }
 
@@ -170,7 +208,7 @@ public class OweNController implements Initializable {
 
     @FXML
     private void SaveAction(ActionEvent event) {
-        count += Double.parseDouble(txtpaid2.getText());
+        count = Double.parseDouble(txtpaid2.getText());
         txtpai.setText(count + "");
         double total = 0;
 
@@ -250,7 +288,7 @@ public class OweNController implements Initializable {
 
     @FXML
     private void clickTB(MouseEvent event) {
-        detailOwe de = tblN.getSelectionModel().getSelectedItem();
+        owe de = tblN.getSelectionModel().getSelectedItem();
         txtoweid.setText(de.getIdOwe());
         txtname.setText(de.getNameCus());
         txtphone.setText(de.getPhoneCus());
