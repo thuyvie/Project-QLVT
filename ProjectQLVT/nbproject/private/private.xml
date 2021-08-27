@@ -5,11 +5,10 @@
         <group>
             <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/OweNController.java</file>
             <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/menu/FXMain.java</file>
+            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/util/DBConnect.java</file>
             <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/OrdController.java</file>
             <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/ShowPaymentController.java</file>
-            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/DetailOweController.java</file>
             <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/DsOweController.java</file>
-            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/model/owe.java</file>
         </group>
     </open-files>
 </project-private>
