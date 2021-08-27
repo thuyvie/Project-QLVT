@@ -44,7 +44,7 @@
                   <Insets left="10.0" top="40.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="btnlogin4" buttonType="RAISED" layoutX="10.0" layoutY="214.0" onMouseClicked="#listdebt" prefHeight="68.0" prefWidth="150.0" style="-fx-background-color: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);" styleClass="most-contacted-layout" text="LIST DEBT">
+            <JFXButton fx:id="btnlogin4" buttonType="RAISED" layoutX="10.0" layoutY="214.0" onMouseClicked="#listdebt" prefHeight="68.0" prefWidth="150.0" style="-fx-background-color: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);" styleClass="most-contacted-layout" text="DEBT LIST">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -54,7 +54,7 @@
             </JFXButton>
          </children>
       </VBox>
-      <Pane fx:id="context" layoutX="187.0" layoutY="8.0" prefHeight="584.0" prefWidth="725.0" style="-fx-background-color: #ff8a65; -fx-background-radius: 40 40 40 40;">
+      <Pane fx:id="context" layoutX="187.0" layoutY="8.0" prefHeight="584.0" prefWidth="725.0" style="-fx-background-color: #ffab91; -fx-background-radius: 40 40 40 40;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="219.0" layoutX="492.0" pickOnBounds="true" preserveRatio="true">
                <image>

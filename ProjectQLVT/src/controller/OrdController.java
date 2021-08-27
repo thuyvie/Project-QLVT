@@ -81,14 +81,11 @@ public class OrdController implements Initializable {
     @FXML
     private JFXButton btnsearch;
     @FXML
-    private JFXButton btnaddcart;
-    @FXML
     private Pane discount;
     @FXML
     private Label txtqantity;
     @FXML
     private Label txttotal;
-    @FXML
     private Label txtrs;
     @FXML
     private TableView<dtmTM> dtm;
@@ -98,6 +95,7 @@ public class OrdController implements Initializable {
     private JFXButton btnprint;
     @FXML
     private JFXButton btnremove;
+    @FXML
     private Label labelemp;
     @FXML
     private TextField txtsearchphone;
@@ -373,7 +371,6 @@ public class OrdController implements Initializable {
         }
     }
 
-    @FXML
     private void addCartAction(ActionEvent event) {
         String code = txtitemcode.getText();
         String name = txtitemname.getText();

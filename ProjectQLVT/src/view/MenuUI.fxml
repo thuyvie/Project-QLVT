@@ -2,6 +2,9 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,9 +18,9 @@
    <left>
       <VBox prefHeight="600.0" prefWidth="180.0" styleClass="sidebar" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="97.0" prefWidth="225.0" style="-fx-background-color: #333645;" styleClass="lbl" text="QUAN LY VAT TU" textFill="#ffdada">
+            <Label alignment="CENTER" opacity="0.94" prefHeight="97.0" prefWidth="225.0" styleClass="lbl" text="QUAN LY VAT TU" textFill="#ffdada">
                <font>
-                  <Font name="Arial Black" size="18.0" />
+                  <Font name="Bauhaus 93" size="23.0" />
                </font>
             </Label>
             <HBox prefHeight="70.0" prefWidth="173.0" styleClass="btns">
@@ -119,7 +122,17 @@
    <center>
       <AnchorPane fx:id="contentArea" prefHeight="600.0" prefWidth="919.0" style="-fx-background-color: #333645;" styleClass="anchor" BorderPane.alignment="CENTER">
          <children>
-            <Pane layoutX="11.0" layoutY="10.0" prefHeight="585.0" prefWidth="910.0" style="-fx-background-color: #fbe9e7;" styleClass="pane" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0" />
+            <Pane fx:id="ap" layoutX="10.0" layoutY="10.0" prefHeight="582.0" prefWidth="901.0" style="-fx-background-radius: 40 40 40 40; -fx-background-color: #ffe8eb;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <LineChart fx:id="linechart" layoutX="40.0" layoutY="12.0" legendVisible="false" prefHeight="325.0" prefWidth="830.0" styleClass="shadow" stylesheets="@../css/menuui.css">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" tickLabelFill="#514d4d" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" tickLabelFill="#454343" />
+                    </yAxis>
+                  </LineChart>
+               </children></Pane>
          </children>
       </AnchorPane>
    </center>
