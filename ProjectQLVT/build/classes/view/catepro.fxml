@@ -9,28 +9,27 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="725.0" style="-fx-background-radius: 40 40 40 40;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CateproController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="658.0" style="-fx-background-radius: 40 40 40 40;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CateproController">
    <children>
-      <TableView fx:id="tblcate" layoutX="49.0" layoutY="339.0" onMouseClicked="#clickTable" prefHeight="224.0" prefWidth="627.0">
+      <TableView fx:id="tblcate" layoutX="127.0" layoutY="327.0" onMouseClicked="#clickTable" prefHeight="224.0" prefWidth="396.0">
          <columns>
-            <TableColumn fx:id="tblname" prefWidth="625.9999694824219" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name Category Product" />
-            <TableColumn fx:id="tbldelete" minWidth="0.0" prefWidth="0.0" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" />
+            <TableColumn fx:id="tblname" prefWidth="395.1999969482422" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Name Category Product" />
          </columns>
       </TableView>
       <Label layoutX="416.0" layoutY="140.0" prefHeight="27.0" prefWidth="134.0" text="Name Category Product" />
-      <TextField fx:id="txtname" layoutX="416.0" layoutY="181.0" />
-      <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="223.0" layoutY="265.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
-      <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="401.0" layoutY="265.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
-      <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="49.0" layoutY="265.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />
-      <TextField fx:id="txtid" layoutX="169.0" layoutY="181.0" />
+      <TextField fx:id="txtname" layoutX="408.0" layoutY="181.0" />
+      <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="215.0" layoutY="265.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
+      <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="372.0" layoutY="265.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
+      <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="63.0" layoutY="265.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />
+      <TextField fx:id="txtid" layoutX="148.0" layoutY="181.0" />
       <Label layoutX="169.0" layoutY="140.0" prefHeight="27.0" prefWidth="92.0" text="ID" />
-      <JFXButton fx:id="btnclear" buttonType="RAISED" layoutX="565.0" layoutY="265.0" onAction="#ClearAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #F6A9A9; -fx-background-radius: 15;" text="CLEAR" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="504.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="btnclear" buttonType="RAISED" layoutX="521.0" layoutY="265.0" onAction="#ClearAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #F6A9A9; -fx-background-radius: 15;" text="CLEAR" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="450.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/LogoConn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="77.0" fitWidth="81.0" layoutX="1.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="77.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/Logo3.png" />
          </image>

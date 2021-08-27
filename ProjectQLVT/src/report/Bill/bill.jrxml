@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bill" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ebc1f24e-2c03-40df-9d59-c3d22bf77f40">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="qlvt"/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[cWx2dC5kZXRhaWxvd2UgLDMwMCwxNSw4MThjYzUwYS0yMDc4LTRkMDUtYjU0Yi0wMWJhNDg0YjBk
+YjQ7cWx2dC5vd2UgLDE0NCwxNSwxZjFlMTE1YS01YmZmLTQzZDUtOWZjZi1iYTZhNWI0OGZjN2E7
+cWx2dC5wYXltZW50ICwxNSw0NiwxNDY0NjlhOS01MzI4LTQyZjYtOGIyZC1jMTA0M2M2ZDU4ZjY7]]>
+	</property>
+	<parameter name="child" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT qlvt.owe.`IdOwe`,
+	qlvt.owe.`NameCus`,
+	qlvt.owe.`PhoneCus`,
+	qlvt.detailowe.`TotalDebt`,
+	qlvt.detailowe.`Owe`,
+	qlvt.detailowe.`Paid`,
+	qlvt.payment.amount,
+	qlvt.owe.status
+FROM qlvt.payment,
+	qlvt.detailowe
+	INNER JOIN qlvt.owe ON 
+	 qlvt.detailowe.`IdOwe` = qlvt.owe.`IdOwe` 
+WHERE 
+	 qlvt.owe.`IdOwe` = '$P!{child}']]>
+	</queryString>
+	<field name="IdOwe" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="IdOwe"/>
+		<property name="com.jaspersoft.studio.field.label" value="IdOwe"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="owe"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NameCus" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NameCus"/>
+		<property name="com.jaspersoft.studio.field.label" value="NameCus"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="owe"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PhoneCus" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PhoneCus"/>
+		<property name="com.jaspersoft.studio.field.label" value="PhoneCus"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="owe"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TotalDebt" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="TotalDebt"/>
+		<property name="com.jaspersoft.studio.field.label" value="TotalDebt"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="detailowe"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Owe" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="Owe"/>
+		<property name="com.jaspersoft.studio.field.label" value="Owe"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="detailowe"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Paid" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="Paid"/>
+		<property name="com.jaspersoft.studio.field.label" value="Paid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="detailowe"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="owe"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="25" width="148" height="30" uuid="5d73c52b-4b6d-440d-9d18-5e0db1c91443"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OWE RECEIPT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="b4bdeab3-702c-49d2-ac95-660cbbb9ffa2"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Owe Code:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="0" width="100" height="30" uuid="d6692c0f-70d1-407d-be48-84ac308585e0"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="30" uuid="2bad64f7-375d-4f53-98e8-859179ba2778"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="40" width="100" height="30" uuid="2797c318-628e-4446-a9f8-0df3d43c764c"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="110" y="40" width="100" height="30" uuid="283deec9-70df-4a28-8982-25693509f68d"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="0" width="100" height="30" uuid="6c5409a1-58b9-4afe-942c-324389fd2319"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IdOwe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="0" width="100" height="30" uuid="3307fd9b-4434-4f87-8a42-4e91db6e54ab"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NameCus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="40" width="100" height="30" uuid="060efa76-6d5a-4dc7-a6c6-baa7611b1930"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PhoneCus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="111" splitType="Stretch">
+			<line>
+				<reportElement x="-23" y="0" width="600" height="1" uuid="334788ff-f660-4206-b55f-e3d7dac0be7b"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="10" width="100" height="30" uuid="d7158003-9086-4579-bbfc-cd8f9bbff25f"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Money Paid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="10" width="100" height="30" uuid="cfb958b2-2218-46a8-9dd8-ea80525eddc5"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="10" width="100" height="30" uuid="b4b4e28d-0ea1-4ecb-8b7c-a68a3e9fd2e3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Owe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="10" width="100" height="30" uuid="d2d671c6-939c-4f86-800b-b2ee921cf739"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TotalDebt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="0" width="100" height="30" uuid="1917a432-ffa0-4056-b7e9-126f74878e99">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="59a52ced-dda6-4d23-81b3-82e640c6d834"/>
+				</reportElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="57" width="100" height="30" uuid="bf640297-2084-4eaa-b011-5c397c150476">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="59a52ced-dda6-4d23-81b3-82e640c6d834"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="57" width="100" height="30" uuid="ebbbcdb3-4002-4cbf-94c6-60c80d5a8792"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Paid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="50" width="100" height="30" uuid="ad0ac8a0-da3a-4a29-be7c-b674c1b7454a"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Owe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="50" width="100" height="30" uuid="7796e08a-2c40-4df5-8dd2-dbe78e6b17ba"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TotalDebt}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="528" y="0" width="100" height="30" uuid="280b3664-afa9-4ad2-99cf-f68ac2d39c46">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="566354bc-75ab-4e87-8db4-77d282284fe9"/>
+				</reportElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<line>
+				<reportElement x="-20" y="0" width="597" height="1" uuid="e753f002-d997-4df8-bdc3-e5690eaf7c93"/>
+			</line>
+			<staticText>
+				<reportElement x="320" y="20" width="100" height="30" uuid="6c5e325b-7ba3-4180-99b9-cca2ab55d2a0"/>
+				<textElement textAlignment="Center">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="430" y="20" width="100" height="30" uuid="d3e4def9-f4f0-409f-aa3b-42c70292b004">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="566354bc-75ab-4e87-8db4-77d282284fe9"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

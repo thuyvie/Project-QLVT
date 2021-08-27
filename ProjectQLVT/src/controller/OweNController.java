@@ -39,6 +39,8 @@ import util.DBConnect;
 import java.sql.PreparedStatement;
 import java.util.HashMap;
 import java.util.function.Predicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import net.sf.jasperreports.engine.JRException;
@@ -217,7 +219,23 @@ public class OweNController implements Initializable {
         txtowe.setText(String.valueOf(total));
         finalTotaladd();
     }
-
+    public void Print(String child){
+        
+        HashMap<String, Object> parameters = new HashMap<>();
+        parameters.put("child", child);
+        
+        try {
+            InputStream is = this.getClass().getResourceAsStream("/report/Bill/bill.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport(is);
+            
+            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, DBConnect.getConnect());
+            JasperViewer.viewReport(jp); 
+            
+//            JasperExportManager.exportReportToPdfStream(jp, new FileOutputStream(new File(System.getProperty("user.home")+File.separator+"challanreport.pdf")));
+        } catch (JRException ex) {
+            Logger.getLogger(ShowPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @FXML
     private void printAndSaveAction(ActionEvent event) {
         payowe P = new payowe();
@@ -233,8 +251,10 @@ public class OweNController implements Initializable {
         double Paid = Double.parseDouble(txtpai.getText());
         double Owe = Double.parseDouble(txtowe.getText());
         double TotalDebt = Double.parseDouble(txtrs.getText());
+        
         try {
             boolean printAndSave = P.placeOrder2(new owe(IdOwe, NameCus, PhoneCus, status, Paid, Owe, TotalDebt));
+            Print(IdOwe);
             if (printAndSave) {
                 (new Alert(Alert.AlertType.CONFIRMATION, "OweReceipt Successfully", new ButtonType[]{ButtonType.OK})).show();
                 String tilte = "OweReceipt SUCCESS";
@@ -247,22 +267,6 @@ public class OweNController implements Initializable {
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.SUCCESS);
                 tray.showAndDismiss(Duration.millis(3000));
-//                try {
-//                    InputStream is = this.getClass().getResourceAsStream("/report/Bill/owe.jrxml");
-//                    JasperReport jr = JasperCompileManager.compileReport(is);
-//                    HashMap<String, Object> hs = new HashMap<>();
-//                    hs.put("amount", txtamount.getText());
-//                    hs.put("Paid", txtpaid.getText());
-//                    hs.put("NameCus", txtname.getText());
-//                    hs.put("PhoneCus", txtsearchphone.getText());
-//                    hs.put("Owe", txto.getText());
-//                    hs.put("TotalDebt", txtrs.getText());
-//                    hs.put("IdOwe", txtoweid.getText());
-//                    JasperPrint jp = JasperFillManager.fillReport(jr, hs, DBConnect.getConnect());
-//                    JasperViewer.viewReport(jp);
-//                } catch (JRException e) {
-//                    e.printStackTrace();
-//                }
 
             } else {
                 (new Alert(Alert.AlertType.ERROR, "OweReceipt Unsuccessfully", new ButtonType[]{ButtonType.OK})).show();

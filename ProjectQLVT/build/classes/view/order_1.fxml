@@ -156,11 +156,11 @@
             </Pane>
             <TableView fx:id="dtm" layoutX="110.0" layoutY="353.0" onMouseClicked="#clickTable" prefHeight="185.0" prefWidth="592.0">
                <columns>
-                  <TableColumn fx:id="tblname" prefWidth="113.60000610351562" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Product Code" />
-                  <TableColumn fx:id="tblprice" minWidth="0.0" prefWidth="156.8000030517578" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name Product" />
-                  <TableColumn fx:id="tblqty" minWidth="0.0" prefWidth="104.0" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Price" />
-                  <TableColumn fx:id="tblrs" minWidth="0.0" prefWidth="101.60003662109375" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Quantity" />
-                  <TableColumn fx:id="tblmoney" minWidth="0.0" prefWidth="109.5999755859375" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Total" />
+                  <TableColumn fx:id="tblname" prefWidth="113.60000610351562" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Product Code" />
+                  <TableColumn fx:id="tblprice" minWidth="0.0" prefWidth="156.8000030517578" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Name Product" />
+                  <TableColumn fx:id="tblqty" minWidth="0.0" prefWidth="104.0" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Price" />
+                  <TableColumn fx:id="tblrs" minWidth="0.0" prefWidth="101.60003662109375" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Quantity" />
+                  <TableColumn fx:id="tblmoney" minWidth="0.0" prefWidth="109.5999755859375" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Total" />
                </columns>
             </TableView>
             <JFXButton fx:id="btnorder" buttonType="RAISED" layoutX="505.0" layoutY="548.0" onAction="#orderAction" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="ORDER">
