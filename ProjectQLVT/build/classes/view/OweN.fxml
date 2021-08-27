@@ -13,9 +13,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="order" prefHeight="584.0" prefWidth="757.0" style="-fx-background-radius: 40 40 40 40; -fx-background-color: #ededed;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OweNController">
+<Pane fx:id="order" prefHeight="584.0" prefWidth="725.0" style="-fx-background-radius: 40 40 40 40; -fx-background-color: #ededed;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OweNController">
    <children>
-      <Pane layoutX="35.0" layoutY="43.0" prefHeight="66.0" prefWidth="109.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
+      <Pane layoutX="15.0" layoutY="43.0" prefHeight="66.0" prefWidth="109.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
          <effect>
             <DropShadow height="11.46" radius="3.4425" width="4.31">
                <color>
@@ -36,7 +36,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="167.0" layoutY="43.0" prefHeight="289.0" prefWidth="350.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
+      <Pane layoutX="154.0" layoutY="43.0" prefHeight="289.0" prefWidth="325.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
          <effect>
             <DropShadow height="11.46" radius="3.4425" width="4.31">
                <color>
@@ -55,39 +55,39 @@
                   <Font name="Symbol" size="11.0" />
                </font>
             </Label>
-            <TextField fx:id="txtpaid" layoutX="14.0" layoutY="140.0" />
-            <Label layoutX="201.0" layoutY="106.0" prefHeight="31.0" prefWidth="82.0" text="TotalDebt:" textFill="#5e5b5b">
+            <TextField fx:id="txtpaid" layoutX="14.0" layoutY="140.0" prefHeight="25.0" prefWidth="136.0" />
+            <Label layoutX="176.0" layoutY="106.0" prefHeight="31.0" prefWidth="82.0" text="TotalDebt:" textFill="#5e5b5b">
                <font>
                   <Font name="Symbol" size="11.0" />
                </font>
             </Label>
-            <TextField fx:id="txttotal" layoutX="201.0" layoutY="140.0" />
-            <JFXButton fx:id="btnsave" buttonType="RAISED" layoutX="217.0" layoutY="210.0" onAction="#SaveAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="OK">
+            <TextField fx:id="txttotal" layoutX="176.0" layoutY="140.0" prefHeight="25.0" prefWidth="136.0" />
+            <JFXButton fx:id="btnsave" buttonType="RAISED" layoutX="200.0" layoutY="192.0" onAction="#SaveAction" prefHeight="57.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="OK">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <TextField fx:id="txtpaid2" layoutX="14.0" layoutY="220.0" />
+            <TextField fx:id="txtpaid2" layoutX="14.0" layoutY="220.0" prefHeight="25.0" prefWidth="136.0" />
             <Label layoutX="17.0" layoutY="183.0" prefHeight="31.0" prefWidth="82.0" text="Paid:" textFill="#5e5b5b">
                <font>
                   <Font name="Symbol" size="11.0" />
                </font>
             </Label>
-            <TextField fx:id="txtname" layoutX="14.0" layoutY="65.0" />
+            <TextField fx:id="txtname" layoutX="14.0" layoutY="65.0" prefHeight="25.0" prefWidth="136.0" />
             <Label layoutX="14.0" layoutY="34.0" prefHeight="31.0" prefWidth="82.0" text="Name Customer:" textFill="#5e5b5b">
                <font>
                   <Font name="Symbol" size="11.0" />
                </font>
             </Label>
-            <TextField fx:id="txtphone" layoutX="194.0" layoutY="65.0" />
-            <Label layoutX="194.0" layoutY="34.0" prefHeight="31.0" prefWidth="82.0" text="Phone:" textFill="#5e5b5b">
+            <TextField fx:id="txtphone" layoutX="175.0" layoutY="65.0" prefHeight="25.0" prefWidth="136.0" />
+            <Label layoutX="176.0" layoutY="34.0" prefHeight="31.0" prefWidth="82.0" text="Phone:" textFill="#5e5b5b">
                <font>
                   <Font name="Symbol" size="11.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="discount" layoutX="529.0" layoutY="43.0" prefHeight="289.0" prefWidth="219.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
+      <Pane fx:id="discount" layoutX="493.0" layoutY="43.0" prefHeight="289.0" prefWidth="218.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
          <effect>
             <DropShadow height="11.46" radius="3.4425" width="4.31">
                <color>
@@ -136,13 +136,13 @@
                   <Font name="Symbol" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="238.0" prefHeight="31.0" prefWidth="39.0" text="Status:" textFill="#5e5b5b">
+            <Label layoutX="6.0" layoutY="238.0" prefHeight="31.0" prefWidth="39.0" text="Status:" textFill="#5e5b5b">
                <font>
                   <Font name="Symbol" size="11.0" />
                </font>
             </Label>
-            <JFXCheckBox fx:id="txtfull2" layoutX="53.0" layoutY="245.0" text="PaidFull" />
-            <JFXCheckBox fx:id="txtun2" layoutX="131.0" layoutY="246.0" text="UnPaidFull" />
+            <JFXCheckBox fx:id="txtfull2" layoutX="50.0" layoutY="245.0" text="PaidFull" />
+            <JFXCheckBox fx:id="txtun2" layoutX="127.0" layoutY="246.0" text="UnPaidFull" />
             <Label layoutX="8.0" layoutY="145.0" prefHeight="31.0" prefWidth="82.0" text="Owe:" textFill="#5e5b5b">
                <font>
                   <Font name="Symbol" size="11.0" />
@@ -160,17 +160,20 @@
             <Image url="@../resouces/refresh.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblN" layoutX="15.0" layoutY="352.0" onMouseClicked="#clickTB" prefHeight="218.0" prefWidth="727.0">
+      <TableView fx:id="tblN" layoutX="15.0" layoutY="352.0" onMouseClicked="#clickTB" prefHeight="218.0" prefWidth="693.0">
         <columns>
           <TableColumn fx:id="tblow" prefWidth="100.00000286102295" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="OweReceipt ID" />
-          <TableColumn fx:id="tblname" prefWidth="120.79998779296875" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name" />
-            <TableColumn fx:id="tblphone" prefWidth="145.6000213623047" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Phone" />
-            <TableColumn fx:id="tblmoney" prefWidth="147.199951171875" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Money Paid" />
-            <TableColumn fx:id="tbltt" prefWidth="115.19989013671875" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="TotalDebt" />
-            <TableColumn fx:id="tblstt" prefWidth="94.39990234375" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Status" />
+          <TableColumn fx:id="tblname" prefWidth="99.99999237060547" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name" />
+            <TableColumn fx:id="tblphone" prefWidth="114.00004577636719" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Phone" />
+            <TableColumn fx:id="tblmoney" prefWidth="134.66668701171875" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Money Paid" />
+            <TableColumn fx:id="tbltt" prefWidth="120.66671752929688" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="TotalDebt" />
+            <TableColumn fx:id="tblstt" prefWidth="120.66668701171875" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Status" />
         </columns>
       </TableView>
-      <TextField fx:id="txtsearch" layoutX="19.0" layoutY="152.0" prefHeight="25.0" prefWidth="141.0" promptText="Search Name Or Phone" />
+      <TextField fx:id="txtsearch" layoutX="12.0" layoutY="152.0" prefHeight="25.0" prefWidth="129.0" promptText="Search Name Or Phone">
+         <font>
+            <Font size="11.0" />
+         </font></TextField>
    </children>
    <effect>
       <DropShadow height="0.0" radius="0.0" width="0.0">
