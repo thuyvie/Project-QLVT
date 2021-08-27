@@ -43,6 +43,8 @@ import util.CrudUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -93,8 +95,6 @@ public class OrdController implements Initializable {
     @FXML
     private JFXButton btnorder;
     @FXML
-    private JFXButton btnprint;
-    @FXML
     private JFXButton btnremove;
     @FXML
     private Label labelemp;
@@ -132,8 +132,6 @@ public class OrdController implements Initializable {
     private JFXButton btnok;
     @FXML
     private TableColumn<dtmTM, String> tblmoney;
-    @FXML
-    private JFXButton btn;
     
     /**
      * Initializes the controller class.
@@ -239,6 +237,24 @@ public class OrdController implements Initializable {
             e.printStackTrace();
         }
     }
+      public void Print(String ord){
+        
+        HashMap<String, Object> parameters = new HashMap<>();
+        parameters.put("ord", ord);
+        
+        try {
+            InputStream is = this.getClass().getResourceAsStream("/report/Bill/ord.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport(is);
+            
+            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, DBConnect.getConnect());
+            JasperViewer.viewReport(jp); 
+            
+//            JasperExportManager.exportReportToPdfStream(jp, new FileOutputStream(new File(System.getProperty("user.home")+File.separator+"challanreport.pdf")));
+        } catch (JRException ex) {
+            Logger.getLogger(ShowPaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     @FXML
     private void orderAction(ActionEvent event) {
 //        int OrdID = Integer.parseInt(txtorder.getText());
@@ -254,7 +270,8 @@ public class OrdController implements Initializable {
         String note = txtnote.getText();
         try {
             boolean placeorder = ordDao.placeOrder(new ord(OrdID,NameCus,PhoneCus,EmailCus,AddressCus,dateOrd,timeOrd,items,amount,note));
-        if(placeorder){
+            Print(OrdID);
+            if(placeorder){
             OrderDetailFieldRest();
             (new Alert(Alert.AlertType.CONFIRMATION, "Order Successfully", new ButtonType[]{ButtonType.OK})).show();
                 String tilte = "ORDER SUCCESS";
@@ -276,25 +293,6 @@ public class OrdController implements Initializable {
         }
     }
 
-    @FXML
-    private void printAction(ActionEvent event) {
-        try {
-            InputStream is = this.getClass().getResourceAsStream("/report/Bill/bill2.jrxml");
-            JasperReport jr = JasperCompileManager.compileReport(is);
-            HashMap<String, Object> hs = new HashMap<>();
-            hs.put("itemCode", tblname.getText());
-            hs.put("namepro", tblprice.getText());
-            hs.put("Price", tblqty.getText());
-            hs.put("Amount", tblrs.getText());
-            hs.put("OrdID", txtorderid2.getText());
-            hs.put("amount", txtrs.getText());
-
-            JasperPrint jp = JasperFillManager.fillReport(jr, hs, DBConnect.getConnect());
-            JasperViewer.viewReport(jp); 
-        } catch (JRException e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     private void deleteAction(ActionEvent event) {
@@ -374,17 +372,6 @@ public class OrdController implements Initializable {
         }
     }
 
-    @FXML
-    private void addCartAction(ActionEvent event) {
-        String code = txtitemcode.getText();
-        String name = txtitemname.getText();
-        String price = txtprice.getText();
-        String QTY = txtqty.getText();
-        Double Total = Double.parseDouble(txttotal.getText());
-        dtmTM rowData = new dtmTM(code, name, price, QTY, Total);
-        items.add(rowData);
-        dtm.setItems(FXCollections.observableArrayList(items));
-    }
 
     @FXML
     private void reloadAction(MouseEvent event) {
@@ -421,6 +408,14 @@ public class OrdController implements Initializable {
         txttotal.setText(String.valueOf(total));
         txtrs.setText(rs + "");
         i++;
+        String code = txtitemcode.getText();
+        String name = txtitemname.getText();
+        String price = txtprice.getText();
+        String QTY = txtqty.getText();
+        Double Total = Double.parseDouble(txttotal.getText());
+        dtmTM rowData = new dtmTM(code, name, price, QTY, Total);
+        items.add(rowData);
+        dtm.setItems(FXCollections.observableArrayList(items));
     }
 
 }

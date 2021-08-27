@@ -221,13 +221,13 @@
             <JFXCheckBox fx:id="txtun2" layoutX="85.0" layoutY="260.0" text="UnPaidFull" />
          </children>
       </Pane>
-      <TableView fx:id="tblre" layoutX="117.0" layoutY="349.0" onMouseClicked="#clickTable" prefHeight="187.0" prefWidth="592.0">
+      <TableView fx:id="tblre" layoutX="23.0" layoutY="349.0" onMouseClicked="#clickTable" prefHeight="187.0" prefWidth="686.0">
          <columns>
             <TableColumn fx:id="tblname" prefWidth="133.99996948242188" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name Customer" />
-            <TableColumn fx:id="tblform" minWidth="0.0" prefWidth="125.3333740234375" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Payment Form" />
-            <TableColumn fx:id="tblpaid" minWidth="0.0" prefWidth="96.66668701171875" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Paid" />
-            <TableColumn fx:id="tblowe" minWidth="0.0" prefWidth="117.33331298828125" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Owe" />
-            <TableColumn fx:id="tbltt" minWidth="0.0" prefWidth="118.6666259765625" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="TotalDebt" />
+            <TableColumn fx:id="tblform" minWidth="0.0" prefWidth="192.0" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Payment Form" />
+            <TableColumn fx:id="tblpaid" minWidth="0.0" prefWidth="117.60003662109375" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Paid" />
+            <TableColumn fx:id="tblowe" minWidth="0.0" prefWidth="123.19998168945312" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Owe" />
+            <TableColumn fx:id="tbltt" minWidth="0.0" prefWidth="119.20001220703125" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="TotalDebt" />
          </columns>
       </TableView>
       <JFXButton fx:id="btnprint" buttonType="RAISED" layoutX="560.0" layoutY="543.0" onAction="#printAndSaveAction" prefHeight="31.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="PRINT">
@@ -240,16 +240,11 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <ImageView fx:id="request" fitHeight="29.0" fitWidth="31.0" layoutX="25.0" layoutY="533.0" onMouseClicked="#reloadAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="request" fitHeight="29.0" fitWidth="31.0" layoutX="23.0" layoutY="544.0" onMouseClicked="#reloadAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resouces/refresh.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnshowdata" buttonType="RAISED" layoutX="13.0" layoutY="359.0" onAction="#DataAction" prefHeight="31.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Show Data">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </JFXButton>
    </children>
    <effect>
       <DropShadow height="0.0" radius="0.0" width="0.0">

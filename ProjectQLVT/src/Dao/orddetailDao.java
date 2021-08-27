@@ -16,7 +16,7 @@ import util.DBConnect;
  */
 public class orddetailDao {
     public boolean insertOrdDetail(orderdetail ordDetail) throws Exception{
-       String sql = "INSERT INTO order_detail( OrderID, IDProduct, Amount, Price, Total)"
+       String sql = "INSERT INTO order_detail( OrderID, IDProduct, qty, Price, Total)"
                 + "values(?,?,?,?,?)";
         try (
                 Connection con = DBConnect.getConnect();
@@ -24,21 +24,21 @@ public class orddetailDao {
             ) {
                 pstmt.setString(1, ordDetail.getOrderID());
                 pstmt.setString(2, ordDetail.getIDProduct());
-                pstmt.setString(3, ordDetail.getAmount());
+                pstmt.setString(3, ordDetail.getQty());
                 pstmt.setString(4, ordDetail.getPrice());
                 pstmt.setDouble(5, ordDetail.getTotal());
             return pstmt.executeUpdate() > 0;
         }
    }
      public boolean updateOrdDetail(orderdetail ordDetail) throws Exception{
-       String sql = "update order_detail set IDProduct=?, Amount=?, Price=? where OrderID=?";
+       String sql = "update order_detail set IDProduct=?, qty=?, Price=? where OrderID=?";
         try (
                 Connection con = DBConnect.getConnect();
                 PreparedStatement pstmt = con.prepareStatement(sql);
             ) {
                pstmt.setString(1, ordDetail.getOrderID());
                 pstmt.setString(2, ordDetail.getIDProduct());
-                pstmt.setString(4, ordDetail.getAmount());
+                pstmt.setString(4, ordDetail.getQty());
                 pstmt.setString(4, ordDetail.getPrice());
             return pstmt.executeUpdate() > 0;
         }

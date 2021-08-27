@@ -144,8 +144,6 @@ public class ShowPaymentController implements Initializable {
     @FXML
     private JFXCheckBox txtun2;
     @FXML
-    private JFXButton btnshowdata;
-    @FXML
     private Label txtoweid;
     /**
      * Initializes the controller class.
@@ -254,6 +252,7 @@ public class ShowPaymentController implements Initializable {
         }
        txtpa.setText(pai + "");
         txto.setText(owe + "");
+        
     }
     private void finalTotaladd() {
         txtrs.setText(txto.getText());
@@ -269,6 +268,15 @@ public class ShowPaymentController implements Initializable {
         txto.setText(String.valueOf(total));
         finalTotaladd();
         settxtoweid();
+        String namecus = txtnamecus.getText();
+        String paymentform = txtnote.getText();
+        String paid = txtpaid.getText();
+        String owe = txto.getText();
+        String TotalDebt = txtrs.getText();
+        String aoumt = txtamount.getText();
+        dtm rowData = new dtm(namecus, paymentform,paid,owe,TotalDebt);
+        items.add(rowData);
+        tblre.setItems(FXCollections.observableArrayList(items));
     }
 
     @FXML
@@ -400,17 +408,5 @@ public class ShowPaymentController implements Initializable {
         }
    }
 
-    @FXML
-    private void DataAction(ActionEvent event) {
-        String namecus = txtnamecus.getText();
-        String paymentform = txtnote.getText();
-        String paid = txtpaid.getText();
-        String owe = txto.getText();
-        String TotalDebt = txtrs.getText();
-        String aoumt = txtamount.getText();
-        dtm rowData = new dtm(namecus, paymentform,paid,owe,TotalDebt);
-        items.add(rowData);
-        tblre.setItems(FXCollections.observableArrayList(items));
-    }
     
 }

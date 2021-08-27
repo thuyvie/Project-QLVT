@@ -15,33 +15,33 @@ public class orderdetail {
     private ord oid;
     String IDProduct;
     private product proid;
-    String Amount;
+    String qty;
     String Price;
     Double Total;
     public orderdetail() {
     }
 
-    public orderdetail(String OrderID, order2 ordid, ord oid, String IDProduct, product proid, String Amount, String Price) {
+    public orderdetail(String OrderID, order2 ordid, ord oid, String IDProduct, product proid, String qty, String Price) {
         this.OrderID = OrderID;
         this.ordid = ordid;
         this.oid = oid;
         this.IDProduct = IDProduct;
         this.proid = proid;
-        this.Amount = Amount;
+        this.qty = qty;
         this.Price = Price;
     }
 
-    public orderdetail(String OrderID, String IDProduct, String Amount, String Price) {
+    public orderdetail(String OrderID, String IDProduct, String qty, String Price) {
         this.OrderID = OrderID;
         this.IDProduct = IDProduct;
-        this.Amount = Amount;
+        this.qty = qty;
         this.Price = Price;
     }
 
-    public orderdetail(String OrderID, String IDProduct, String Amount, String Price, Double Total) {
+    public orderdetail(String OrderID, String IDProduct, String qty, String Price, Double Total) {
         this.OrderID = OrderID;
         this.IDProduct = IDProduct;
-        this.Amount = Amount;
+        this.qty = qty;
         this.Price = Price;
         this.Total = Total;
     }
@@ -98,13 +98,15 @@ public class orderdetail {
         this.proid = proid;
     }
 
-    public String getAmount() {
-        return Amount;
+    public String getQty() {
+        return qty;
     }
 
-    public void setAmount(String Amount) {
-        this.Amount = Amount;
+    public void setQty(String qty) {
+        this.qty = qty;
     }
+
+    
 
     public String getPrice() {
         return Price;
