@@ -223,11 +223,11 @@
       </Pane>
       <TableView fx:id="tblre" layoutX="23.0" layoutY="349.0" onMouseClicked="#clickTable" prefHeight="187.0" prefWidth="686.0">
          <columns>
-            <TableColumn fx:id="tblname" prefWidth="133.99996948242188" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name Customer" />
-            <TableColumn fx:id="tblform" minWidth="0.0" prefWidth="192.0" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Payment Form" />
-            <TableColumn fx:id="tblpaid" minWidth="0.0" prefWidth="117.60003662109375" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Paid" />
-            <TableColumn fx:id="tblowe" minWidth="0.0" prefWidth="123.19998168945312" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Owe" />
-            <TableColumn fx:id="tbltt" minWidth="0.0" prefWidth="119.20001220703125" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="TotalDebt" />
+            <TableColumn fx:id="tblname" prefWidth="133.99996948242188" style="-fx-alignment: center;" text="Name Customer" />
+            <TableColumn fx:id="tblform" minWidth="0.0" prefWidth="192.0" style="-fx-alignment: center;" text="Payment Form" />
+            <TableColumn fx:id="tblpaid" minWidth="0.0" prefWidth="117.60003662109375" style="-fx-alignment: center;" text="Paid" />
+            <TableColumn fx:id="tblowe" minWidth="0.0" prefWidth="123.19998168945312" style="-fx-alignment: center;" text="Owe" />
+            <TableColumn fx:id="tbltt" minWidth="0.0" prefWidth="119.20001220703125" style="-fx-alignment: center;" text="TotalDebt" />
          </columns>
       </TableView>
       <JFXButton fx:id="btnprint" buttonType="RAISED" layoutX="560.0" layoutY="543.0" onAction="#printAndSaveAction" prefHeight="31.0" prefWidth="88.0" style="-fx-background-color: #64C9CF; -fx-background-radius: 30;" text="PRINT">

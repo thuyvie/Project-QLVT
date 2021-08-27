@@ -12,12 +12,12 @@
    <children>
       <TableView fx:id="tblchitiet" layoutX="28.0" layoutY="174.0" prefHeight="298.0" prefWidth="666.0">
         <columns>
-          <TableColumn fx:id="tblname1" prefWidth="146.40002822875977" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name" />
-          <TableColumn fx:id="tblphone1" prefWidth="151.19993591308594" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Phone" />
-            <TableColumn fx:id="tblpaid" prefWidth="120.7999267578125" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Paid" />
-            <TableColumn fx:id="tblowe" prefWidth="105.60003662109375" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Owe" />
-            <TableColumn fx:id="tbltt" prefWidth="142.6666259765625" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="TotalDebt" />
-            <TableColumn fx:id="btnlap" prefWidth="74.00006103515625" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" />
+          <TableColumn fx:id="tblname1" prefWidth="146.40002822875977" text="Name" />
+          <TableColumn fx:id="tblphone1" prefWidth="151.19993591308594" text="Phone" />
+            <TableColumn fx:id="tblpaid" prefWidth="120.7999267578125" text="Paid" />
+            <TableColumn fx:id="tblowe" prefWidth="105.60003662109375" text="Owe" />
+            <TableColumn fx:id="tbltt" prefWidth="142.6666259765625" text="TotalDebt" />
+            <TableColumn fx:id="btnlap" prefWidth="74.00006103515625" />
         </columns>
       </TableView>
       <Label layoutX="307.0" layoutY="36.0" prefHeight="37.0" prefWidth="112.0" text="Detail Debt">

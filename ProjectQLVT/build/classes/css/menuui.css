@@ -47,3 +47,30 @@
 .shadow{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2),10.0,0.0,0.0,10.0);
 }
+.table-view{
+    -fx-background-color: transparent;
+}
+.table-view:focus{
+    -fx-background-color:  transparent;
+}
+.table-view .column-header-background{
+    -fx-background-color:  linear-gradient( #FCD8D4,   #64C9CF);
+}
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: #202332;
+}
+
+.table-row-cell{
+    -fx-background-color: rgba(138, 204, 210, 0.5);
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+

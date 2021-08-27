@@ -162,12 +162,12 @@
       </ImageView>
       <TableView fx:id="tblN" layoutX="15.0" layoutY="352.0" onMouseClicked="#clickTB" prefHeight="218.0" prefWidth="693.0">
         <columns>
-          <TableColumn fx:id="tblow" prefWidth="100.00000286102295" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="OweReceipt ID" />
-          <TableColumn fx:id="tblname" prefWidth="99.99999237060547" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name" />
-            <TableColumn fx:id="tblphone" prefWidth="114.00004577636719" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Phone" />
-            <TableColumn fx:id="tblmoney" prefWidth="134.66668701171875" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Money Paid" />
-            <TableColumn fx:id="tbltt" prefWidth="120.66671752929688" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="TotalDebt" />
-            <TableColumn fx:id="tblstt" prefWidth="120.66668701171875" style="-fx-alignment: center; -fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Status" />
+          <TableColumn fx:id="tblow" prefWidth="100.00000286102295" style="-fx-alignment: center;" text="OweReceipt ID" />
+          <TableColumn fx:id="tblname" prefWidth="99.99999237060547" style="-fx-alignment: center;" text="Name" />
+            <TableColumn fx:id="tblphone" prefWidth="114.00004577636719" style="-fx-alignment: center;" text="Phone" />
+            <TableColumn fx:id="tblmoney" prefWidth="134.66668701171875" style="-fx-alignment: center;" text="Money Paid" />
+            <TableColumn fx:id="tbltt" prefWidth="120.66671752929688" style="-fx-alignment: center;" text="TotalDebt" />
+            <TableColumn fx:id="tblstt" prefWidth="120.66668701171875" style="-fx-alignment: center;" text="Status" />
         </columns>
       </TableView>
       <TextField fx:id="txtsearch" layoutX="12.0" layoutY="152.0" prefHeight="25.0" prefWidth="129.0" promptText="Search Name Or Phone">

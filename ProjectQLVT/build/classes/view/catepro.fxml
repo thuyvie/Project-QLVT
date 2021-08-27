@@ -13,7 +13,7 @@
    <children>
       <TableView fx:id="tblcate" layoutX="127.0" layoutY="327.0" onMouseClicked="#clickTable" prefHeight="224.0" prefWidth="396.0">
          <columns>
-            <TableColumn fx:id="tblname" prefWidth="395.1999969482422" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Name Category Product" />
+            <TableColumn fx:id="tblname" prefWidth="395.1999969482422" style="-fx-alignment: center;" text="Name Category Product" />
          </columns>
       </TableView>
       <Label layoutX="416.0" layoutY="140.0" prefHeight="27.0" prefWidth="134.0" text="Name Category Product" />
