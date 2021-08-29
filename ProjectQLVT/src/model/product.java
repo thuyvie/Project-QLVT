@@ -20,9 +20,22 @@ public class product {
     int qty;
     String batchid; // lo hang cung cap
     private vendorlot ven;
+    int IDCate;
+    String NameCate;
+    private catepro cate;
     public product() {
     }
 
+    public product(String itemCode, String namepro, String vendorname, String description, String size, String batchid, String NameCate) {
+        this.itemCode = itemCode;
+        this.namepro = namepro;
+        this.vendorname = vendorname;
+        this.description = description;
+        this.size = size;
+        this.batchid = batchid;
+        this.NameCate = NameCate;
+    }
+    
     public String getItemCode() {
         return itemCode;
     }
@@ -103,6 +116,30 @@ public class product {
         this.ven = ven;
     }
 
+    public catepro getCate() {
+        return cate;
+    }
+
+    public void setCate(catepro cate) {
+        this.cate = cate;
+    }
+
+    public int getIDCate() {
+        return IDCate;
+    }
+
+    public void setIDCate(int IDCate) {
+        this.IDCate = IDCate;
+    }
+
+    public String getNameCate() {
+        return NameCate;
+    }
+
+    public void setNameCate(String NameCate) {
+        this.NameCate = NameCate;
+    }
+    
     
     
     public product(String itemCode, String namepro, String vendorid, String vendorname, String description, String size, Double price, int qty, String batchid) {
@@ -122,5 +159,22 @@ public class product {
         this.ven = ven;
     }
 
+    public product(String itemCode, String namepro, String vendorid, String vendorname, String description, String size, Double price, int qty, String batchid, vendorlot ven, int IDCate, String NameCate, catepro cate) {
+        this.itemCode = itemCode;
+        this.namepro = namepro;
+        this.vendorid = vendorid;
+        this.vendorname = vendorname;
+        this.description = description;
+        this.size = size;
+        this.price = price;
+        this.qty = qty;
+        this.batchid = batchid;
+        this.ven = ven;
+        this.IDCate = IDCate;
+        this.NameCate = NameCate;
+        this.cate = cate;
+    }
+    
+    
    
 }

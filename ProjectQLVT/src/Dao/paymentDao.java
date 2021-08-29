@@ -38,7 +38,7 @@ public class paymentDao {
     public boolean update(payment pay)
             throws Exception {
         String sql = "update payment"
-                + " set namecus=?,  amount =?,OrdID=?, "
+                + " set NameCus=?,  amount =?,OrdID=?,note = ?"
                 + " where payid= ?";
         try (
                 Connection con = DBConnect.getConnect();

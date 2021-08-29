@@ -5,6 +5,7 @@
  */
 package controller;
 
+import Dao.CateProDao;
 import Dao.productDao;
 import Dao.vendorDao;
 import com.jfoenix.controls.JFXButton;
@@ -40,6 +41,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import model.catepro;
 import model.vendorlot;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -98,6 +100,7 @@ public class ProductController implements Initializable {
     private boolean Save;
     private boolean isUpdate;
     vendorDao venDao = new vendorDao();
+    CateProDao catedao = new CateProDao();
     @FXML
     private TableColumn<product, String> tbldelete;
     @FXML
@@ -109,11 +112,16 @@ public class ProductController implements Initializable {
     private JFXButton btnup;
     @FXML
     private JFXButton btnclear;
+    @FXML
+    private JFXComboBox<String> cbbcate;
+    @FXML
+    private TableColumn<product, String> tblcate;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         showPro();
         fillCBB();
+        CBB();
     }
 
     public ObservableList<product> findAll() {
@@ -121,7 +129,7 @@ public class ProductController implements Initializable {
         Statement stmt;
         ResultSet rs;
         try {
-            String sql = "SELECT product.itemCode, product.namepro, product.vendorid, vendor.vendorname, product.description, product.size, product.price, product.qty, product.batchid FROM product INNER JOIN vendor ON product.vendorid = vendor.vendorID ORDER BY itemCode DESC";
+            String sql = "SELECT product.itemCode, product.namepro, product.vendorid, vendor.vendorname, product.description, product.size, product.price, product.qty, product.batchid, product.IDCate, cateproduct.NameCate FROM product INNER JOIN vendor ON product.vendorid = vendor.vendorID INNER JOIN cateproduct ON product.IDCate = cateproduct.ID ORDER BY itemCode DESC";
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
@@ -136,6 +144,8 @@ public class ProductController implements Initializable {
                 pro.setPrice(rs.getDouble("price"));
                 pro.setQty(rs.getInt("qty"));
                 pro.setBatchid(rs.getString("batchid"));
+                pro.setIDCate(rs.getInt("IDCate"));
+                pro.setNameCate(rs.getString("NameCate"));
                 listpro.add(pro);
             }
         } catch (Exception e) {
@@ -153,6 +163,7 @@ public class ProductController implements Initializable {
         tblprice.setCellValueFactory(new PropertyValueFactory<>("price"));
         tblqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         tblbatch.setCellValueFactory(new PropertyValueFactory<>("batchid"));
+        tblcate.setCellValueFactory(new PropertyValueFactory<> ("NameCate"));
         Callback<TableColumn<product, String>, TableCell<product, String>> cellFoctory = (TableColumn<product, String> param) -> {
             final TableCell<product, String> cell = new TableCell<product, String>() {
 
@@ -230,7 +241,21 @@ public class ProductController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    public void CBB(){
+        ResultSet rs;
+        try {
+            ObservableList<String> listcate = FXCollections.observableArrayList();
+            String sql = "SELECT NameCate FROM cateproduct";
+             Connection con = DBConnect.getConnect();
+            PreparedStatement ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                listcate.add(rs.getString("NameCate"));
+            }
+            cbbcate.setItems(listcate);
+        } catch (Exception e) {
+        }
+    }    
     @FXML
     private void clickTable(MouseEvent event) {
         product p = tableproductview.getSelectionModel().getSelectedItem();
@@ -242,6 +267,7 @@ public class ProductController implements Initializable {
         txtprice.setText(String.valueOf(p.getPrice()));
         txtqty.setText(String.valueOf(p.getQty()));
         txtbatch.setText(p.getBatchid());
+        cbbcate.setValue(p.getNameCate());
     }
 
     @FXML
@@ -264,6 +290,7 @@ public class ProductController implements Initializable {
                 txtprice.setText(String.valueOf(prod.getPrice()));
                 txtqty.setText(String.valueOf(prod.getQty()));
                 txtbatch.setText(prod.getBatchid());
+                cbbcate.setValue(prod.getCate().getNameCate());
                 String tilte = "Product Searched ";
                 String message = "Product Is " + "" + txtname.getText() + "";
                 tray.notification.TrayNotification tray = new TrayNotification();
@@ -304,7 +331,9 @@ public class ProductController implements Initializable {
             pro.setPrice(Double.parseDouble(txtprice.getText()));
             pro.setQty(Integer.parseInt(txtqty.getText()));
             pro.setBatchid(txtbatch.getText());
+            catepro cate = catedao.findByName(cbbcate.getValue());
             pro.setVen(ven);
+            pro.setCate(cate);
             String tilte;
             String message;
             TrayNotification tray = new TrayNotification();
@@ -357,7 +386,9 @@ public class ProductController implements Initializable {
             pro.setPrice(Double.parseDouble(txtprice.getText()));
             pro.setQty(Integer.parseInt(txtqty.getText()));
             pro.setBatchid(txtbatch.getText());
+            catepro cate = catedao.findByName(cbbcate.getValue());
             pro.setVen(ven);
+            pro.setCate(cate);            
             String tilte;
             String message;
             TrayNotification tray = new TrayNotification();

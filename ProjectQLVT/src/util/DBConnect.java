@@ -16,6 +16,8 @@ import model.owe;
 import net.sf.jasperreports.engine.JRException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import model.ord;
+import model.product;
 /**
  *
  * @author Mun Chan
@@ -48,6 +50,36 @@ public class DBConnect {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     list.add(new owe(rs.getString("IdOwe"), rs.getString("NameCus"),rs.getString("PhoneCus"),rs.getString("EmailCus"),rs.getString("AddressCus"), rs.getString("PaymentForm"),rs.getString("status"),rs.getDouble("Paid"),rs.getDouble("Owe"),rs.getDouble("TotalDebt")));
+                }
+            } catch (Exception e) {
+            }
+            return list;
+        }
+        
+        public static ObservableList<ord> getOrd(){
+            Connection conn = getConnect();
+            ObservableList<ord> list = FXCollections.observableArrayList();
+            try {
+                PreparedStatement ps = conn.prepareStatement("SELECT order_detail.OrderID, orders.NameCus, orders.PhoneCus, orders.EmailCus,"
+                        + "orders.AddressCus, orders.dateOrd, orders.timeOrd, order_detail.IDProduct, product.itemCode, product.namepro,"
+                        + "order_detail.qty, order_detail.Price, order_detail.Total FROM order_detail INNER JOIN orders ON order_detail.OrderID = orders.OrdID INNER JOIN product ON order_detail.IDProduct = product.itemCode ORDER BY OrderID DESC");
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    list.add(new ord(rs.getString("NameCus"),rs.getString("PhoneCus"),rs.getString("EmailCus"),rs.getString("AddressCus"), rs.getString("dateOrd"),rs.getString("timeOrd"),rs.getString("itemCode"),rs.getString("namepro"),rs.getInt("qty"), rs.getDouble("Price"), rs.getDouble("Total")));
+                }
+            } catch (Exception e) {
+            }
+            return list;
+        }
+        
+        public static ObservableList<product> getProduct(){
+            Connection conn = getConnect();
+            ObservableList<product> list = FXCollections.observableArrayList();
+            try {
+                PreparedStatement ps = conn.prepareStatement("SELECT product.itemCode, product.namepro, product.vendorid, vendor.vendorname, product.description, product.size, product.price, product.qty, product.batchid, product.IDCate, cateproduct.NameCate FROM product INNER JOIN vendor ON product.vendorid = vendor.vendorID INNER JOIN cateproduct ON product.IDCate = cateproduct.ID ORDER BY itemCode DESC");
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    list.add(new product(rs.getString("itemCode"), rs.getString("namepro"),rs.getString("vendorname"),rs.getString("description"), rs.getString("size"),rs.getString("batchid"),rs.getString("NameCate")));
                 }
             } catch (Exception e) {
             }

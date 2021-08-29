@@ -124,12 +124,12 @@
                         <Font name="Symbol" size="11.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="186.0" prefHeight="31.0" prefWidth="82.0" text="Quantity:" textFill="#5e5b5b">
+                  <Label layoutX="14.0" layoutY="168.0" prefHeight="31.0" prefWidth="82.0" text="Quantity:" textFill="#5e5b5b">
                      <font>
                         <Font name="Symbol" size="11.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtqty" layoutX="14.0" layoutY="217.0" prefHeight="25.0" prefWidth="98.0" />
+                  <TextField fx:id="txtqty" layoutX="14.0" layoutY="199.0" prefHeight="25.0" prefWidth="98.0" />
                   <Label layoutX="14.0" layoutY="99.0" prefHeight="31.0" prefWidth="82.0" text="Item Name:" textFill="#5e5b5b">
                      <font>
                         <Font name="Symbol" size="11.0" />
@@ -147,11 +147,26 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btnok" buttonType="RAISED" layoutX="144.0" layoutY="199.0" onAction="#OKAction" prefHeight="57.0" prefWidth="98.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Total Amount">
+                  <JFXButton fx:id="btnok" buttonType="RAISED" layoutX="126.0" layoutY="225.0" onAction="#OKAction" prefHeight="57.0" prefWidth="98.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Total Amount">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </JFXButton>
+                  <Label fx:id="txttrangthai" layoutX="165.0" layoutY="198.0" prefHeight="27.0" prefWidth="82.0" textAlignment="CENTER" textFill="#911010">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="134.0" layoutY="168.0" prefHeight="31.0" prefWidth="82.0" text="Quantity Left:" textFill="#5e5b5b">
+                     <font>
+                        <Font name="Symbol" size="11.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="box" fitHeight="31.0" fitWidth="45.0" layoutX="81.0" onMouseClicked="#BoxAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resouces/box.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <TableView fx:id="dtm" layoutX="17.0" layoutY="353.0" onMouseClicked="#clickTable" prefHeight="185.0" prefWidth="685.0">
@@ -223,7 +238,8 @@
                         <Font name="Symbol" size="11.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtnote" layoutX="73.0" layoutY="187.0" prefHeight="25.0" prefWidth="66.0" />
+                  <TextField fx:id="txtnote" layoutX="75.0" layoutY="186.0" prefHeight="25.0" prefWidth="66.0" />
+                  <ImageView fx:id="ds" fitHeight="31.0" fitWidth="45.0" layoutX="86.0" layoutY="234.0" onMouseClicked="#DsAction" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
             <ImageView fx:id="request" fitHeight="25.0" fitWidth="22.0" layoutX="44.0" layoutY="538.0" onMouseClicked="#reloadAction" pickOnBounds="true" preserveRatio="true">

@@ -28,6 +28,11 @@ public class ord {
     private ArrayList<dtmTM> allOrderDetail;
     private Double amount;
     String note;
+    int qty;
+    Double Price;
+    Double Total;
+    String itemCode;
+    String namepro;
     public ord() {
     }
 
@@ -127,6 +132,20 @@ public class ord {
         this.allOrderDetail = allOrderDetail;
         this.amount = amount;
         this.note = note;
+    }
+
+    public ord(String NameCus, String PhoneCus, String EmailCus, String AddressCus, String dateOrd, String timeOrd, String itemCode, String namepro, int qty, Double Price, Double Total) {
+        this.NameCus = NameCus;
+        this.PhoneCus = PhoneCus;
+        this.EmailCus = EmailCus;
+        this.AddressCus = AddressCus;
+        this.dateOrd = dateOrd;
+        this.timeOrd = timeOrd;
+        this.itemCode = itemCode;
+        this.namepro = namepro;
+        this.qty = qty;
+        this.Price = Price;
+        this.Total = Total;
     }
     
     public String getOrdID() {
@@ -254,6 +273,48 @@ public class ord {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    
+
+    public Double getPrice() {
+        return Price;
+    }
+
+    public void setPrice(Double Price) {
+        this.Price = Price;
+    }
+
+    public Double getTotal() {
+        return Total;
+    }
+
+    public void setTotal(Double Total) {
+        this.Total = Total;
+    }
+
+    public String getItemCode() {
+        return itemCode;
+    }
+
+    public void setItemCode(String itemCode) {
+        this.itemCode = itemCode;
+    }
+
+    public String getNamepro() {
+        return namepro;
+    }
+
+    public void setNamepro(String namepro) {
+        this.namepro = namepro;
     }
     
 }

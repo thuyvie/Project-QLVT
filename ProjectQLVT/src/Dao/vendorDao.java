@@ -86,7 +86,7 @@ public class vendorDao {
                vendorlot ven = new vendorlot();
                 ven.setVendorID(rs.getString("vendorID"));
                 ven.setVendorname(rs.getString("vendorname"));
-                ven.setVendorphone("vendorphone");
+                ven.setVendorphone(rs.getString("vendorphone"));
                 ven.setVendoraddress(rs.getString("vendoraddress"));
                 ven.setVendoremail(rs.getString("vendoremail"));
                 listven.add(ven);

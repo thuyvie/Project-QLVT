@@ -9,15 +9,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="725.0" style="-fx-background-radius: 40 40 40 40;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VendorController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="710.0" style="-fx-background-radius: 40 40 40 40;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VendorController">
    <children>
-      <TableView fx:id="tblven" layoutX="14.0" layoutY="333.0" onMouseClicked="#clickTable" prefHeight="241.0" prefWidth="696.0">
+      <TableView fx:id="tblven" layoutX="14.0" layoutY="333.0" onMouseClicked="#clickTable" prefHeight="242.0" prefWidth="661.0">
          <columns>
             <TableColumn fx:id="tblname" prefWidth="147.3333387374878" style="-fx-alignment: center;" text="Name" />
-            <TableColumn fx:id="tblphone" prefWidth="167.33335876464844" style="-fx-alignment: center;" text="Phone" />
-            <TableColumn fx:id="tbladdress" prefWidth="188.00003051757812" style="-fx-alignment: center;" text="Address" />
-            <TableColumn fx:id="tblemail" minWidth="0.0" prefWidth="192.66668701171875" style="-fx-alignment: center;" text="Email" />
-            <TableColumn fx:id="tbldelete" minWidth="0.0" prefWidth="0.0" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" />
+            <TableColumn fx:id="tblphone" prefWidth="133.59999084472656" style="-fx-alignment: center;" text="Phone" />
+            <TableColumn fx:id="tbladdress" prefWidth="140.00006103515625" style="-fx-alignment: center;" text="Address" />
+            <TableColumn fx:id="tblemail" minWidth="0.0" prefWidth="144.79998779296875" style="-fx-alignment: center;" text="Email" />
+            <TableColumn fx:id="tbldelete" minWidth="0.0" prefWidth="93.60003662109375" style="-fx-alignment: center;" />
          </columns>
       </TableView>
       <Label layoutX="236.0" layoutY="97.0" prefHeight="27.0" prefWidth="92.0" text="Name Vendor" />

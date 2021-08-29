@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="584.0" prefWidth="758.0" style="-fx-background-radius: 40 40 40 40;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DsproController">
+   <children>
+      <TableView fx:id="tblds" layoutX="7.0" layoutY="125.0" onMouseClicked="#ClickAction" prefHeight="434.0" prefWidth="739.0">
+         <columns>
+            <TableColumn fx:id="tblname" prefWidth="84.7999849319458" style="-fx-alignment: center;" text="Item Code" />
+            <TableColumn fx:id="tblphone" prefWidth="149.60000610351562" style="-fx-alignment: center;" text="Name" />
+            <TableColumn fx:id="tblemail" prefWidth="113.59999084472656" style="-fx-alignment: center;" text="Vendor Name" />
+            <TableColumn fx:id="tbladdress" prefWidth="108.800048828125" style="-fx-alignment: center;" text="Description" />
+            <TableColumn fx:id="tblform" prefWidth="66.4000244140625" style="-fx-alignment: center;" text="Size" />
+            <TableColumn fx:id="tblstt" prefWidth="96.800048828125" style="-fx-alignment: center;" text="Batch Code" />
+            <TableColumn fx:id="tblcode" prefWidth="122.39990234375" style="-fx-alignment: center;" text="Category" />
+         </columns>
+      </TableView>
+      <TextField fx:id="txttimkiem" layoutX="35.0" layoutY="79.0" prefHeight="26.0" prefWidth="174.0" promptText="Search By Name" />
+      <Label layoutX="293.0" layoutY="19.0" prefHeight="38.0" prefWidth="143.0" text="List Products">
+         <font>
+            <Font name="Agency FB Bold" size="31.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnsearch" layoutX="222.0" layoutY="77.0" onAction="#SearchAction" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #93B5C6; -fx-background-radius: 15;" text="Search">
+         <font>
+            <Font name=".VnTime" size="14.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="84.0" fitWidth="143.0" layoutX="615.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/LogoConn.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtcodepro" layoutX="397.0" layoutY="79.0" prefHeight="26.0" prefWidth="191.0" promptText="Item Code" />
+   </children>
+</AnchorPane>

@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import model.catepro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +38,7 @@ import javafx.util.Duration;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
+import util.CrudUtil;
 import util.DBConnect;
 
 /**
@@ -75,13 +77,41 @@ public class CateproController implements Initializable {
     catepro cp = null;
     Connection connection = null;
     CateProDao cpDao = new CateProDao();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    public void showCate(){
+        showCate();
+        settxtoweid();
+    }
+
+    public int getRowCount() throws ClassNotFoundException, SQLException {
+        String SQL = "SELECT COUNT(ID) FROM cateproduct";
+        ResultSet resultSet = CrudUtil.executeQuery(SQL);
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        return -1;
+    }
+
+    public void settxtoweid() {
+        try {
+            int id = getRowCount();
+            if (id < 9) {
+                this.txtid.setText((id + 1) + "");
+            } else if (id < 99) {
+                this.txtid.setText((id + 1) + "");
+            } else {
+                this.txtid.setText((id + 1) + "");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showCate() {
         ObservableList<catepro> list = cpDao.findAll();
-        tblname.setCellValueFactory(new PropertyValueFactory<> ("NameCate"));
+        tblname.setCellValueFactory(new PropertyValueFactory<>("NameCate"));
         tblcate.setItems(list);
         Callback<TableColumn<catepro, String>, TableCell<catepro, String>> cellFoctory = (TableColumn<catepro, String> param) -> {
             final TableCell<catepro, String> cell = new TableCell<catepro, String>() {
@@ -105,7 +135,7 @@ public class CateproController implements Initializable {
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
                             try {
                                 cp = tblcate.getSelectionModel().getSelectedItem();
-                                query = "delete from product where ID='" + cp.getID() + "'";
+                                query = "delete from cateproduct where ID=" + cp.getID() + "";
                                 connection = DBConnect.getConnect();
                                 preparedStatement = connection.prepareStatement(query);
                                 preparedStatement.execute();
@@ -132,6 +162,7 @@ public class CateproController implements Initializable {
         tbldelete.setCellFactory(cellFoctory);
         tblcate.setItems(list);
     }
+
     @FXML
     private void clickTable(MouseEvent event) {
         catepro cp = tblcate.getSelectionModel().getSelectedItem();
@@ -148,34 +179,34 @@ public class CateproController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Please Enter Key Word ");
                 alert.showAndWait();
-            } else{ 
+            } else {
                 catepro c = cpDao.findByName(txtname.getText());
                 if (c != null) {
-                txtid.setText(String.valueOf(c.getID()));
-                txtname.setText(c.getNameCate());
-                String tilte = "Category Name Searched ";
-                String message = "Category Name  Is " + "" + txtname.getText() + "";
-                tray.notification.TrayNotification tray = new TrayNotification();
-                AnimationType type = AnimationType.POPUP;
+                    txtid.setText(String.valueOf(c.getID()));
+                    txtname.setText(c.getNameCate());
+                    String tilte = "Category Name Searched ";
+                    String message = "Category Name  Is " + "" + txtname.getText() + "";
+                    tray.notification.TrayNotification tray = new TrayNotification();
+                    AnimationType type = AnimationType.POPUP;
 
-                tray.setAnimationType(type);
-                tray.setTitle(tilte);
-                tray.setMessage(message);
-                tray.setNotificationType(NotificationType.SUCCESS);
-                tray.showAndDismiss(Duration.millis(3000));
-            } else {
-                String tilte = "Searched Category Name  Not Found";
-                String message = "Try Again";
-                tray.notification.TrayNotification tray = new TrayNotification();
-                AnimationType type = AnimationType.POPUP;
+                    tray.setAnimationType(type);
+                    tray.setTitle(tilte);
+                    tray.setMessage(message);
+                    tray.setNotificationType(NotificationType.SUCCESS);
+                    tray.showAndDismiss(Duration.millis(3000));
+                } else {
+                    String tilte = "Searched Category Name  Not Found";
+                    String message = "Try Again";
+                    tray.notification.TrayNotification tray = new TrayNotification();
+                    AnimationType type = AnimationType.POPUP;
 
-                tray.setAnimationType(type);
-                tray.setTitle(tilte);
-                tray.setMessage(message);
-                tray.setNotificationType(NotificationType.ERROR);
-                tray.showAndDismiss(Duration.millis(3000));
-            }
+                    tray.setAnimationType(type);
+                    tray.setTitle(tilte);
+                    tray.setMessage(message);
+                    tray.setNotificationType(NotificationType.ERROR);
+                    tray.showAndDismiss(Duration.millis(3000));
                 }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -183,7 +214,7 @@ public class CateproController implements Initializable {
 
     @FXML
     private void insertAction(ActionEvent event) throws Exception {
-        try{
+        try {
             catepro cp = new catepro();
             cp.setNameCate(txtname.getText());
             String tilte;
@@ -191,7 +222,7 @@ public class CateproController implements Initializable {
             TrayNotification tray = new TrayNotification();
             AnimationType type = AnimationType.POPUP;
             tray.setAnimationType(type);
-            if(cpDao.insert(cp)){
+            if (cpDao.insert(cp)) {
                 (new Alert(Alert.AlertType.CONFIRMATION, "Category Added Successfully", new ButtonType[]{ButtonType.OK})).show();
                 tilte = "Added Successful";
                 message = "Category Is Added";
@@ -199,15 +230,17 @@ public class CateproController implements Initializable {
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.SUCCESS);
                 showCate();
-            }else{
-                 (new Alert(Alert.AlertType.ERROR, "Category Not Added ", new ButtonType[]{ButtonType.OK})).show();
+                settxtoweid();
+                txtname.clear();
+            } else {
+                (new Alert(Alert.AlertType.ERROR, "Category Not Added ", new ButtonType[]{ButtonType.OK})).show();
                 tilte = "Added Un Successful";
                 message = "Category Is Not Added";
                 tray.setTitle(tilte);
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.ERROR);
             }
-             tray.showAndDismiss(Duration.millis(3000));
+            tray.showAndDismiss(Duration.millis(3000));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException ex) {
@@ -226,15 +259,16 @@ public class CateproController implements Initializable {
 
     @FXML
     private void UpdateAction(ActionEvent event) throws Exception {
-        try{
+        try {
             catepro cp = new catepro();
+            cp.setID(txtid.getText());
             cp.setNameCate(txtname.getText());
             String tilte;
             String message;
             TrayNotification tray = new TrayNotification();
             AnimationType type = AnimationType.POPUP;
             tray.setAnimationType(type);
-            if(cpDao.update(cp)){
+            if (cpDao.update(cp)) {
                 (new Alert(Alert.AlertType.CONFIRMATION, "Category Updated Successfully", new ButtonType[]{ButtonType.OK})).show();
                 tilte = "Updated Successful";
                 message = "Category Is Updated";
@@ -242,15 +276,17 @@ public class CateproController implements Initializable {
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.SUCCESS);
                 showCate();
-            }else{
-                 (new Alert(Alert.AlertType.ERROR, "Category Not Updated ", new ButtonType[]{ButtonType.OK})).show();
+                txtid.clear();
+                txtname.clear();
+            } else {
+                (new Alert(Alert.AlertType.ERROR, "Category Not Updated ", new ButtonType[]{ButtonType.OK})).show();
                 tilte = "Updated Un Successful";
                 message = "Category Is Not Updated";
                 tray.setTitle(tilte);
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.ERROR);
             }
-             tray.showAndDismiss(Duration.millis(3000));
+            tray.showAndDismiss(Duration.millis(3000));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException ex) {
@@ -272,5 +308,5 @@ public class CateproController implements Initializable {
         txtid.clear();
         txtname.clear();
     }
-    
+
 }

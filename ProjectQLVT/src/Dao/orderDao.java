@@ -127,21 +127,51 @@ public class orderDao {
            con.setAutoCommit(true);
        }
    }
+    public boolean placeOrder3(ord o) throws Exception{
+       Connection con = DBConnect.getConnect();
+       con.setAutoCommit(false);
+       order2 ord2 = new order2(o.getOrdID(),o.getNameCus(),o.getPhoneCus(),o.getEmailCus(),o.getAddressCus(),o.getDateOrd(),o.getTimeOrd());
+       boolean add = update(ord2);
+       try{
+           if(add){
+               boolean ordDetailAdd = addOrdDtail(o);
+               if(ordDetailAdd){
+                   paymentDao payDao = new paymentDao();
+                   boolean ispayAdd = payDao.update(
+                   new payment(getRandomNumberString(),o.getNameCus(), o.getAmount(),o.getOrdID(), o.getNote())
+                   );
+                   if(ispayAdd){
+                       boolean updateStock = updateOrdStock(o.getAllOrderDetail());
+                       if(updateStock){
+                           con.commit();
+                           return true;
+                       }
+                   }
+               }
+               con.commit();
+               return true;
+           } else{
+               con.rollback();
+               return false;
+           }
+       }finally{
+           con.setAutoCommit(true);
+       }
+   }
     public boolean update(order2 ord2) throws Exception{
       String sql = "update orders"
-                + " set namecus=?, phonecus =?, emailcus = ?,dateOrd=?, timeOrd = ?, IDEmp=?"
+                + " set NameCus=?, PhoneCus =?, Emailcus = ?,AddressCus = ? , dateOrd=?, timeOrd = ?"
                 + " where OrdID= ?";
         try (
                 Connection con = DBConnect.getConnect();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
-                pstmt.setString(8, ord2.getOrdID());
+                pstmt.setString(7, ord2.getOrdID());
                 pstmt.setString(1, ord2.getNameCus());
                 pstmt.setString(2, ord2.getPhoneCus());
                 pstmt.setString(3, ord2.getEmailCus());
                 pstmt.setString(4, ord2.getAddressCus());
                 pstmt.setString(5, ord2.getDateOrd());
                 pstmt.setString(6, ord2.getTimeOrd());
-                pstmt.setInt(7, ord2.getIDEmp());
             return pstmt.executeUpdate() > 0;
         }
    }
@@ -173,7 +203,7 @@ public class orderDao {
      
       public product searchPro(String itemCode) {
         ObservableList<customer> listproduct = FXCollections.observableArrayList();
-         String sql = "SELECT itemCode,namepro, price FROM  product  where itemCode='" + itemCode + "'";
+         String sql = "SELECT itemCode,namepro, price, qty FROM  product  where itemCode='" + itemCode + "'";
         Statement stmt;
         try (
             Connection con = DBConnect.getConnect();
@@ -185,6 +215,7 @@ public class orderDao {
                 pro.setItemCode(rs.getString("itemCode"));
                 pro.setNamepro(rs.getString("namepro"));
                 pro.setPrice(rs.getDouble("price"));
+                pro.setQty(rs.getInt("qty"));
                 return pro;
                 }
              }

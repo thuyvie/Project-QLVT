@@ -33,19 +33,19 @@ public class CateProDao {
     public boolean update(catepro cp)
             throws Exception {
         String sql = "update cateproduct"
-                + " set NameCate=?"
+                + " set NameCate=?" 
                 + " where ID= ?";
         try (
                 Connection con = DBConnect.getConnect();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
-                 pstmt.setInt(2, cp.getID());
+                 pstmt.setString(2, cp.getID());
                  pstmt.setString(1, cp.getNameCate());
             return pstmt.executeUpdate() > 0;
         }
     }
     public catepro findByName(String NameCate)
             throws Exception{
-        String sql= "select* from cateproduct where NameCate= '"+NameCate+"'";
+        String sql= "select * from cateproduct where NameCate= '"+NameCate+"'";
         try(
             Connection con= DBConnect.getConnect();
             PreparedStatement pstmt= con.prepareStatement(sql);
@@ -53,7 +53,7 @@ public class CateProDao {
             try(ResultSet rs= pstmt.executeQuery()){
                 while(rs.next()){
                     catepro cp = new catepro();
-                    cp.setID(rs.getInt("ID"));
+                    cp.setID(rs.getString("ID"));
                     cp.setNameCate(rs.getString("NameCate"));
                     return cp;
                 }
@@ -73,7 +73,7 @@ public class CateProDao {
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                catepro cp = new catepro();
-                    cp.setID(rs.getInt("ID"));
+                    cp.setID(rs.getString("ID"));
                     cp.setNameCate(rs.getString("NameCate"));
                 listcp.add(cp);
             }

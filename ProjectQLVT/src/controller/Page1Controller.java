@@ -50,7 +50,7 @@ public class Page1Controller implements Initializable {
 
     @FXML
     private void issue(MouseEvent event) throws IOException {
-        setUi("test1");
+        setUi("DsOrd");
         new FadeIn(context).play();
     }
 

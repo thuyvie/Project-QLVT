@@ -10,24 +10,26 @@ package model;
  * @author Mun Chan
  */
 public class catepro {
-    int ID;
+    String ID;
     String NameCate;
 
     public catepro() {
     }
 
-    public catepro(int ID, String NameCate) {
+    public catepro(String ID, String NameCate) {
         this.ID = ID;
         this.NameCate = NameCate;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
+
+   
 
     public String getNameCate() {
         return NameCate;
