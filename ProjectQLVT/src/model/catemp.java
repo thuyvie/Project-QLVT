@@ -10,22 +10,22 @@ package model;
  * @author Mun Chan
  */
 public class catemp {
-    int IDCate;
+    String IDCate;
     String EmpCate;
 
-    public catemp(int IDCate, String EmpCate) {
-        this.IDCate = IDCate;
+    public catemp(String ID, String EmpCate) {
+        this.IDCate = ID;
         this.EmpCate = EmpCate;
     }
 
     public catemp() {
     }
 
-    public int getIDCate() {
+    public String getID() {
         return IDCate;
     }
 
-    public void setIDCate(int IDCate) {
+    public void setID(String IDCate) {
         this.IDCate = IDCate;
     }
 

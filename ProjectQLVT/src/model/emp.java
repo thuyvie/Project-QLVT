@@ -10,20 +10,20 @@ package model;
  * @author Mun Chan
  */
 public class emp {
-    int ID;
+    String ID;
     String NameEmp;
     String PhoneEmp;
     String Account;
     String Password;
     Double Salary;
-    int IDCateEmp;
+    String IDCateEmp;
     String EmpCate;
     private catemp cate;
 
     public emp() {
     }
 
-    public emp(int ID, String NameEmp, String PhoneEmp, String Account, String Password, Double Salary, int IDCateEmp, String EmpCate, catemp cate) {
+    public emp(String ID, String NameEmp, String PhoneEmp, String Account, String Password, Double Salary, String IDCateEmp, String EmpCate, catemp cate) {
         this.ID = ID;
         this.NameEmp = NameEmp;
         this.PhoneEmp = PhoneEmp;
@@ -35,11 +35,11 @@ public class emp {
         this.cate = cate;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
@@ -83,11 +83,11 @@ public class emp {
         this.Salary = Salary;
     }
 
-    public int getIDCateEmp() {
+    public String getIDCateEmp() {
         return IDCateEmp;
     }
 
-    public void setIDCateEmp(int IDCateEmp) {
+    public void setIDCateEmp(String IDCateEmp) {
         this.IDCateEmp = IDCateEmp;
     }
 
