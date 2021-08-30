@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="725.0" style="-fx-background-radius: 40 40 40 40;" stylesheets="@../css/menuui.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeController">
+   <children>
+      <TableView fx:id="tableproductview" layoutX="9.0" layoutY="366.0" onMouseClicked="#clickTable" prefHeight="176.0" prefWidth="709.0">
+         <columns>
+            <TableColumn fx:id="tblname" prefWidth="126.39998817443848" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name" />
+            <TableColumn fx:id="tblphone" prefWidth="128.800048828125" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Phone" />
+            <TableColumn fx:id="tblaccount" prefWidth="147.20001220703125" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Account" />
+            <TableColumn fx:id="tblsalary" prefWidth="100.79995727539062" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Salary" />
+            <TableColumn fx:id="tblrank" prefWidth="103.99993896484375" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Rank" />
+            <TableColumn fx:id="tbldelete" prefWidth="103.99993896484375" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" />
+         </columns>
+      </TableView>
+      <Label layoutX="236.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" text="Name " />
+      <TextField fx:id="txtname" layoutX="235.0" layoutY="89.0" />
+      <Label layoutX="42.0" layoutY="123.0" prefHeight="27.0" prefWidth="92.0" text="Phone" />
+      <TextField fx:id="txtaccount" layoutX="42.0" layoutY="233.0" />
+      <TextField fx:id="txtphone" layoutX="42.0" layoutY="158.0" />
+      <Label layoutX="43.0" layoutY="197.0" prefHeight="27.0" prefWidth="92.0" text="Account" />
+      <Label layoutX="42.0" layoutY="270.0" prefHeight="27.0" prefWidth="92.0" text="Salary" />
+      <TextField fx:id="txtsalary" layoutX="42.0" layoutY="306.0" />
+      <Label layoutX="236.0" layoutY="125.0" prefHeight="27.0" prefWidth="92.0" text="Rank" />
+      <Label layoutX="236.0" layoutY="197.0" prefHeight="27.0" prefWidth="92.0" text="Password" />
+      <TextField fx:id="txtpassword" layoutX="236.0" layoutY="233.0" />
+      <JFXComboBox fx:id="cbb" layoutX="235.0" layoutY="151.0" onAction="#vendorAction" prefHeight="26.0" prefWidth="150.0" />
+      <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="433.0" layoutY="100.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
+      <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="433.0" layoutY="164.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
+      <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="433.0" layoutY="227.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />
+      <TextField fx:id="txtid" layoutX="42.0" layoutY="89.0" />
+      <Label layoutX="42.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" text="ID" />
+      <JFXButton fx:id="btnclear" buttonType="RAISED" layoutX="433.0" layoutY="287.0" onAction="#ClearAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #F6A9A9; -fx-background-radius: 15;" text="CLEAR" />
+      <ImageView fitHeight="105.0" fitWidth="197.0" layoutX="519.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/LogoConn.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
