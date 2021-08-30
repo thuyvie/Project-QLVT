@@ -31,15 +31,16 @@ public class orddetailDao {
         }
    }
      public boolean updateOrdDetail(orderdetail ordDetail) throws Exception{
-       String sql = "update order_detail set IDProduct=?, qty=?, Price=? where OrderID=?";
+       String sql = "update order_detail set IDProduct=?, qty=?, Price=?, Total=? where OrderID=?";
         try (
                 Connection con = DBConnect.getConnect();
                 PreparedStatement pstmt = con.prepareStatement(sql);
             ) {
-               pstmt.setString(1, ordDetail.getOrderID());
-                pstmt.setString(2, ordDetail.getIDProduct());
-                pstmt.setString(4, ordDetail.getQty());
-                pstmt.setString(4, ordDetail.getPrice());
+               pstmt.setString(5, ordDetail.getOrderID());
+                pstmt.setString(1, ordDetail.getIDProduct());
+                pstmt.setString(2, ordDetail.getQty());
+                pstmt.setString(3, ordDetail.getPrice());
+                pstmt.setDouble(4, ordDetail.getTotal());
             return pstmt.executeUpdate() > 0;
         }
    }

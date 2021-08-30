@@ -75,6 +75,18 @@ public class orderDao {
         }
         return true;
    }
+    private boolean addOrdDetail(ord dto) throws SQLException, ClassNotFoundException, Exception{
+        for (dtmTM ord : dto.getAllOrderDetail()) {
+            orderdetail orderTable = new orderdetail(dto.getOrdID(), ord.getCode(), ord.getQTY(), ord.getPrice(), ord.getTotal());
+            System.out.println("");
+            orddetailDao orddt = new orddetailDao();
+            boolean isAddedOrderDetails = orddt.updateOrdDetail(orderTable);
+            if (!isAddedOrderDetails) {
+                return false;
+            }
+        }
+        return true;
+   }
    private boolean updateOrdStock(ArrayList<dtmTM> orderItems) throws Exception{
        for(dtmTM orderdetail : orderItems){
            boolean isUpdateStock = updateOrdStock(orderdetail);
@@ -84,10 +96,13 @@ public class orderDao {
        }
        return true;
    }
+    
+     
    public boolean updateOrdStock (dtmTM orderdetail) throws Exception{
        String sql = "update product set qty=qty-? where itemCode=?";       
                return CrudUtil.executeUpdate(sql,orderdetail.getQTY(), orderdetail.getCode());
    }
+   
    public static String getRandomNumberString() {
         {
             Random rand = new Random();
@@ -134,11 +149,11 @@ public class orderDao {
        boolean add = update(ord2);
        try{
            if(add){
-               boolean ordDetailAdd = addOrdDtail(o);
+               boolean ordDetailAdd = addOrdDetail(o);
                if(ordDetailAdd){
                    paymentDao payDao = new paymentDao();
                    boolean ispayAdd = payDao.update(
-                   new payment(getRandomNumberString(),o.getNameCus(), o.getAmount(),o.getOrdID(), o.getNote())
+                     new payment(getRandomNumberString(),o.getNameCus(), o.getAmount(),o.getOrdID(), o.getNote())
                    );
                    if(ispayAdd){
                        boolean updateStock = updateOrdStock(o.getAllOrderDetail());
@@ -158,6 +173,22 @@ public class orderDao {
            con.setAutoCommit(true);
        }
    }
+    public boolean update(payment pay)
+            throws Exception {
+        String sql = "update payment"
+                + " set NameCus=?,  amount =?, OrdID =? ,note = ?"
+                + " where payid= ?";
+        try (
+                Connection con = DBConnect.getConnect();
+                PreparedStatement pstmt = con.prepareStatement(sql);) {
+                pstmt.setString(5, pay.getPayid());
+                pstmt.setString(1, pay.getNameCus());
+                pstmt.setDouble(2, pay.getAmount());
+                pstmt.setString(3, pay.getOrdID());
+                pstmt.setString(4, pay.getNote());
+            return pstmt.executeUpdate() > 0;
+        }
+    }
     public boolean update(order2 ord2) throws Exception{
       String sql = "update orders"
                 + " set NameCus=?, PhoneCus =?, Emailcus = ?,AddressCus = ? , dateOrd=?, timeOrd = ?"
@@ -172,6 +203,21 @@ public class orderDao {
                 pstmt.setString(4, ord2.getAddressCus());
                 pstmt.setString(5, ord2.getDateOrd());
                 pstmt.setString(6, ord2.getTimeOrd());
+            return pstmt.executeUpdate() > 0;
+        }
+   }
+    public boolean update(orderdetail ord2) throws Exception{
+      String sql = "update order_detail"
+                + " set IDProduct=?, qty =?, Price = ?, Total = ?"
+                + " where OrderID= ?";
+        try (
+                Connection con = DBConnect.getConnect();
+                PreparedStatement pstmt = con.prepareStatement(sql);) {
+                pstmt.setString(5, ord2.getOrderID());
+                pstmt.setString(1, ord2.getIDProduct());
+                pstmt.setString(2, ord2.getQty());
+                pstmt.setString(3, ord2.getPrice());
+                pstmt.setDouble(4, ord2.getTotal());
             return pstmt.executeUpdate() > 0;
         }
    }

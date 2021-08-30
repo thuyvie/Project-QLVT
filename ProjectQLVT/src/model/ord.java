@@ -134,7 +134,8 @@ public class ord {
         this.note = note;
     }
 
-    public ord(String NameCus, String PhoneCus, String EmailCus, String AddressCus, String dateOrd, String timeOrd, String itemCode, String namepro, int qty, Double Price, Double Total) {
+    public ord(String OrdID, String NameCus, String PhoneCus, String EmailCus, String AddressCus, String dateOrd, String timeOrd, String itemCode, String namepro, int qty, Double Price, Double Total) {
+        this.OrdID = OrdID;
         this.NameCus = NameCus;
         this.PhoneCus = PhoneCus;
         this.EmailCus = EmailCus;

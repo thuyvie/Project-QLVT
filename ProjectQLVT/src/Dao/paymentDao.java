@@ -38,16 +38,16 @@ public class paymentDao {
     public boolean update(payment pay)
             throws Exception {
         String sql = "update payment"
-                + " set NameCus=?,  amount =?,OrdID=?,note = ?"
-                + " where payid= ?";
+                + " set payid=?, NameCus=?,  amount =? ,note = ?"
+                + " where OrdID= ?";
         try (
                 Connection con = DBConnect.getConnect();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
                 pstmt.setString(1, pay.getPayid());
                 pstmt.setString(2, pay.getNameCus());
                 pstmt.setDouble(3, pay.getAmount());
-                pstmt.setString(4, pay.getOrdID());
-                pstmt.setString(5, pay.getNote());
+                pstmt.setString(5, pay.getOrdID());
+                pstmt.setString(4, pay.getNote());
             return pstmt.executeUpdate() > 0;
         }
     }

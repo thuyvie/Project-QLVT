@@ -54,6 +54,15 @@ public class order2 {
         this.dateOrd = dateOrd;
         this.timeOrd = timeOrd;
     }
+
+    public order2(String NameCus,String PhoneCus, String EmailCus, String AddressCus, String dateOrd, String timeOrd) {
+        this.NameCus = NameCus;
+        this.PhoneCus = PhoneCus;
+        this.EmailCus = EmailCus;
+        this.AddressCus = AddressCus;
+        this.dateOrd = dateOrd;
+        this.timeOrd = timeOrd;
+    }
     
     public order2() {
     }

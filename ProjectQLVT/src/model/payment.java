@@ -29,6 +29,13 @@ public class payment {
         this.OrdID = OrdID;
         this.note = note;
     }
+
+    public payment(String NameCus, Double amount, String OrdID, String note) {
+        this.NameCus = NameCus;
+        this.amount = amount;
+        this.OrdID = OrdID;
+        this.note = note;
+    }
     
     public payment() {
     }

@@ -60,12 +60,12 @@ public class DBConnect {
             Connection conn = getConnect();
             ObservableList<ord> list = FXCollections.observableArrayList();
             try {
-                PreparedStatement ps = conn.prepareStatement("SELECT order_detail.OrderID, orders.NameCus, orders.PhoneCus, orders.EmailCus,"
+                PreparedStatement ps = conn.prepareStatement("SELECT order_detail.OrderID,orders.OrdID, orders.NameCus, orders.PhoneCus, orders.EmailCus,"
                         + "orders.AddressCus, orders.dateOrd, orders.timeOrd, order_detail.IDProduct, product.itemCode, product.namepro,"
                         + "order_detail.qty, order_detail.Price, order_detail.Total FROM order_detail INNER JOIN orders ON order_detail.OrderID = orders.OrdID INNER JOIN product ON order_detail.IDProduct = product.itemCode ORDER BY OrderID DESC");
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
-                    list.add(new ord(rs.getString("NameCus"),rs.getString("PhoneCus"),rs.getString("EmailCus"),rs.getString("AddressCus"), rs.getString("dateOrd"),rs.getString("timeOrd"),rs.getString("itemCode"),rs.getString("namepro"),rs.getInt("qty"), rs.getDouble("Price"), rs.getDouble("Total")));
+                    list.add(new ord(rs.getString("OrdID"),rs.getString("NameCus"),rs.getString("PhoneCus"),rs.getString("EmailCus"),rs.getString("AddressCus"), rs.getString("dateOrd"),rs.getString("timeOrd"),rs.getString("itemCode"),rs.getString("namepro"),rs.getInt("qty"), rs.getDouble("Price"), rs.getDouble("Total")));
                 }
             } catch (Exception e) {
             }

@@ -149,7 +149,7 @@ public class OrdController implements Initializable {
     @FXML
     private Label txttrangthai;
     private TextField txtqtyy;
-    private boolean or;
+    private boolean update;
     @FXML
     private ImageView box;
     @FXML
@@ -160,9 +160,10 @@ public class OrdController implements Initializable {
      * Initializes the controller class.
      */
     void setOWE(boolean o) {
-        this.or = o;
+        this.update= o;
     }
-    void setTextField(String NameCus, String PhoneCus, String EmailCus, String AddressCus,String dateOrd, String timeOrd, String itemCode, String namepro, int qty, Double Price, Double Total){
+    void setTextField(String OrdID,String NameCus, String PhoneCus, String EmailCus, String AddressCus,String dateOrd, String timeOrd, String itemCode, String namepro, int qty, Double Price, Double Total){
+        txtorderid2.setText(OrdID);
         txtname.setText(NameCus);
         txtphone.setText(PhoneCus);
         txtaddress.setText(AddressCus);
@@ -312,7 +313,7 @@ public class OrdController implements Initializable {
 //        int IDEmp = Integer.parseInt(labelemp.getText());
         double amount = Double.parseDouble(txtrs.getText());
         String note = txtnote.getText();
-        if(or == false){
+        if(update == false){
             try {
             boolean placeorder = ordDao.placeOrder(new ord(OrdID, NameCus, PhoneCus, EmailCus, AddressCus, dateOrd, timeOrd, items, amount, note));
             Print(OrdID);
@@ -344,8 +345,8 @@ public class OrdController implements Initializable {
             
              if (placeorder) {
                 OrderDetailFieldRest();
-                (new Alert(Alert.AlertType.CONFIRMATION, "Order Successfully", new ButtonType[]{ButtonType.OK})).show();
-                String tilte = "ORDER SUCCESS";
+                (new Alert(Alert.AlertType.CONFIRMATION, "Order Update Successfully", new ButtonType[]{ButtonType.OK})).show();
+                String tilte = "ORDER Update SUCCESS";
                 String message = "THANK YOU FOR CUSTOMER";
                 tray.notification.TrayNotification tray = new TrayNotification();
                 AnimationType type = AnimationType.POPUP;

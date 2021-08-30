@@ -102,6 +102,8 @@ public class DsOrdController implements Initializable {
     ObservableList<ord> data;
     int index = -1;
     owe o = null;
+    @FXML
+    private TableColumn<?, ?> tblord;
 
     /**
      * Initializes the controller class.
@@ -118,7 +120,7 @@ public class DsOrdController implements Initializable {
         Statement stmt;
         ResultSet rs;
         try {
-            String sql = ("SELECT order_detail.OrderID, orders.NameCus, orders.PhoneCus, orders.EmailCus,"
+            String sql = ("SELECT order_detail.OrderID,orders.OrdID, orders.NameCus, orders.PhoneCus, orders.EmailCus,"
                         + "orders.AddressCus, orders.dateOrd, orders.timeOrd, order_detail.IDProduct, product.itemCode, product.namepro,"
                         + "order_detail.qty, order_detail.Price, order_detail.Total FROM order_detail INNER JOIN orders ON order_detail.OrderID = orders.OrdID INNER JOIN product ON order_detail.IDProduct = product.itemCode");
             Connection con = DBConnect.getConnect();
@@ -126,6 +128,7 @@ public class DsOrdController implements Initializable {
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 ord or = new ord();
+                or.setOrdID(rs.getString("OrdID"));
                 or.setNameCus(rs.getString("NameCus"));
                 or.setPhoneCus(rs.getString("PhoneCus"));
                 or.setEmailCus(rs.getString("EmailCus"));
@@ -157,7 +160,7 @@ public class DsOrdController implements Initializable {
         tblstt.setCellValueFactory(new PropertyValueFactory<>("timeOrd"));
         tblprice.setCellValueFactory(new PropertyValueFactory<> ("Price"));
         tblto.setCellValueFactory(new PropertyValueFactory<> ("Total"));
-        
+        tblord.setCellValueFactory(new PropertyValueFactory<> ("OrdID"));
          Callback<TableColumn<ord, String>, TableCell<ord, String>> cellFoctory = (TableColumn<ord, String> param) -> {
             // make cell containing buttons
             final TableCell<ord, String> cell = new TableCell<ord, String>() {
@@ -176,23 +179,23 @@ public class DsOrdController implements Initializable {
 
                         deleteIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
+                                + "-glyph-size:20px;"
                                 + "-fx-fill:#ff1744;"
                         );
                         editIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
+                                + "-glyph-size:20px;"
                                 + "-fx-fill:#00E676;"
                         );
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
                             
                             try {
                                 de = tblds.getSelectionModel().getSelectedItem();
-                                query = "DELETE FROM `student` WHERE id  ="+de.getOrdID();
+                                query = "DELETE FROM orders WHERE OrdID='"+de.getOrdID()+"'";
                                 connection = DBConnect.getConnect();
                                 preparedStatement = connection.prepareStatement(query);
                                 preparedStatement.execute();
-//                                refreshTable();
+                                show();
                                 
                             } catch (SQLException ex) {
                                 Logger.getLogger(DsOrdController.class.getName()).log(Level.SEVERE, null, ex);
@@ -216,7 +219,10 @@ public class DsOrdController implements Initializable {
                             
                             OrdController addOrdController = loader.getController();
                             addOrdController.setOWE(true);
-                            addOrdController.setTextField(de.getNameCus(), de.getPhoneCus(), de.getEmailCus(), de.getAddressCus(), de.getDateOrd(), de.getTimeOrd(), de.getItemCode(), de.getNamepro(), de.getQty(), de.getPrice(), de.getTotal());
+                            addOrdController.setTextField(de.getOrdID(),de.getNameCus(), 
+                                    de.getPhoneCus(), de.getEmailCus(), de.getAddressCus(), de.getDateOrd(), 
+                                    de.getTimeOrd(), de.getItemCode(), de.getNamepro(), de.getQty(), de.getPrice(), 
+                                    de.getTotal());
                             Parent parent = loader.getRoot();
                             Stage stage = new Stage();
                             stage.setScene(new Scene(parent));
@@ -261,6 +267,7 @@ public class DsOrdController implements Initializable {
         tblstt.setCellValueFactory(new PropertyValueFactory<>("timeOrd"));
         tblprice.setCellValueFactory(new PropertyValueFactory<> ("Price"));
         tblto.setCellValueFactory(new PropertyValueFactory<> ("Total"));
+        tblord.setCellValueFactory(new PropertyValueFactory<> ("OrdID"));
         data = DBConnect.getOrd();
         tblds.setItems(data);
         FilteredList<ord> filteredData = new FilteredList<>(data, e -> true);
