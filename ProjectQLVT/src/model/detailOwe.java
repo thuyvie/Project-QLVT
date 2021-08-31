@@ -36,6 +36,15 @@ public class detailOwe {
         this.IdOwe = IdOwe;
     }
 
+    public detailOwe(String NameCus, String PhoneCus, Double Paid, Double Owe, Double TotalDebt, String IdOwe) {
+        this.NameCus = NameCus;
+        this.PhoneCus = PhoneCus;
+        this.Paid = Paid;
+        this.Owe = Owe;
+        this.TotalDebt = TotalDebt;
+        this.IdOwe = IdOwe;
+    }
+    
     public detailOwe() {
     }
     

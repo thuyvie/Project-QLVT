@@ -152,28 +152,21 @@ WHERE
 				<reportElement x="-23" y="0" width="600" height="1" uuid="334788ff-f660-4206-b55f-e3d7dac0be7b"/>
 			</line>
 			<staticText>
-				<reportElement x="0" y="10" width="100" height="30" uuid="d7158003-9086-4579-bbfc-cd8f9bbff25f"/>
-				<textElement textAlignment="Center">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Money Paid]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="130" y="10" width="100" height="30" uuid="cfb958b2-2218-46a8-9dd8-ea80525eddc5"/>
+				<reportElement x="50" y="10" width="100" height="30" uuid="cfb958b2-2218-46a8-9dd8-ea80525eddc5"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Paid]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="270" y="10" width="100" height="30" uuid="b4b4e28d-0ea1-4ecb-8b7c-a68a3e9fd2e3"/>
+				<reportElement x="220" y="10" width="100" height="30" uuid="b4b4e28d-0ea1-4ecb-8b7c-a68a3e9fd2e3"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Owe]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="410" y="10" width="100" height="30" uuid="d2d671c6-939c-4f86-800b-b2ee921cf739"/>
+				<reportElement x="390" y="10" width="100" height="30" uuid="d2d671c6-939c-4f86-800b-b2ee921cf739"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -186,30 +179,21 @@ WHERE
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="57" width="100" height="30" uuid="bf640297-2084-4eaa-b011-5c397c150476">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="59a52ced-dda6-4d23-81b3-82e640c6d834"/>
-				</reportElement>
-				<textElement textAlignment="Center">
-					<font size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="130" y="57" width="100" height="30" uuid="ebbbcdb3-4002-4cbf-94c6-60c80d5a8792"/>
+				<reportElement x="50" y="50" width="100" height="30" uuid="ebbbcdb3-4002-4cbf-94c6-60c80d5a8792"/>
 				<textElement textAlignment="Center">
 					<font size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Paid}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="270" y="50" width="100" height="30" uuid="ad0ac8a0-da3a-4a29-be7c-b674c1b7454a"/>
+				<reportElement x="220" y="50" width="100" height="30" uuid="ad0ac8a0-da3a-4a29-be7c-b674c1b7454a"/>
 				<textElement textAlignment="Center">
 					<font size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Owe}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="410" y="50" width="100" height="30" uuid="7796e08a-2c40-4df5-8dd2-dbe78e6b17ba"/>
+				<reportElement x="390" y="50" width="100" height="30" uuid="7796e08a-2c40-4df5-8dd2-dbe78e6b17ba"/>
 				<textElement textAlignment="Center">
 					<font size="11" isBold="true"/>
 				</textElement>
@@ -224,26 +208,19 @@ WHERE
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
-			<line>
-				<reportElement x="-20" y="0" width="597" height="1" uuid="e753f002-d997-4df8-bdc3-e5690eaf7c93"/>
-			</line>
-		</band>
+		<band height="125" splitType="Stretch"/>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="45" splitType="Stretch">
 			<staticText>
-				<reportElement x="290" y="4" width="100" height="30" uuid="6c5e325b-7ba3-4180-99b9-cca2ab55d2a0"/>
+				<reportElement x="290" y="7" width="100" height="30" uuid="6c5e325b-7ba3-4180-99b9-cca2ab55d2a0"/>
 				<textElement textAlignment="Center">
 					<font size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Status:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="410" y="4" width="100" height="30" uuid="d3e4def9-f4f0-409f-aa3b-42c70292b004">
+				<reportElement x="410" y="7" width="100" height="30" uuid="d3e4def9-f4f0-409f-aa3b-42c70292b004">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="566354bc-75ab-4e87-8db4-77d282284fe9"/>
 				</reportElement>
 				<textElement>
@@ -252,6 +229,9 @@ WHERE
 				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
 			</textField>
 		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

@@ -97,7 +97,7 @@ public class payowe {
         try {
             if (add) {
                 boolean ispayoweAdd = insertOweDetail(
-                        new detailOwe(getRandomNumberString(), o.getNameCus(), o.getPhoneCus(), o.getPaid(), o.getOwe(), o.getTotalDebt(), o.getIdOwe())
+                        new detailOwe( o.getID(),o.getNameCus(), o.getPhoneCus(), o.getPaid(), o.getOwe(), o.getTotalDebt(), o.getIdOwe())
                 );
 
             }

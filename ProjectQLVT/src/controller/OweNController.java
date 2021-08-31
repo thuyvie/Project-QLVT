@@ -38,6 +38,7 @@ import tray.notification.TrayNotification;
 import util.DBConnect;
 import java.sql.PreparedStatement;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -116,6 +117,8 @@ public class OweNController implements Initializable {
     @FXML
     private TextField txtsearch;
     ObservableList<owe> data;
+    @FXML
+    private Label txtid;
     void setOWE(boolean o) {
         this.OWE = o;
     }
@@ -128,8 +131,21 @@ public class OweNController implements Initializable {
         // TODO
         showN();
         search();
+        setid();
     }
-
+    public static String getRandomNumberString() {
+        {
+            Random rand = new Random();
+            int rand_int1 = rand.nextInt(100000);
+            return String.valueOf(rand_int1);
+        }
+    }
+    public void setid(){
+        try {
+            txtid.setText(getRandomNumberString());
+        } catch (Exception e) {
+        }
+    }
     public ObservableList<owe> findAll() {
         ObservableList<owe> listow = FXCollections.observableArrayList();
         Statement stmt;
@@ -219,13 +235,13 @@ public class OweNController implements Initializable {
         txtowe.setText(String.valueOf(total));
         finalTotaladd();
     }
-    public void Print(String child){
+    public void Print(String owe){
         
         HashMap<String, Object> parameters = new HashMap<>();
-        parameters.put("child", child);
+        parameters.put("owe", owe);
         
         try {
-            InputStream is = this.getClass().getResourceAsStream("/report/Bill/bill.jrxml");
+            InputStream is = this.getClass().getResourceAsStream("/report/Bill/owedetail.jrxml");
             JasperReport jr = JasperCompileManager.compileReport(is);
             
             JasperPrint jp = JasperFillManager.fillReport(jr, parameters, DBConnect.getConnect());
@@ -239,6 +255,7 @@ public class OweNController implements Initializable {
     @FXML
     private void printAndSaveAction(ActionEvent event) {
         payowe P = new payowe();
+        String ID = txtid.getText();
         String IdOwe = txtoweid.getText();
         String NameCus = txtname.getText();
         String PhoneCus = txtphone.getText();
@@ -253,8 +270,8 @@ public class OweNController implements Initializable {
         double TotalDebt = Double.parseDouble(txtrs.getText());
         
         try {
-            boolean printAndSave = P.placeOrder2(new owe(IdOwe, NameCus, PhoneCus, status, Paid, Owe, TotalDebt));
-            Print(IdOwe);
+            boolean printAndSave = P.placeOrder2(new owe(IdOwe, NameCus, PhoneCus, status,ID ,Paid, Owe, TotalDebt));
+            Print(ID);
             if (printAndSave) {
                 (new Alert(Alert.AlertType.CONFIRMATION, "OweReceipt Successfully", new ButtonType[]{ButtonType.OK})).show();
                 String tilte = "OweReceipt SUCCESS";
@@ -262,6 +279,7 @@ public class OweNController implements Initializable {
                 tray.notification.TrayNotification tray = new TrayNotification();
                 AnimationType type = AnimationType.POPUP;
                 showN();
+                setid();
                 tray.setAnimationType(type);
                 tray.setTitle(tilte);
                 tray.setMessage(message);

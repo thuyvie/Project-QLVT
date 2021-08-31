@@ -20,6 +20,7 @@ public class owe {
     String PaymentForm;
     String status;
     private ArrayList<dtm> allPayOwe;
+    String ID;
     Double Paid;
     Double Owe;
     Double TotalDebt;
@@ -112,7 +113,7 @@ public class owe {
     public String getIdOwe() {
         return IdOwe;
     }
-
+    
     public owe(String NameCus, String PhoneCus, Double Paid, Double Owe, Double TotalDebt) {
         this.NameCus = NameCus;
         this.PhoneCus = PhoneCus;
@@ -130,6 +131,17 @@ public class owe {
         this.PaymentForm = PaymentForm;
         this.status = status;
         
+    }
+
+    public owe(String IdOwe, String NameCus, String PhoneCus, String status, String ID, Double Paid, Double Owe, Double TotalDebt) {
+        this.IdOwe = IdOwe;
+        this.NameCus = NameCus;
+        this.PhoneCus = PhoneCus;
+        this.status = status;
+        this.ID = ID;
+        this.Paid = Paid;
+        this.Owe = Owe;
+        this.TotalDebt = TotalDebt;
     }
     
     public owe() {
@@ -225,6 +237,14 @@ public class owe {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
     
 }
