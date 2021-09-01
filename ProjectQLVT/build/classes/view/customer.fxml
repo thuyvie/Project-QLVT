@@ -15,11 +15,11 @@
         <Pane layoutX="10.0" layoutY="8.0" prefHeight="584.0" prefWidth="900.0" style="-fx-background-color: #ffc28c; -fx-background-radius: 40 40 40 40;">
             <TableView fx:id="tablecusview" layoutX="62.0" layoutY="366.0" onMouseClicked="#clickTable" prefHeight="176.0" prefWidth="770.0">
                 <columns>
-                    <TableColumn fx:id="tblname" prefWidth="185.99999237060547" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name" />
-                    <TableColumn fx:id="tblphone" prefWidth="108.0" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Phone" />
-                    <TableColumn fx:id="tblemail" minWidth="0.0" prefWidth="195.33334350585938" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Email" />
-                    <TableColumn fx:id="tbladdress" prefWidth="156.0" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Address" />
-                    <TableColumn fx:id="tbldelete" minWidth="0.0" prefWidth="124.66668701171875" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" />
+                    <TableColumn fx:id="tblname" prefWidth="185.99999237060547" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Name" />
+                    <TableColumn fx:id="tblphone" prefWidth="108.0" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Phone" />
+                    <TableColumn fx:id="tblemail" minWidth="0.0" prefWidth="195.33334350585938" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Email" />
+                    <TableColumn fx:id="tbladdress" prefWidth="156.0" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Address" />
+                    <TableColumn fx:id="tbldelete" minWidth="0.0" prefWidth="124.66668701171875" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" />
                 </columns>
             </TableView>
             <Label layoutX="88.0" layoutY="88.0" prefHeight="27.0" prefWidth="92.0" text="Name " />
@@ -44,6 +44,8 @@
                <Image url="@../image/Logo3.png" />
             </image>
          </ImageView>
+         <TextField fx:id="txtid" layoutX="86.0" layoutY="280.0" />
+         <Label layoutX="88.0" layoutY="247.0" prefHeight="27.0" prefWidth="92.0" text="ID" />
         </Pane>
     </children>
 </AnchorPane>

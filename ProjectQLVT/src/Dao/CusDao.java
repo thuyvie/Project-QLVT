@@ -18,7 +18,7 @@ import model.customer;
  */
 public class CusDao {
     public boolean insert(customer cus)throws Exception {
-        String sql = "INSERT INTO product( NameCus, PhoneCus, EmailCus, AddressCus)"
+        String sql = "INSERT INTO customer( NameCus, PhoneCus, EmailCus, AddressCus)"
                 + "values(?,?,?,?)";
         try (
                 Connection con = DBConnect.getConnect();
@@ -41,7 +41,7 @@ public class CusDao {
         try (
                 Connection con = DBConnect.getConnect();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
-                pstmt.setInt(5, cus.getID());
+                pstmt.setString(5, cus.getID());
                 pstmt.setString(1, cus.getNameCus());
                 pstmt.setString(2, cus.getPhoneCus());
                 pstmt.setString(3, cus.getEmailCus());
@@ -60,7 +60,7 @@ public class CusDao {
              try(ResultSet rs= pstmt.executeQuery()){         
                 while (rs.next()) {
                 customer cus = new customer();
-                cus.setID(rs.getInt("ID"));
+                cus.setID(rs.getString("ID"));
                 cus.setNameCus(rs.getString("NameCus"));
                 cus.setPhoneCus(rs.getString("PhoneCus"));
                 cus.setEmailCus(rs.getString("EmailCus"));

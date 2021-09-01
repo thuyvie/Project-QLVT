@@ -10,7 +10,7 @@ package model;
  * @author Mun Chan
  */
 public class customer {
-    int ID;
+    String ID;
     String NameCus;
     String PhoneCus;
     String AddressCus;
@@ -19,7 +19,7 @@ public class customer {
     public customer() {
     }
 
-    public customer(int ID, String NameCus, String PhoneCus, String AddressCus, String EmailCus) {
+    public customer(String ID, String NameCus, String PhoneCus, String AddressCus, String EmailCus) {
         this.ID = ID;
         this.NameCus = NameCus;
         this.PhoneCus = PhoneCus;
@@ -27,13 +27,15 @@ public class customer {
         this.EmailCus = EmailCus;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int IDCus) {
-        this.ID = IDCus;
+    public void setID(String ID) {
+        this.ID = ID;
     }
+
+   
 
     public String getNameCus() {
         return NameCus;

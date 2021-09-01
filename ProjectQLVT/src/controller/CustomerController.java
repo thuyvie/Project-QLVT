@@ -87,6 +87,8 @@ public class CustomerController implements Initializable {
     Connection connection = null;
     private boolean Save;
     private boolean isUpdate;
+    @FXML
+    private TextField txtid;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -97,17 +99,17 @@ public class CustomerController implements Initializable {
         Statement stmt;
         ResultSet rs;
         try {
-             String sql = "SELECT customer.NameCus,customer.PhoneCus,customer.EmailCus,customer.Address FROM customer";
+             String sql = "SELECT  customer.NameCus,customer.PhoneCus,customer.EmailCus,customer.AddressCus, customer.ID FROM customer ORDER BY ID DESC";
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 customer cus = new customer();
-                cus.setID(rs.getInt("ID"));
                 cus.setNameCus(rs.getString("NameCus"));
                 cus.setPhoneCus(rs.getString("PhoneCus"));
                 cus.setEmailCus(rs.getString("EmailCus"));
                 cus.setAddressCus(rs.getString("AddressCus"));
+                cus.setID(rs.getString("ID"));
                 listcus.add(cus);
             }
         } catch (Exception e) {
@@ -117,10 +119,10 @@ public class CustomerController implements Initializable {
     }
      public void showCus() {
         ObservableList<customer> list = findAll();
-        tblname.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        tblphone.setCellValueFactory(new PropertyValueFactory<>("Phone"));
-        tblemail.setCellValueFactory(new PropertyValueFactory<>("Account"));
-        tbladdress.setCellValueFactory(new PropertyValueFactory<>("Salary"));
+        tblname.setCellValueFactory(new PropertyValueFactory<>("NameCus"));
+        tblphone.setCellValueFactory(new PropertyValueFactory<>("PhoneCus"));
+        tblemail.setCellValueFactory(new PropertyValueFactory<>("EmailCus"));
+        tbladdress.setCellValueFactory(new PropertyValueFactory<>("AddressCus"));
         Callback<TableColumn<customer, String>, TableCell<customer, String>> cellFoctory = (TableColumn<customer, String> param) -> {
             final TableCell<customer, String> cell = new TableCell<customer, String>() {
 
@@ -180,11 +182,12 @@ public class CustomerController implements Initializable {
 
     @FXML
     private void clickTable(MouseEvent event) {
-         customer cus = tablecusview.getSelectionModel().getSelectedItem();
+        customer cus = tablecusview.getSelectionModel().getSelectedItem();
         txtname.setText(cus.getNameCus());
         txtphone.setText(cus.getPhoneCus());
         txtemail.setText(cus.getEmailCus());
         txtaddress.setText(cus.getAddressCus());
+        txtid.setText(cus.getID());
     }
 
     @FXML
@@ -248,7 +251,7 @@ public class CustomerController implements Initializable {
             if (CusDao.insert(cus)) {
                 (new Alert(Alert.AlertType.CONFIRMATION, "Customer Added Successfully", new ButtonType[]{ButtonType.OK})).show();
                 tilte = "Added Successful";
-                message = "Product Is Added";
+                message = "Customer Is Added";
                 tray.setTitle(tilte);
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.SUCCESS);
@@ -283,6 +286,7 @@ public class CustomerController implements Initializable {
     private void UpdateAction(ActionEvent event) throws Exception {
         try {
            customer cus = new customer();
+           cus.setID(txtid.getText());
            cus.setNameCus(txtname.getText());
            cus.setAddressCus(txtaddress.getText());
            cus.setEmailCus(txtemail.getText());
