@@ -106,7 +106,7 @@
                         <Insets left="32.0" right="15.0" top="23.0" />
                      </HBox.margin>
                   </FontAwesomeIconView>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#page3" prefHeight="70.0" prefWidth="111.0" styleClass="btns" text="STAFF" textFill="#b7b3b3">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#page4" prefHeight="70.0" prefWidth="111.0" styleClass="btns" text="STAFF" textFill="#b7b3b3">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -116,6 +116,28 @@
                   </Button>
                </children>
             </HBox>
+            <HBox prefHeight="70.0" prefWidth="173.0" styleClass="btns">
+               <children>
+                  <FontAwesomeIconView glyphName="LIST" glyphStyle="-fx-fill:#7c8184" size="20">
+                     <HBox.margin>
+                        <Insets left="32.0" right="15.0" top="23.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#page5" prefHeight="70.0" prefWidth="111.0" styleClass="btns" text="REVENUE" textFill="#b7b3b3">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="25.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="btnLogout" mnemonicParsing="false" onMouseClicked="#btnLogout" prefHeight="44.0" prefWidth="180.0" style="-fx-background-radius: 0 20 20 0; -fx-text-fill: #000;" styleClass="btnLogout" text="LOGOUT">
+               <VBox.margin>
+                  <Insets top="4.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </left>

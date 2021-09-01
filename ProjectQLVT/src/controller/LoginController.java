@@ -62,55 +62,9 @@ public class LoginController implements Initializable {
         System.exit(0);
     }
 
-    private void login(ActionEvent event) throws SQLException, IOException {
-//        String username = tfusername.getText();
-//        String pass = tfpassword.getText();
-//        
-//        if (username.equals("") && pass.equals("")) {
-//            
-//            JOptionPane.showMessageDialog(null, "UserName or Password Blank");
-//        }
-//        else{
-//            try {
-//                Class.forName("com.mysql.cj.jdbc.Driver");
-//                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/qlvt?useSSL=false", "root","");
-//                
-//                pst = conn.prepareStatement("select * from emp where Account = ? and Password = ?");
-//                pst.setString(1, username);
-//                pst.setString(2, pass);
-//                
-//                rs = pst.executeQuery();
-//                
-//                if (rs.next()) {
-//
-//                    
-//                    btnlogin.getScene().getWindow().hide();
-//                    Parent root = FXMLLoader.load(getClass().getResource("/view/MenuUI.fxml"));
-//                    Stage stage = new Stage();
-//                    Scene scene = new Scene(root);
-//                    stage.setScene(scene);
-//                    stage.show();
-//                    
-//                }
-//                else{
-//                   JOptionPane.showMessageDialog(null, "Login Failed"); 
-//                   
-//                   tfusername.setText("");
-//                   tfpassword.setText("");
-//                   tfusername.requestFocus();
-//                }
-//            
-//            } catch (ClassNotFoundException ex) {
-//                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (SQLException ex){
-//                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-    }
-
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
-         String username = tfusername.getText();
+        String username = tfusername.getText();
         String pass = tfpassword.getText();
         
         if (username.equals("") && pass.equals("")) {
@@ -122,13 +76,13 @@ public class LoginController implements Initializable {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/qlvt?useSSL=false", "root","");
                 
-                pst = conn.prepareStatement("select * from employee where Account = ? and Password = ?");
+                pst = conn.prepareStatement("select * from emp where Account = ? and Password = ?");
                 pst.setString(1, username);
                 pst.setString(2, pass);
                 
                 rs = pst.executeQuery();
                 
-                if (rs.next()) {
+                if (rs.next() ) {
 
                     
                     btnlogin.getScene().getWindow().hide();
@@ -154,6 +108,7 @@ public class LoginController implements Initializable {
             }
         }
     }
+    
 
    
 

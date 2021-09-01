@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.Pane?>
-
-<Pane id="AnchorPane" prefHeight="600.0" prefWidth="919.0" style="-fx-background-color: #333645; -fx-background-radius: 0 40 40 0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Page3Controller">
-   <children>
-      <Pane layoutX="125.0" layoutY="9.0" prefHeight="582.0" prefWidth="785.0" style="-fx-background-color: #fff; -fx-background-radius: 40 40 40 40;" />
-   </children>
-</Pane>

@@ -60,8 +60,6 @@ import model.catemp;
 public class EmployeeController implements Initializable {
 
     @FXML
-    private AnchorPane pane;
-    @FXML
     private TableColumn<emp, String> tblname;
     @FXML
     private TextField txtname;
@@ -392,6 +390,10 @@ public class EmployeeController implements Initializable {
 //    @FXML
 //    private void vendorAction(ActionEvent event) {
 //    }
+
+    @FXML
+    private void vendorAction(ActionEvent event) {
+    }
 
 
     

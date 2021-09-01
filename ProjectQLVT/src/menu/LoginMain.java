@@ -25,7 +25,7 @@ public class LoginMain extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml")); 
-//       Parent root = FXMLLoader.load(getClass().getResource("/view/showPayment.fxml"));
+
         Scene scene = new Scene(root);
 
         

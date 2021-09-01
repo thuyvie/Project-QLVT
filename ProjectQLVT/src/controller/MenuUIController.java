@@ -16,11 +16,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 
 /**
@@ -38,6 +42,9 @@ public class MenuUIController implements Initializable {
     private Pane ap;
     @FXML
     private LineChart<String, Number> linechart;
+    @FXML
+    private Button btnLogout;
+
     
 
 
@@ -70,7 +77,7 @@ public class MenuUIController implements Initializable {
 
     @FXML
     private void page3(MouseEvent event) throws IOException {
-        loadUI("page3");
+        loadUI("Customer");
 //       setUi("page3");
 //        new FadeIn(contentArea).play();
     }
@@ -85,10 +92,7 @@ public class MenuUIController implements Initializable {
         }
         boderPane.setCenter(root);
     }
-//private void setUi(String location) throws IOException{
-//        contentArea.getChildren().clear();
-//        contentArea.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/" + location + ".fxml")));
-//    }
+
     private void inilinechart(){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.getData().add(new XYChart.Data<>("Dec",213));
@@ -100,4 +104,31 @@ public class MenuUIController implements Initializable {
         linechart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
         series.getNode().setStyle("-fx-stroke: #fff");
     }
+    private void LoginSuccessfull(){
+       
+    }
+
+    @FXML
+    private void btnLogout(MouseEvent event) throws IOException {
+        btnLogout.getScene().getWindow().hide();
+         
+        Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml")); 
+        Scene scene = new Scene(root);
+
+        
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    @FXML
+    private void page4(MouseEvent event) {
+        loadUI("Employee");
+    }
+
+    @FXML
+    private void page5(MouseEvent event) {
+        loadUI("Revenue");
+    }
+
 }

@@ -50,8 +50,6 @@ import util.DBConnect;
 public class CustomerController implements Initializable {
 
     @FXML
-    private AnchorPane pane;
-    @FXML
     private TableView<customer> tablecusview;
     @FXML
     private TableColumn<customer, String> tblname;
