@@ -19,8 +19,8 @@ import model.catemp;
  */
 public class EmpDao {
     public boolean insert(emp emp)throws Exception {
-        String sql = "INSERT INTO product( ID,NameEmp,PhoneEmp,Account, Password, Salary,IDCateEmp)"
-                + "values(?,?,?,?,?,?)";
+        String sql = "INSERT INTO emp( ID, NameEmp, PhoneEmp, Account, Password, Salary,IDCateEmp)"
+                + "values(?,?,?,?,?,?,?)";
         try (
                 Connection con = DBConnect.getConnect();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -48,7 +48,7 @@ public class EmpDao {
                 pstmt.setString(2, emp.getPhoneEmp());
                 pstmt.setString(3, emp.getAccount());
                 pstmt.setString(4, emp.getPassword());
-                pstmt.setDouble(4, emp.getSalary());
+                pstmt.setDouble(5, emp.getSalary());
                 pstmt.setString(6, emp.getCate().getID());
                 
             return pstmt.executeUpdate() > 0;
@@ -56,7 +56,7 @@ public class EmpDao {
     }
      public emp searchEmp(String NameEmp) {
         ObservableList<emp> listproduct = FXCollections.observableArrayList();
-         String sql = "SELECT emp.ID, emp.NameEmp, emp.Phone, emp.Account, emp.Password, emp.Salary, emp.IDCateEmp, catemp.EmpCate FROM emp INNER JOIN catemp ON emp.IDCateEmp = catemp.ID where NameEmp='" + NameEmp + "'";
+         String sql = "SELECT emp.ID, emp.NameEmp, emp.Phone, emp.Account, emp.Password, emp.Salary, emp.IDCateEmp, catemp.EmpCate FROM emp INNER JOIN catemp ON emp.IDCateEmp = catemp.IDCate where NameEmp='" + NameEmp + "'";
         Statement stmt;
         try (
             Connection con = DBConnect.getConnect();
@@ -71,7 +71,7 @@ public class EmpDao {
                 emp.setAccount(rs.getString("Account"));
                 emp.setPassword(rs.getString("Password"));
                 emp.setSalary(rs.getDouble("Salary"));
-                emp.setCate(new catemp(rs.getString("ID"), rs.getString("EmpCate")));
+                emp.setCate(new catemp(rs.getString("IDCate"), rs.getString("EmpCate")));
                 return emp;
                 }
              }

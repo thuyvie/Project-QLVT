@@ -122,13 +122,13 @@ public class EmployeeController implements Initializable {
             while (rs.next()) {
                 emp emp = new emp();
                 emp.setID(rs.getString("ID"));
-                emp.setNameEmp(rs.getString("Name"));
-                emp.setPhoneEmp(rs.getString("Phone"));
+                emp.setNameEmp(rs.getString("NameEmp"));
+                emp.setPhoneEmp(rs.getString("PhoneEmp"));
                 emp.setAccount(rs.getString("Account"));
                 emp.setPassword(rs.getString("Password"));
                 emp.setSalary(rs.getDouble("Salary"));
                 emp.setIDCateEmp(rs.getString("IDCateEmp"));
-                emp.setEmpCate(rs.getString("Rank"));
+                emp.setEmpCate(rs.getString("EmpCate"));
                 listpro.add(emp);
             }
         } catch (Exception e) {
@@ -138,11 +138,11 @@ public class EmployeeController implements Initializable {
     }
     public void showEmp() {
         ObservableList<emp> list = findAll();
-        tblname.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        tblphone.setCellValueFactory(new PropertyValueFactory<>("Phone"));
+        tblname.setCellValueFactory(new PropertyValueFactory<>("NameEmp"));
+        tblphone.setCellValueFactory(new PropertyValueFactory<>("PhoneEmp"));
         tblaccount.setCellValueFactory(new PropertyValueFactory<>("Account"));
         tblsalary.setCellValueFactory(new PropertyValueFactory<>("Salary"));
-        tblrank.setCellValueFactory(new PropertyValueFactory<>("Rank"));
+        tblrank.setCellValueFactory(new PropertyValueFactory<>("EmpCate"));
         Callback<TableColumn<emp, String>, TableCell<emp, String>> cellFoctory = (TableColumn<emp, String> param) -> {
             final TableCell<emp, String> cell = new TableCell<emp, String>() {
 
@@ -201,7 +201,7 @@ public class EmployeeController implements Initializable {
         txtphone.setText(null);
         txtsalary.setText(null);
     }
-            public void fillCBB() {
+        public void fillCBB() {
         ResultSet rs;
         try {
             ObservableList<String> listven = FXCollections.observableArrayList();
@@ -284,11 +284,11 @@ public class EmployeeController implements Initializable {
             emp emp = new emp();
             emp.setID(txtid.getText());
             emp.setNameEmp(txtname.getText());
-            catemp cate = camDao.findByName(cbb.getValue());
+            emp.setPhoneEmp(txtphone.getText());
             emp.setAccount(txtaccount.getText());
             emp.setPassword(txtpassword.getText());
             emp.setSalary(Double.parseDouble(txtsalary.getText()));
-            emp.setPhoneEmp(txtphone.getText());
+            catemp cate = camDao.findByName(cbb.getValue());
             emp.setCate(cate);
             String tilte;
             String message;
@@ -299,7 +299,7 @@ public class EmployeeController implements Initializable {
             if (empDao.insert(emp)) {
                 (new Alert(Alert.AlertType.CONFIRMATION, "Employee Added Successfully", new ButtonType[]{ButtonType.OK})).show();
                 tilte = "Added Successful";
-                message = "Product Is Added";
+                message = "Employee Is Added";
                 tray.setTitle(tilte);
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.SUCCESS);
@@ -336,11 +336,11 @@ public class EmployeeController implements Initializable {
            emp emp = new emp();
             emp.setID(txtid.getText());
             emp.setNameEmp(txtname.getText());
-            catemp cate = camDao.findByName(cbb.getValue());
+            emp.setPhoneEmp(txtphone.getText());
             emp.setAccount(txtaccount.getText());
             emp.setPassword(txtpassword.getText());
             emp.setSalary(Double.parseDouble(txtsalary.getText()));
-            emp.setPhoneEmp(txtphone.getText());
+            catemp cate = camDao.findByName(cbb.getValue());
             emp.setCate(cate);
             String tilte;
             String message;

@@ -15,26 +15,26 @@
         <Pane layoutX="9.0" layoutY="8.0" prefHeight="584.0" prefWidth="900.0" style="-fx-background-color: #e8eaf6; -fx-background-radius: 40 40 40 40;">
             <TableView fx:id="tableproductview" layoutX="57.0" layoutY="366.0" onMouseClicked="#clickTable" prefHeight="176.0" prefWidth="789.0">
                 <columns>
-                    <TableColumn fx:id="tblname" prefWidth="162.00000762939453" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Name" />
-                    <TableColumn fx:id="tblphone" prefWidth="127.99995422363281" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Phone" />
-                    <TableColumn fx:id="tblaccount" prefWidth="168.00003051757812" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Account" />
-                    <TableColumn fx:id="tblsalary" prefWidth="103.33331298828125" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Salary" />
-                    <TableColumn fx:id="tblrank" prefWidth="98.66668701171875" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" text="Rank" />
-                    <TableColumn fx:id="tbldelete" prefWidth="125.6666259765625" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF);" />
+                    <TableColumn fx:id="tblname" prefWidth="162.00000762939453" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Name" />
+                    <TableColumn fx:id="tblphone" prefWidth="127.99995422363281" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Phone" />
+                    <TableColumn fx:id="tblaccount" prefWidth="168.00003051757812" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Account" />
+                    <TableColumn fx:id="tblsalary" prefWidth="103.33331298828125" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Salary" />
+                    <TableColumn fx:id="tblrank" prefWidth="98.66668701171875" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Rank" />
+                    <TableColumn fx:id="tbldelete" prefWidth="125.6666259765625" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" />
                 </columns>
             </TableView>
             <Label layoutX="377.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" text="Name " />
             <TextField fx:id="txtname" layoutX="375.0" layoutY="92.0" />
             <Label layoutX="134.0" layoutY="123.0" prefHeight="27.0" prefWidth="92.0" text="Phone" />
-            <TextField fx:id="txtaccount" layoutX="134.0" layoutY="234.0" />
+            <TextField fx:id="txtaccount" layoutX="377.0" layoutY="158.0" />
             <TextField fx:id="txtphone" layoutX="134.0" layoutY="158.0" />
-            <Label layoutX="134.0" layoutY="197.0" prefHeight="27.0" prefWidth="92.0" text="Account" />
-            <Label layoutX="134.0" layoutY="274.0" prefHeight="27.0" prefWidth="92.0" text="Salary" />
-            <TextField fx:id="txtsalary" layoutX="134.0" layoutY="306.0" />
-            <Label layoutX="377.0" layoutY="123.0" prefHeight="27.0" prefWidth="92.0" text="Rank" />
-            <Label layoutX="377.0" layoutY="197.0" prefHeight="27.0" prefWidth="92.0" text="Password" />
-            <TextField fx:id="txtpassword" layoutX="375.0" layoutY="234.0" />
-            <JFXComboBox fx:id="cbb" layoutX="377.0" layoutY="151.0" onAction="#vendorAction" prefHeight="26.0" prefWidth="149.0" />
+            <Label layoutX="377.0" layoutY="129.0" prefHeight="27.0" prefWidth="92.0" text="Account" />
+            <Label layoutX="377.0" layoutY="200.0" prefHeight="27.0" prefWidth="92.0" text="Salary" />
+            <TextField fx:id="txtsalary" layoutX="377.0" layoutY="234.0" />
+            <Label layoutX="134.0" layoutY="274.0" prefHeight="27.0" prefWidth="92.0" text="Rank" />
+            <Label layoutX="134.0" layoutY="200.0" prefHeight="27.0" prefWidth="92.0" text="Password" />
+            <TextField fx:id="txtpassword" layoutX="134.0" layoutY="234.0" />
+            <JFXComboBox fx:id="cbb" layoutX="128.0" layoutY="312.0" onAction="#vendorAction" prefHeight="26.0" prefWidth="149.0" />
             <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="591.0" layoutY="104.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
             <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="591.0" layoutY="164.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
             <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="591.0" layoutY="227.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />

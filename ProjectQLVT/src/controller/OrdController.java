@@ -129,7 +129,7 @@ public class OrdController implements Initializable {
     int total;
     int qty;
     int stockQuantity;
-    double rs;
+    double rs = 0;
     private int index;
     orderDao ordDao = new orderDao();
     product pro = new product();
@@ -154,15 +154,15 @@ public class OrdController implements Initializable {
     private ImageView box;
     @FXML
     private ImageView ds;
-   
 
     /**
      * Initializes the controller class.
      */
     void setOWE(boolean o) {
-        this.update= o;
+        this.update = o;
     }
-    void setTextField(String OrdID,String NameCus, String PhoneCus, String EmailCus, String AddressCus,String dateOrd, String timeOrd, String itemCode, String namepro, int qty, Double Price, Double Total){
+
+    void setTextField(String OrdID, String NameCus, String PhoneCus, String EmailCus, String AddressCus, String dateOrd, String timeOrd, String itemCode, String namepro, int qty, Double Price, Double Total) {
         txtorderid2.setText(OrdID);
         txtname.setText(NameCus);
         txtphone.setText(PhoneCus);
@@ -176,6 +176,7 @@ public class OrdController implements Initializable {
         txtdate.setText(dateOrd);
         txttime.setText(timeOrd);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         generateDateTime();
@@ -300,6 +301,7 @@ public class OrdController implements Initializable {
         }
 
     }
+
     @FXML
     private void orderAction(ActionEvent event) {
 
@@ -313,64 +315,87 @@ public class OrdController implements Initializable {
 //        int IDEmp = Integer.parseInt(labelemp.getText());
         double amount = Double.parseDouble(txtrs.getText());
         String note = txtnote.getText();
-        if(update == false){
+        if (update == false) {
             try {
-            boolean placeorder = ordDao.placeOrder(new ord(OrdID, NameCus, PhoneCus, EmailCus, AddressCus, dateOrd, timeOrd, items, amount, note));
-            Print(OrdID);
-            
-             if (placeorder) {
-                OrderDetailFieldRest();
-                (new Alert(Alert.AlertType.CONFIRMATION, "Order Successfully", new ButtonType[]{ButtonType.OK})).show();
-                String tilte = "ORDER SUCCESS";
-                String message = "THANK YOU FOR CUSTOMER";
-                tray.notification.TrayNotification tray = new TrayNotification();
-                AnimationType type = AnimationType.POPUP;
-                settxtoweid();
-                tray.setAnimationType(type);
-                tray.setTitle(tilte);
-                tray.setMessage(message);
-                tray.setNotificationType(NotificationType.SUCCESS);
-                tray.showAndDismiss(Duration.millis(3000));
+                boolean placeorder = ordDao.placeOrder(new ord(OrdID, NameCus, PhoneCus, EmailCus, AddressCus, dateOrd, timeOrd, items, amount, note));
+                Print(OrdID);
 
-            } else {
-                (new Alert(Alert.AlertType.ERROR, "Order  Unsuccessfully", new ButtonType[]{ButtonType.OK})).show();
+                if (placeorder) {
+                    OrderDetailFieldRest();
+                    (new Alert(Alert.AlertType.CONFIRMATION, "Order Successfully", new ButtonType[]{ButtonType.OK})).show();
+                    String tilte = "ORDER SUCCESS";
+                    String message = "THANK YOU FOR CUSTOMER";
+                    tray.notification.TrayNotification tray = new TrayNotification();
+                    AnimationType type = AnimationType.POPUP;
+                    settxtoweid();
+                    tray.setAnimationType(type);
+                    tray.setTitle(tilte);
+                    tray.setMessage(message);
+                    tray.setNotificationType(NotificationType.SUCCESS);
+                    tray.showAndDismiss(Duration.millis(3000));
+
+                } else {
+                    (new Alert(Alert.AlertType.ERROR, "Order  Unsuccessfully", new ButtonType[]{ButtonType.OK})).show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        }else{
+        } else {
             try {
-            boolean placeorder = ordDao.placeOrder3(new ord(OrdID, NameCus, PhoneCus, EmailCus, AddressCus, dateOrd, timeOrd, items, amount, note));
-            Print(OrdID);
-            
-             if (placeorder) {
-                OrderDetailFieldRest();
-                (new Alert(Alert.AlertType.CONFIRMATION, "Order Update Successfully", new ButtonType[]{ButtonType.OK})).show();
-                String tilte = "ORDER Update SUCCESS";
-                String message = "THANK YOU FOR CUSTOMER";
-                tray.notification.TrayNotification tray = new TrayNotification();
-                AnimationType type = AnimationType.POPUP;
-                settxtoweid();
-                tray.setAnimationType(type);
-                tray.setTitle(tilte);
-                tray.setMessage(message);
-                tray.setNotificationType(NotificationType.SUCCESS);
-                tray.showAndDismiss(Duration.millis(3000));
+                boolean placeorder = ordDao.placeOrder3(new ord(OrdID, NameCus, PhoneCus, EmailCus, AddressCus, dateOrd, timeOrd, items, amount, note));
+                Print(OrdID);
 
-            } else {
-                (new Alert(Alert.AlertType.ERROR, "Order  Unsuccessfully", new ButtonType[]{ButtonType.OK})).show();
+                if (placeorder) {
+                    OrderDetailFieldRest();
+                    (new Alert(Alert.AlertType.CONFIRMATION, "Order Update Successfully", new ButtonType[]{ButtonType.OK})).show();
+                    String tilte = "ORDER Update SUCCESS";
+                    String message = "THANK YOU FOR CUSTOMER";
+                    tray.notification.TrayNotification tray = new TrayNotification();
+                    AnimationType type = AnimationType.POPUP;
+                    settxtoweid();
+                    tray.setAnimationType(type);
+                    tray.setTitle(tilte);
+                    tray.setMessage(message);
+                    tray.setNotificationType(NotificationType.SUCCESS);
+                    tray.showAndDismiss(Duration.millis(3000));
+
+                } else {
+                    (new Alert(Alert.AlertType.ERROR, "Order  Unsuccessfully", new ButtonType[]{ButtonType.OK})).show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         }
     }
 
     @FXML
     private void deleteAction(ActionEvent event) {
-        items.remove(index);
-        dtm.setItems(FXCollections.observableArrayList(items));
-        reloadTotalQty();
+//        items.remove(index);
+//        dtm.setItems(FXCollections.observableArrayList(items));
+//        reloadTotalQty();
+        double tot = 0;
+        tot = Integer.parseInt(txtqty.getText()) * Double.parseDouble(txtprice.getText());
+        int selectedIndex = dtm.getSelectionModel().getSelectedIndex();
+
+        if (selectedIndex >= 0) {
+            dtm.getItems().remove(selectedIndex);
+            items.remove(selectedIndex);
+                rs = rs - tot;
+            
+        }
+
+        int qty = 0;
+        double total = 0;
+        double rs = 0;
+        for (dtmTM dtmTM : items) {
+            qty = Integer.parseInt(dtmTM.getQTY());
+            double p = Double.parseDouble(dtmTM.getPrice());
+            total = p * Integer.parseInt(dtmTM.getQTY());
+            rs += total;
+        }
+        txtqantity.setText(qty + "");
+        txttotal.setText(total + "");
+        txtrs.setText(rs + "");
     }
 
     @FXML
@@ -410,7 +435,6 @@ public class OrdController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
     @FXML
     private void searchAction1(ActionEvent event) {
@@ -460,7 +484,6 @@ public class OrdController implements Initializable {
         txtitemname.setText("");
         txtprice.setText("");
         txtqty.setText("");
-        txtorderid.setText("");
         txttrangthai.setText("");
     }
 
@@ -468,83 +491,32 @@ public class OrdController implements Initializable {
         labelemp.setText(IDEmp);
         System.out.println(IDEmp + "IDEmp");
     }
-    public int setqty(int qty){
-         int i = 1;
-         count = Integer.parseInt(txtqty.getText());
-         if(stockQuantity >= qty){
-             txtqantity.setText(count + "");
-                double total = 0;
 
-                total += Integer.parseInt(txtqty.getText()) * Double.parseDouble(txtprice.getText());
-                rs = rs + total;
-                txttotal.setText(String.valueOf(total));
-                txtrs.setText(rs + "");
-                i++;
-                String code = txtitemcode.getText();
-                String name = txtitemname.getText();
-                String price = txtprice.getText();
-                String QTY = txtqty.getText();
-                Double Total = Double.parseDouble(txttotal.getText());
-                dtmTM rowData = new dtmTM(code, name, price, QTY, Total);
-                items.add(rowData);
-                dtm.setItems(FXCollections.observableArrayList(items));
-          } else  {
-                String tilte = "Out Of Stock";
-                String message = "Please Try Another Product";
-                tray.notification.TrayNotification tray = new TrayNotification();
-                AnimationType type = AnimationType.POPUP;
-
-                tray.setAnimationType(type);
-                tray.setTitle(tilte);
-                tray.setMessage(message);
-                tray.setNotificationType(NotificationType.ERROR);
-                tray.showAndDismiss(Duration.millis(3000));
-            }
-         return 0;
-    }
     @FXML
     private void OKAction(ActionEvent event) {
-        setqty(qty);
-//        try {
-//                int i = 1;
-//                count = Integer.parseInt(txtqty.getText());
-//                if(count >= qty) {
-//                txtqantity.setText(count + "");
-//                double total = 0;
-//
-//                total += Integer.parseInt(txtqty.getText()) * Double.parseDouble(txtprice.getText());
-//                rs = rs + total;
-//                txttotal.setText(String.valueOf(total));
-//                txtrs.setText(rs + "");
-//                i++;
-//                String code = txtitemcode.getText();
-//                String name = txtitemname.getText();
-//                String price = txtprice.getText();
-//                String QTY = txtqty.getText();
-//                Double Total = Double.parseDouble(txttotal.getText());
-//                dtmTM rowData = new dtmTM(code, name, price, QTY, Total);
-//                items.add(rowData);
-//                dtm.setItems(FXCollections.observableArrayList(items));
-//            } else  {
-//                String tilte = "Out Of Stock";
-//                String message = "Please Try Another Product";
-//                tray.notification.TrayNotification tray = new TrayNotification();
-//                AnimationType type = AnimationType.POPUP;
-//
-//                tray.setAnimationType(type);
-//                tray.setTitle(tilte);
-//                tray.setMessage(message);
-//                tray.setNotificationType(NotificationType.ERROR);
-//                tray.showAndDismiss(Duration.millis(3000));
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        int i = 1;
+        count = Integer.parseInt(txtqty.getText());
+        txtqantity.setText(count + "");
+        double total = 0;
+
+        total = Integer.parseInt(txtqty.getText()) * Double.parseDouble(txtprice.getText());
+        rs = rs + total;
+        txttotal.setText(String.valueOf(total));
+        txtrs.setText(rs + "");
+        i++;
+        String code = txtitemcode.getText();
+        String name = txtitemname.getText();
+        String price = txtprice.getText();
+        String QTY = txtqty.getText();
+        Double Total = Double.parseDouble(txttotal.getText());
+        dtmTM rowData = new dtmTM(code, name, price, QTY, Total);
+        items.add(rowData);
+        dtm.setItems(FXCollections.observableArrayList(items));
     }
 
     @FXML
     private void BoxAction(MouseEvent event) {
-         try {
+        try {
             Parent parent = FXMLLoader.load(getClass().getResource("/view/Dspro.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
