@@ -249,7 +249,7 @@ public class orderDao {
      
       public product searchPro(String itemCode) {
         ObservableList<customer> listproduct = FXCollections.observableArrayList();
-         String sql = "SELECT itemCode,namepro, price, qty FROM  product  where itemCode='" + itemCode + "'";
+         String sql = "SELECT itemCode,namepro, price FROM  product  where itemCode='" + itemCode + "'";
         Statement stmt;
         try (
             Connection con = DBConnect.getConnect();
@@ -261,7 +261,6 @@ public class orderDao {
                 pro.setItemCode(rs.getString("itemCode"));
                 pro.setNamepro(rs.getString("namepro"));
                 pro.setPrice(rs.getDouble("price"));
-                pro.setQty(rs.getInt("qty"));
                 return pro;
                 }
              }
