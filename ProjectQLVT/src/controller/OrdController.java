@@ -451,7 +451,7 @@ public class OrdController implements Initializable {
                     txtitemcode.setText(pro.getItemCode());
                     txtitemname.setText(pro.getNamepro());
                     txtprice.setText(String.valueOf(pro.getPrice()));
-                    txttrangthai.setText(String.valueOf(pro.getQty()));
+                    
                 } else {
                     String tilte = "Searched Product Not Found";
                     String message = "Try Again";

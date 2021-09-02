@@ -99,7 +99,7 @@ public class orderDao {
     
      
    public boolean updateOrdStock (dtmTM orderdetail) throws Exception{
-       String sql = "update product set qty=qty-? where itemCode=?";       
+       String sql = "Update warehouse inner join product on warehouse.ProductID = product.itemCode set inventory= inventory-? where itemCode=?";       
                return CrudUtil.executeUpdate(sql,orderdetail.getQTY(), orderdetail.getCode());
    }
    
