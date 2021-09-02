@@ -48,6 +48,7 @@ import model.owe;
 import model.owe2;
 import model.product;
 import util.DBConnect;
+import util.DBConnection;
 
 /**
  * FXML Controller class
@@ -95,6 +96,12 @@ public class DsOweController implements Initializable {
     private TableColumn<owe, Double> tblowe;
     @FXML
     private TableColumn<owe, Double> tbltt;
+    @FXML
+    private JFXButton btndelete;
+    @FXML
+    private TableColumn<owe, String> tblid;
+    @FXML
+    private TextField txtid;
 
     /**
      * Initializes the controller class.
@@ -105,7 +112,7 @@ public class DsOweController implements Initializable {
         Statement stmt;
         ResultSet rs;
         try {
-            String sql = "SELECT detailowe.NameCus, detailowe.PhoneCus,detailowe.Paid, detailowe.Owe, detailowe.TotalDebt, detailowe.IdOwe, owe.EmailCus, owe.AddressCus,owe.PaymentForm,owe.status FROM detailowe INNER JOIN owe ON detailowe.IdOwe = owe.IdOwe ORDER BY IdOwe DESC";
+            String sql = "SELECT detailowe.NameCus, detailowe.PhoneCus,detailowe.Paid, detailowe.Owe, detailowe.TotalDebt, owe.IdOwe, owe.EmailCus, owe.AddressCus,owe.PaymentForm,owe.status FROM detailowe INNER JOIN owe ON detailowe.IdOwe = owe.IdOwe ORDER BY IdOwe DESC";
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
@@ -144,6 +151,7 @@ public class DsOweController implements Initializable {
         tbladdress.setCellValueFactory(new PropertyValueFactory<>("AddressCus"));
         tblform.setCellValueFactory(new PropertyValueFactory<>("PaymentForm"));
         tblstt.setCellValueFactory(new PropertyValueFactory<>("status"));
+        tblid.setCellValueFactory(new PropertyValueFactory<> ("IdOwe"));
 
 //        Callback<TableColumn<owe, String>, TableCell<owe, String>> cellFoctory = (TableColumn<owe, String> param) -> {
 //            final TableCell<owe, String> cell = new TableCell<owe, String>() {
@@ -264,6 +272,27 @@ public class DsOweController implements Initializable {
         stage.setScene(new Scene(parent));
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
+    }
+    private void delete()throws Exception{
+        String query = "delete from owe where IdOwe='" + txtid.getText() + "'";
+         excuteQuery(query);
+         showOwe();
+    }
+    private void excuteQuery(String query) throws Exception {
+        Connection con = DBConnection.openConnection();
+        Statement stmt;
+        try {
+            stmt = con.createStatement();
+            stmt.executeUpdate(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void DeleteAction(ActionEvent event) throws Exception {
+        if(event.getSource() == btndelete){
+            delete();
+        }
     }
 
 }

@@ -122,7 +122,7 @@ public class DsOrdController implements Initializable {
         try {
             String sql = ("SELECT order_detail.OrderID,orders.OrdID, orders.NameCus, orders.PhoneCus, orders.EmailCus,"
                         + "orders.AddressCus, orders.dateOrd, orders.timeOrd, order_detail.IDProduct, product.itemCode, product.namepro,"
-                        + "order_detail.qty, order_detail.Price, order_detail.Total FROM order_detail INNER JOIN orders ON order_detail.OrderID = orders.OrdID INNER JOIN product ON order_detail.IDProduct = product.itemCode");
+                        + "order_detail.qty, order_detail.Price, order_detail.Total FROM order_detail INNER JOIN orders ON order_detail.OrderID = orders.OrdID INNER JOIN product ON order_detail.IDProduct = product.itemCode ORDER BY OrderID DESC");
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
