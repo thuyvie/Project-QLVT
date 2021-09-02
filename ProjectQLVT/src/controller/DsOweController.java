@@ -96,11 +96,9 @@ public class DsOweController implements Initializable {
     private TableColumn<owe, Double> tblowe;
     @FXML
     private TableColumn<owe, Double> tbltt;
-    @FXML
     private JFXButton btndelete;
     @FXML
     private TableColumn<owe, String> tblid;
-    @FXML
     private TextField txtid;
 
     /**
@@ -273,26 +271,25 @@ public class DsOweController implements Initializable {
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
     }
-    private void delete()throws Exception{
-        String query = "delete from owe where IdOwe='" + txtid.getText() + "'";
-         excuteQuery(query);
-         showOwe();
-    }
-    private void excuteQuery(String query) throws Exception {
-        Connection con = DBConnection.openConnection();
-        Statement stmt;
-        try {
-            stmt = con.createStatement();
-            stmt.executeUpdate(query);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    private void DeleteAction(ActionEvent event) throws Exception {
-        if(event.getSource() == btndelete){
-            delete();
-        }
-    }
+//    private void delete()throws Exception{
+//        String query = "delete from owe where IdOwe='" + txtid.getText() + "'";
+//         excuteQuery(query);
+//         showOwe();
+//    }
+//    private void excuteQuery(String query) throws Exception {
+//        Connection con = DBConnection.openConnection();
+//        Statement stmt;
+//        try {
+//            stmt = con.createStatement();
+//            stmt.executeUpdate(query);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//    private void DeleteAction(ActionEvent event) throws Exception {
+//        if(event.getSource() == btndelete){
+//            delete();
+//        }
+//    }
 
 }
