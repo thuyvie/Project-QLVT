@@ -1,11 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WareHouseController">
-    
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="725.0" style="-fx-background-radius: 40 40 40 40;" stylesheets="@../css/menuui.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WareHouseController">
+   <children>
+      <TableView fx:id="tableproductview" layoutX="9.0" layoutY="366.0" onMouseClicked="#clickTable" prefHeight="204.0" prefWidth="710.0">
+         <columns>
+            <TableColumn fx:id="tblidpro" prefWidth="88.80002021789551" style="-fx-alignment: center;" text="ID Product" />
+            <TableColumn fx:id="tblinventory" prefWidth="201.60002899169922" style="-fx-alignment: center;" text="Inventory" />
+            <TableColumn fx:id="tblamount" prefWidth="198.39996337890625" style="-fx-alignment: center;" text="Input Amount" />
+            <TableColumn fx:id="tblprice" prefWidth="137.60006713867188" style="-fx-alignment: center;" text="Original Price" />
+            <TableColumn fx:id="tbldelete" prefWidth="85.5999755859375" style="-fx-alignment: center;" />
+         </columns>
+      </TableView>
+      <Label layoutX="236.0" layoutY="41.0" prefHeight="27.0" prefWidth="92.0" text="ID Product" />
+      <Label layoutX="42.0" layoutY="111.0" prefHeight="27.0" prefWidth="92.0" text="Inventory" />
+      <TextField fx:id="txtinventory" layoutX="42.0" layoutY="139.0" />
+      <Label layoutX="42.0" layoutY="174.0" prefHeight="27.0" prefWidth="92.0" text="Original Price" />
+      <TextField fx:id="txtprice" layoutX="41.0" layoutY="207.0" />
+      <Label layoutX="236.0" layoutY="111.0" prefHeight="27.0" prefWidth="92.0" text="InputAmount" />
+      <TextField fx:id="txtamount" layoutX="235.0" layoutY="139.0" />
+      <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="79.0" layoutY="287.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
+      <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="548.0" layoutY="287.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
+      <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="227.0" layoutY="287.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />
+      <Label layoutX="42.0" layoutY="41.0" prefHeight="27.0" prefWidth="92.0" text="ID" />
+      <JFXButton fx:id="btnclear" buttonType="RAISED" layoutX="385.0" layoutY="287.0" onAction="#ClearAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #F6A9A9; -fx-background-radius: 15;" text="CLEAR" />
+      <ImageView fitHeight="105.0" fitWidth="197.0" layoutX="519.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/LogoConn.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="485.0" layoutY="125.0" prefHeight="78.0" prefWidth="189.0" style="-fx-background-color: #FCD8D4; -fx-background-radius: 30;">
+         <effect>
+            <DropShadow height="11.46" radius="3.4425" width="4.31">
+               <color>
+                  <Color red="0.7157894968986511" green="0.6495126485824585" blue="0.6495126485824585" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="76.0" layoutY="14.0" prefHeight="31.0" prefWidth="37.0" text="DATE" textFill="#736f6f">
+               <font>
+                  <Font name="Symbol" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtdate" layoutX="58.0" layoutY="39.0" prefHeight="25.0" prefWidth="73.0" textFill="#d19e38">
+               <font>
+                  <Font name="Symbol" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXComboBox fx:id="cbb" layoutX="235.0" layoutY="76.0" prefHeight="26.0" prefWidth="150.0" />
+      <Label fx:id="txtd" layoutX="42.0" layoutY="68.0" prefHeight="31.0" prefWidth="150.0" />
+   </children>
 </AnchorPane>

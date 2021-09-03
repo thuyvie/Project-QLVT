@@ -187,6 +187,7 @@ public class CateproController implements Initializable {
                     String tilte = "Category Name Searched ";
                     String message = "Category Name  Is " + "" + txtname.getText() + "";
                     tray.notification.TrayNotification tray = new TrayNotification();
+                    settxtoweid();
                     AnimationType type = AnimationType.POPUP;
 
                     tray.setAnimationType(type);
@@ -275,8 +276,8 @@ public class CateproController implements Initializable {
                 tray.setTitle(tilte);
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.SUCCESS);
+                settxtoweid();
                 showCate();
-                txtid.clear();
                 txtname.clear();
             } else {
                 (new Alert(Alert.AlertType.ERROR, "Category Not Updated ", new ButtonType[]{ButtonType.OK})).show();

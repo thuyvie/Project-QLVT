@@ -67,7 +67,6 @@ public class ProductController implements Initializable {
     private TableColumn<product, String> tblsize;
     @FXML
     private TableColumn<product, Double> tblprice;
-    @FXML
     private TableColumn<product, Integer> tblqty;
     @FXML
     private TableColumn<product, String> tblbatch;
@@ -81,7 +80,6 @@ public class ProductController implements Initializable {
     private TextField txtbatch;
     @FXML
     private TextField txtsize;
-    @FXML
     private TextField txtqty;
     @FXML
     private JFXComboBox<String> cbb;
@@ -129,7 +127,7 @@ public class ProductController implements Initializable {
         Statement stmt;
         ResultSet rs;
         try {
-            String sql = "SELECT product.itemCode, product.namepro, product.vendorid, vendor.vendorname, product.description, product.size, product.price, product.qty, product.batchid, product.IDCate, cateproduct.NameCate FROM product INNER JOIN vendor ON product.vendorid = vendor.vendorID INNER JOIN cateproduct ON product.IDCate = cateproduct.ID ORDER BY itemCode DESC";
+            String sql = "SELECT product.itemCode, product.namepro, product.vendorid, vendor.vendorname, product.description, product.size, product.price,product.batchid, product.IDCate, cateproduct.NameCate FROM product INNER JOIN vendor ON product.vendorid = vendor.vendorID INNER JOIN cateproduct ON product.IDCate = cateproduct.ID ORDER BY itemCode DESC";
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
@@ -142,7 +140,6 @@ public class ProductController implements Initializable {
                 pro.setDescription(rs.getString("description"));
                 pro.setSize(rs.getString("size"));
                 pro.setPrice(rs.getDouble("price"));
-                pro.setQty(rs.getInt("qty"));
                 pro.setBatchid(rs.getString("batchid"));
                 pro.setIDCate(rs.getInt("IDCate"));
                 pro.setNameCate(rs.getString("NameCate"));
@@ -161,7 +158,6 @@ public class ProductController implements Initializable {
         tbldes.setCellValueFactory(new PropertyValueFactory<>("description"));
         tblsize.setCellValueFactory(new PropertyValueFactory<>("size"));
         tblprice.setCellValueFactory(new PropertyValueFactory<>("price"));
-        tblqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         tblbatch.setCellValueFactory(new PropertyValueFactory<>("batchid"));
         tblcate.setCellValueFactory(new PropertyValueFactory<> ("NameCate"));
         Callback<TableColumn<product, String>, TableCell<product, String>> cellFoctory = (TableColumn<product, String> param) -> {
@@ -265,7 +261,6 @@ public class ProductController implements Initializable {
         txtdes.setText(p.getDescription());
         txtsize.setText(p.getSize());
         txtprice.setText(String.valueOf(p.getPrice()));
-        txtqty.setText(String.valueOf(p.getQty()));
         txtbatch.setText(p.getBatchid());
         cbbcate.setValue(p.getNameCate());
     }
@@ -288,7 +283,6 @@ public class ProductController implements Initializable {
                 txtdes.setText(prod.getDescription());
                 txtsize.setText(prod.getSize());
                 txtprice.setText(String.valueOf(prod.getPrice()));
-                txtqty.setText(String.valueOf(prod.getQty()));
                 txtbatch.setText(prod.getBatchid());
                 cbbcate.setValue(prod.getCate().getNameCate());
                 String tilte = "Product Searched ";
@@ -329,7 +323,6 @@ public class ProductController implements Initializable {
             pro.setDescription(txtdes.getText());
             pro.setSize(txtsize.getText());
             pro.setPrice(Double.parseDouble(txtprice.getText()));
-            pro.setQty(Integer.parseInt(txtqty.getText()));
             pro.setBatchid(txtbatch.getText());
             catepro cate = catedao.findByName(cbbcate.getValue());
             pro.setVen(ven);
@@ -384,7 +377,6 @@ public class ProductController implements Initializable {
             pro.setDescription(txtdes.getText());
             pro.setSize(txtsize.getText());
             pro.setPrice(Double.parseDouble(txtprice.getText()));
-            pro.setQty(Integer.parseInt(txtqty.getText()));
             pro.setBatchid(txtbatch.getText());
             catepro cate = catedao.findByName(cbbcate.getValue());
             pro.setVen(ven);

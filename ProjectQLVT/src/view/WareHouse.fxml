@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,17 +16,16 @@
 
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="725.0" style="-fx-background-radius: 40 40 40 40;" stylesheets="@../css/menuui.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WareHouseController">
    <children>
-      <TableView fx:id="tableproductview" layoutX="9.0" layoutY="366.0" onMouseClicked="#clickTable" prefHeight="176.0" prefWidth="709.0">
+      <TableView fx:id="tableproductview" layoutX="9.0" layoutY="366.0" onMouseClicked="#clickTable" prefHeight="204.0" prefWidth="710.0">
          <columns>
             <TableColumn fx:id="tblidpro" prefWidth="88.80002021789551" style="-fx-alignment: center;" text="ID Product" />
             <TableColumn fx:id="tblinventory" prefWidth="201.60002899169922" style="-fx-alignment: center;" text="Inventory" />
             <TableColumn fx:id="tblamount" prefWidth="198.39996337890625" style="-fx-alignment: center;" text="Input Amount" />
-            <TableColumn fx:id="tblprice" prefWidth="159.20004272460938" style="-fx-alignment: center;" text="Original Price" />
-            <TableColumn fx:id="tbldelete" prefWidth="62.4000244140625" style="-fx-alignment: center;" />
+            <TableColumn fx:id="tblprice" prefWidth="137.60006713867188" style="-fx-alignment: center;" text="Original Price" />
+            <TableColumn fx:id="tbldelete" prefWidth="85.5999755859375" style="-fx-alignment: center;" />
          </columns>
       </TableView>
       <Label layoutX="236.0" layoutY="41.0" prefHeight="27.0" prefWidth="92.0" text="ID Product" />
-      <TextField fx:id="txtidpro" layoutX="235.0" layoutY="76.0" />
       <Label layoutX="42.0" layoutY="111.0" prefHeight="27.0" prefWidth="92.0" text="Inventory" />
       <TextField fx:id="txtinventory" layoutX="42.0" layoutY="139.0" />
       <Label layoutX="42.0" layoutY="174.0" prefHeight="27.0" prefWidth="92.0" text="Original Price" />
@@ -35,7 +35,6 @@
       <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="79.0" layoutY="287.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
       <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="548.0" layoutY="287.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
       <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="227.0" layoutY="287.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />
-      <TextField fx:id="txxtid" layoutX="42.0" layoutY="76.0" />
       <Label layoutX="42.0" layoutY="41.0" prefHeight="27.0" prefWidth="92.0" text="ID" />
       <JFXButton fx:id="btnclear" buttonType="RAISED" layoutX="385.0" layoutY="287.0" onAction="#ClearAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #F6A9A9; -fx-background-radius: 15;" text="CLEAR" />
       <ImageView fitHeight="105.0" fitWidth="197.0" layoutX="519.0" pickOnBounds="true" preserveRatio="true">
@@ -64,5 +63,7 @@
             </Label>
          </children>
       </Pane>
+      <JFXComboBox fx:id="cbb" layoutX="235.0" layoutY="76.0" prefHeight="26.0" prefWidth="150.0" />
+      <Label fx:id="txtd" layoutX="42.0" layoutY="68.0" prefHeight="31.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

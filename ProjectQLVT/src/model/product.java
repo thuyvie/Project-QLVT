@@ -35,6 +35,11 @@ public class product {
         this.batchid = batchid;
         this.NameCate = NameCate;
     }
+
+    public product(String itemCode, String namepro) {
+        this.itemCode = itemCode;
+        this.namepro = namepro;
+    }
     
     public String getItemCode() {
         return itemCode;

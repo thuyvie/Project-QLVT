@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/DThuController.java</file>
+            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/ProductController.java</file>
+            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/Dao/productDao.java</file>
             <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/menu/FXMain.java</file>
+            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/Dao/wareDao.java</file>
             <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/OrdController.java</file>
-            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/Dao/orderDao.java</file>
+            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/WareHouseController.java</file>
+            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/model/warehouse.java</file>
         </group>
     </open-files>
 </project-private>
