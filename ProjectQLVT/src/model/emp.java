@@ -17,9 +17,10 @@ public class emp {
     String Password;
     Double Salary;
     String IDCateEmp;
+    int IDCate;
     String EmpCate;
     private catemp cate;
-
+    
     public emp() {
     }
 
@@ -35,6 +36,22 @@ public class emp {
         this.cate = cate;
     }
 
+    public emp(String ID, String NameEmp, String PhoneEmp, String Account, String Password, Double Salary, int IDCate, catemp cate) {
+        this.ID = ID;
+        this.NameEmp = NameEmp;
+        this.PhoneEmp = PhoneEmp;
+        this.Account = Account;
+        this.Password = Password;
+        this.Salary = Salary;
+        this.IDCate = IDCate;
+        this.cate = cate;
+    }
+
+    public emp(String Account, String Password) {
+        this.Account = Account;
+        this.Password = Password;
+    }
+    
     public String getID() {
         return ID;
     }
@@ -105,6 +122,14 @@ public class emp {
 
     public void setCate(catemp cate) {
         this.cate = cate;
+    }
+
+    public int getIDCate() {
+        return IDCate;
+    }
+
+    public void setIDCate(int IDCate) {
+        this.IDCate = IDCate;
     }
     
 }
