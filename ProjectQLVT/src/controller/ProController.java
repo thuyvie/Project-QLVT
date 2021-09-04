@@ -22,7 +22,7 @@ import javafx.scene.layout.VBox;
  *
  * @author ASUS
  */
-public class Page2Controller implements Initializable {
+public class ProController implements Initializable {
 
     @FXML
     private VBox pane;
@@ -34,6 +34,8 @@ public class Page2Controller implements Initializable {
     private Pane context;
     @FXML
     private JFXButton btnlogin2;
+    @FXML
+    private JFXButton btnlogin3;
 
     /**
      * Initializes the controller class.
@@ -62,6 +64,12 @@ public class Page2Controller implements Initializable {
     @FXML
     private void vendor(MouseEvent event) throws IOException {
         setUi("vendor");
+        new FadeIn(context).play();
+    }
+
+    @FXML
+    private void warehouse(MouseEvent event) throws IOException {
+        setUi("Warehouse");
         new FadeIn(context).play();
     }
     

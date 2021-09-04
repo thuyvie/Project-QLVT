@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="boderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: transparent;" styleClass="borderpane" stylesheets="@../css/menuui.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuWareController">
+   <left>
+      <VBox prefHeight="600.0" prefWidth="180.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" opacity="0.94" prefHeight="49.0" prefWidth="180.0" styleClass="lbl" text="MATERIAL" textFill="#ffdada">
+               <font>
+                  <Font name="Bauhaus 93" size="23.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" opacity="0.94" prefHeight="32.0" prefWidth="180.0" styleClass="lbl" text="MANAGEMENT" textFill="#ffdada">
+               <font>
+                  <Font name="Bauhaus 93" size="23.0" />
+               </font>
+            </Label>
+            <HBox layoutX="10.0" layoutY="177.0" prefHeight="70.0" prefWidth="173.0" styleClass="btns">
+               <children>
+                  <FontAwesomeIconView glyphName="XING" glyphStyle="-fx-fill:#7c8184" size="20">
+                     <HBox.margin>
+                        <Insets left="30.0" right="15.0" top="23.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#warehouse" prefHeight="70.0" prefWidth="113.0" styleClass="btns" text="WAREHOUSE" textFill="#b7b3b3">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="25.0" />
+                     </padding>
+                     
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="btnLogout" mnemonicParsing="false" onMouseClicked="#btnLogout" prefHeight="44.0" prefWidth="180.0" style="-fx-background-radius: 0 20 20 0; -fx-text-fill: #000;" styleClass="btnLogout" text="LOGOUT">
+               <VBox.margin>
+                  <Insets top="350.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <AnchorPane fx:id="contentArea" prefHeight="600.0" prefWidth="919.0" style="-fx-background-color: #333645;" styleClass="anchor" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="ap" layoutX="10.0" layoutY="10.0" prefHeight="582.0" prefWidth="901.0" style="-fx-background-radius: 40 40 40 40; -fx-background-color: #ffe8eb;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <ImageView fitHeight="417.0" fitWidth="737.0" layoutX="82.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Welcome%20Staff.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

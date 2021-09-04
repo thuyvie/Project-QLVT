@@ -18,7 +18,18 @@
    <left>
       <VBox prefHeight="600.0" prefWidth="180.0" styleClass="sidebar" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" opacity="0.94" prefHeight="97.0" prefWidth="225.0" styleClass="lbl" text="QUAN LY VAT TU" textFill="#ffdada">
+            <Label alignment="CENTER" opacity="0.94" prefHeight="49.0" prefWidth="180.0" styleClass="lbl" text="MATERIAL" textFill="#ffdada">
+               <font>
+                  <Font name="Bauhaus 93" size="23.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" opacity="0.94" prefHeight="32.0" prefWidth="180.0" styleClass="lbl" text="MANAGEMENT" textFill="#ffdada">
                <font>
                   <Font name="Bauhaus 93" size="23.0" />
                </font>
@@ -44,13 +55,12 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="132.0" prefHeight="70.0" prefWidth="173.0" styleClass="btns">
                <children>
-                  <FontAwesomeIconView glyphStyle="-fx-fill:#7c8184" size="20" text="" textAlignment="CENTER">
+                  <FontAwesomeIconView glyphName="FOLDER" glyphStyle="-fx-fill:#7c8184" size="20" wrappingWidth="20.578115463256836">
                      <HBox.margin>
-                        <Insets left="32.0" right="15.0" top="23.0" />
+                        <Insets left="30.0" right="15.0" top="23.0" />
                      </HBox.margin>
-                     
                   </FontAwesomeIconView>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#page1" prefHeight="70.0" prefWidth="113.0" styleClass="btns" text="ORDER" textAlignment="CENTER" textFill="#b7b3b3">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#page1" prefHeight="70.0" prefWidth="113.0" styleClass="btns" text="ORDER" textFill="#b7b3b3">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -63,11 +73,10 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="177.0" prefHeight="70.0" prefWidth="173.0" styleClass="btns">
                <children>
-                  <FontAwesomeIconView glyphStyle="-fx-fill:#7c8184" size="20" text="">
+                  <FontAwesomeIconView glyphName="XING" glyphStyle="-fx-fill:#7c8184" size="20">
                      <HBox.margin>
-                        <Insets left="32.0" right="15.0" top="23.0" />
+                        <Insets left="30.0" right="15.0" top="23.0" />
                      </HBox.margin>
-                     
                   </FontAwesomeIconView>
                   <Button alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#page2" prefHeight="70.0" prefWidth="113.0" styleClass="btns" text="WAREHOUSE" textFill="#b7b3b3">
                      <HBox.margin>
@@ -82,7 +91,7 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="223.0" prefHeight="70.0" prefWidth="173.0" styleClass="btns">
                <children>
-                  <FontAwesomeIconView glyphName="" glyphStyle="-fx-fill:#7c8184" size="20">
+                  <FontAwesomeIconView glyphName="BOOK" glyphStyle="-fx-fill:#7c8184" size="20" text="">
                      <HBox.margin>
                         <Insets left="32.0" right="15.0" top="23.0" />
                      </HBox.margin>
