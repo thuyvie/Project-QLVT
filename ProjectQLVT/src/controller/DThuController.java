@@ -56,7 +56,7 @@ public class DThuController implements Initializable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        
+
         try {
             owe();
         } catch (SQLException throwables) {
@@ -95,10 +95,10 @@ public class DThuController implements Initializable {
         tblowe.setCellValueFactory(new PropertyValueFactory<>("TotalDebt"));
         tbltotal.setItems(list);
     }
-        private void paid() throws SQLException, ClassNotFoundException {
+
+    private void paid() throws SQLException, ClassNotFoundException {
         ResultSet set = DBConnect.getConnect().
-                prepareStatement
-                        ("SELECT   SUM(Paid) SalesQuantity FROM detailowe")
+                prepareStatement("SELECT   SUM(Paid) SalesQuantity FROM detailowe")
                 .executeQuery();
         if (set.next()) {
             int customerCount = set.getInt(1);
@@ -106,10 +106,10 @@ public class DThuController implements Initializable {
         }
 
     }
-        private void owe() throws SQLException, ClassNotFoundException {
+
+    private void owe() throws SQLException, ClassNotFoundException {
         ResultSet set = DBConnect.getConnect().
-                prepareStatement
-                        ("SELECT   SUM(TotalDebt) SalesQuantity FROM detailowe")
+                prepareStatement("SELECT   SUM(TotalDebt) SalesQuantity FROM detailowe")
                 .executeQuery();
         if (set.next()) {
             int customerCount = set.getInt(1);

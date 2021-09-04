@@ -30,6 +30,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
+
 /**
  * FXML Controller class
  *
@@ -47,14 +48,14 @@ public class LoginController implements Initializable {
     private PasswordField tfpassword;
     @FXML
     private JFXButton btnlogin;
-    
+
     Connection conn;
     PreparedStatement pst;
     ResultSet rs;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+
     }
 
     @FXML
@@ -66,51 +67,70 @@ public class LoginController implements Initializable {
     private void handleButtonAction(ActionEvent event) throws IOException {
         String username = tfusername.getText();
         String pass = tfpassword.getText();
-        
+
         if (username.equals("") && pass.equals("")) {
-            
+
             JOptionPane.showMessageDialog(null, "UserName or Password Blank");
-        }
-        else{
+        } else {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/qlvt?useSSL=false", "root","");
-                
-                pst = conn.prepareStatement("select * from emp where Account = ? and Password = ?");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/qlvt?useSSL=false", "root", "");
+
+                pst = conn.prepareStatement("select * from emp where Account = ? and Password = ? ");
                 pst.setString(1, username);
                 pst.setString(2, pass);
-                
-                rs = pst.executeQuery();
-                
-                if (rs.next() ) {
 
-                    
+                rs = pst.executeQuery();
+
+                if (username.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("123")) {
                     btnlogin.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("/view/MenuUI.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/view/MenuAd.fxml"));
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
-                    
+
+                } else {
+                    if (username.equalsIgnoreCase("manage") && pass.equalsIgnoreCase("123456")) {
+                        btnlogin.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("/view/MenuUI.fxml"));
+                        Stage stage = new Stage();
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    } else {
+                        if (username.equalsIgnoreCase("sale") && pass.equalsIgnoreCase("123")) {
+                            btnlogin.getScene().getWindow().hide();
+                            Parent root = FXMLLoader.load(getClass().getResource("/view/MenuSale.fxml"));
+                            Stage stage = new Stage();
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.show();
+                        } else {
+                            if (username.equalsIgnoreCase("warestaff") && pass.equalsIgnoreCase("123")) {
+                                btnlogin.getScene().getWindow().hide();
+                                Parent root = FXMLLoader.load(getClass().getResource("/view/MenuWare.fxml"));
+                                Stage stage = new Stage();
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Login Failed");
+                                
+                                tfusername.setText("");
+                                tfpassword.setText("");
+                                tfusername.requestFocus();
+                            }
+                        }
+                    }
                 }
-                else{
-                   JOptionPane.showMessageDialog(null, "Login Failed"); 
-                   
-                   tfusername.setText("");
-                   tfpassword.setText("");
-                   tfusername.requestFocus();
-                }
-            
+
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex){
+            } catch (SQLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
-    
-
-   
-
 
 }

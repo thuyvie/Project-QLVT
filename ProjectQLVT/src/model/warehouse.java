@@ -14,7 +14,10 @@ public class warehouse {
     String itemCode;
     private product pro;
     String Inventory,AmountInput;
+    int inventory1;
+    int Amountinput;
     Double OriginalPrice;
+    String IDInput;
      public warehouse(String ID, String ProductID,  String Inventory,  String AmountInput,Double OriginalPrice,String DateInput) {
         this.ID = ID;
         this.ProductID = ProductID;
@@ -47,6 +50,46 @@ public class warehouse {
         this.AmountInput = AmountInput;
         this.OriginalPrice = OriginalPrice;
     }
+
+    public warehouse(String ID, String ProductID, String DateInput, String Inventory, String AmountInput, Double OriginalPrice, String IDInput) {
+        this.ID = ID;
+        this.ProductID = ProductID;
+        this.DateInput = DateInput;
+        this.Inventory = Inventory;
+        this.AmountInput = AmountInput;
+        this.OriginalPrice = OriginalPrice;
+        this.IDInput = IDInput;
+    }
+
+    public warehouse(String ID, String ProductID, String DateInput, int inventory1, int Amountinput, Double OriginalPrice, String IDInput) {
+        this.ID = ID;
+        this.ProductID = ProductID;
+        this.DateInput = DateInput;
+        this.inventory1 = inventory1;
+        this.Amountinput = Amountinput;
+        this.OriginalPrice = OriginalPrice;
+        this.IDInput = IDInput;
+    }
+
+    public int getInventory1() {
+        return inventory1;
+    }
+
+    public void setInventory1(int inventory1) {
+        this.inventory1 = inventory1;
+    }
+
+    public int getAmountinput() {
+        return Amountinput;
+    }
+
+    public void setAmountinput(int Amountinput) {
+        this.Amountinput = Amountinput;
+    }
+
+    
+    
+    
      
      public String getID() {
         return ID;
@@ -109,5 +152,12 @@ public class warehouse {
     public void setItemCode(String itemCode) {
         this.itemCode = itemCode;
     }
-    
+
+    public String getIDInput() {
+        return IDInput;
+    }
+
+    public void setIDInput(String IDInput) {
+        this.IDInput = IDInput;
+    }
 }
