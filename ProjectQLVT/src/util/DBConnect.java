@@ -90,10 +90,10 @@ public class DBConnect {
             Connection conn = getConnect();
             ObservableList<wh> list = FXCollections.observableArrayList();
             try {
-                PreparedStatement ps = conn.prepareStatement("SELECT warehouse.ID, warehouse.ProductID,product.namepro,SUM(Inventory) AS 'Inventory',SUM(Amountinput) AS 'Amountinput',warehouse.Dateinput,warehouse.IDInput FROM warehouse INNER JOIN product ON warehouse.ProductID = product.itemCode INNER JOIN input ON warehouse.IDInput = input.InputID GROUP BY ProductID ORDER BY ID DESC");
+                PreparedStatement ps = conn.prepareStatement("SELECT warehouse.ID, warehouse.ProductID,SUM(Inventory) AS 'Inventory',SUM(Amountinput) AS 'Amountinput',warehouse.Dateinput,warehouse.IDInput FROM warehouse INNER JOIN input ON warehouse.IDInput = input.InputID GROUP BY ProductID ORDER BY ID DESC");
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
-                    list.add(new wh(rs.getString("ID"), rs.getString("ProductID"),rs.getString("namepro"),rs.getInt("Inventory"),rs.getInt("Amountinput"),rs.getString("Dateinput"),rs.getString("IDInput")));
+                    list.add(new wh(rs.getString("ID"), rs.getString("ProductID"),rs.getInt("Inventory"),rs.getInt("Amountinput"),rs.getString("Dateinput"),rs.getString("IDInput")));
                 }
             } catch (Exception e) {
             }

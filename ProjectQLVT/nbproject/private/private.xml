@@ -5,12 +5,12 @@
         <group>
             <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/model/wh.java</file>
             <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/InputController.java</file>
-            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/DThuController.java</file>
             <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/menu/FXMain.java</file>
             <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/Dao/inputDao.java</file>
-            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/util/DBConnect.java</file>
-            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/InventoryController.java</file>
-            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/controller/OrdController.java</file>
+            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/model/input2.java</file>
+            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/Dao/orderDao.java</file>
+            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/model/input.java</file>
+            <file>file:/C:/netbean-workspace/Project-QLVT/ProjectQLVT/src/model/InTM.java</file>
         </group>
     </open-files>
 </project-private>

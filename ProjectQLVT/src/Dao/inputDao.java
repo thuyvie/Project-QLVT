@@ -75,7 +75,7 @@ public class inputDao {
             pstmt.setInt(3, ware.getInventory());
             pstmt.setInt(4, ware.getAmountinput());
             pstmt.setString(5, ware.getDateinput());
-            pstmt.setDouble(6, ware.getOriginalPrice());
+            pstmt.setDouble(6, ware.getPrice());
             pstmt.setString(7, ware.getIDInput());
             return pstmt.executeUpdate() > 0;
         }
@@ -83,7 +83,7 @@ public class inputDao {
 
     private boolean addinDetail(input in) throws SQLException, ClassNotFoundException, Exception {
         for (InTM ord : in.getAllInDetail()) {
-            inputdetail orderTable = new inputdetail(getRandomNumberString(), ord.getAmount(), ord.getPrice(), ord.getInputID(), ord.getIDProduct());
+            inputdetail orderTable = new inputdetail(getRandomNumberString(), ord.getAmount(), ord.getPrice(), in.getInputID(), ord.getIDProduct());
             System.out.println("");
             boolean isAddedOrderDetails = insertInDetail(orderTable);
             if (!isAddedOrderDetails) {
@@ -94,10 +94,21 @@ public class inputDao {
     }
 
     private boolean addware(input in) throws SQLException, ClassNotFoundException, Exception {
-        for (InTM2 ord2 : in.getAllInDetail2()) {
-            wh orderTable2 = new wh(getRandomNumberString(), ord2.getProductID(), ord2.getInventory(), ord2.getAmountinput(), ord2.getDateinput(), ord2.getOriginalPrice(), ord2.getInputID());
+        for (InTM ord2 : in.getAllInDetail()) {
+            wh orderTable2 = new wh(getRandomNumberString(), ord2.getIDProduct(), ord2.getAmount(), ord2.getAmount(), in.getDate(), ord2.getPrice(), in.getInputID());
             System.out.println("");
             boolean isAddedOrderDetails = insertWareHouse(orderTable2);
+            if (!isAddedOrderDetails) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private boolean addin(input in) throws SQLException, ClassNotFoundException, Exception {
+        for (InTM ord2 : in.getAllInDetail()) {
+            input2 orderTable2 = new input2(in.getInputID(),in.getDate(),in.getTotal());
+            System.out.println("");
+            boolean isAddedOrderDetails = insertIn(orderTable2);
             if (!isAddedOrderDetails) {
                 return false;
             }
@@ -136,6 +147,7 @@ public class inputDao {
         con.setAutoCommit(false);
         input2 in2 = new input2(i.getInputID(), i.getDate(), i.getTotal());
         boolean add = insertIn(in2);
+//        boolean add = addin(i);
         try {
             if (add) {
                 boolean inputDetailAdd = addinDetail(i);

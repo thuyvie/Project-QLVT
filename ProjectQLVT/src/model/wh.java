@@ -15,43 +15,41 @@ public class wh {
     String namepro;
     int Inventory;
     int Amountinput;
-    Double OriginalPrice;
+    Double Price;
     String Dateinput;
     String IDInput;
 
-    public wh(String ID, String ProductID, int Inventory, int Amountinput, Double OriginalPrice, String IDInput) {
+    public wh(String ID, String ProductID, int Inventory, int Amountinput, Double Price, String IDInput) {
         this.ID = ID;
         this.ProductID = ProductID;
         this.Inventory = Inventory;
         this.Amountinput = Amountinput;
-        this.OriginalPrice = OriginalPrice;
+        this.Price = Price;
         this.IDInput = IDInput;
     }
 
-    public wh(String ID, String ProductID, int Inventory, int Amountinput,String Dateinput, Double OriginalPrice,  String IDInput) {
+    public wh(String ID, String ProductID, int Inventory, int Amountinput,String Dateinput, Double Price,  String IDInput) {
+        this.ID = ID;
+        this.ProductID = ProductID;
+        this.Inventory = Inventory;
+        this.Amountinput = Amountinput;
+        this.Dateinput = Dateinput;
+        this.Price = Price;
+        this.IDInput = IDInput;
+    }
+
+    public wh(String ID, String ProductID, int Inventory, int Amountinput, String Dateinput, String IDInput) {
         this.ID = ID;
         this.ProductID = ProductID;
         this.Inventory = Inventory;
         this.Amountinput = Amountinput;
         this.Dateinput = Dateinput;
-        this.OriginalPrice = OriginalPrice;
         this.IDInput = IDInput;
     }
 
-    public wh(String ID, String ProductID, String namepro, int Inventory, int Amountinput, String Dateinput, String IDInput) {
+    public wh(String ID, String ProductID, String Dateinput, String IDInput) {
         this.ID = ID;
         this.ProductID = ProductID;
-        this.namepro = namepro;
-        this.Inventory = Inventory;
-        this.Amountinput = Amountinput;
-        this.Dateinput = Dateinput;
-        this.IDInput = IDInput;
-    }
-
-    public wh(String ID, String ProductID, String namepro, String Dateinput, String IDInput) {
-        this.ID = ID;
-        this.ProductID = ProductID;
-        this.namepro = namepro;
         this.Dateinput = Dateinput;
         this.IDInput = IDInput;
     }
@@ -92,12 +90,12 @@ public class wh {
     }
     
 
-    public Double getOriginalPrice() {
-        return OriginalPrice;
+    public Double getPrice() {
+        return Price;
     }
 
-    public void setOriginalPrice(Double OriginalPrice) {
-        this.OriginalPrice = OriginalPrice;
+    public void setPrice(Double Price) {
+        this.Price = Price;
     }
     
     public String getIDInput() {

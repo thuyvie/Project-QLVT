@@ -66,7 +66,6 @@ public class InputController implements Initializable {
     private Label txtinput;
     @FXML
     private Label txtid;
-    @FXML
     private JFXComboBox<String> cbb;
     @FXML
     private Label txtto;
@@ -79,15 +78,15 @@ public class InputController implements Initializable {
     @FXML
     private Label txttt;
     @FXML
-    private TableView<input> tblin;
+    private TableView<InTM> tblin;
     @FXML
-    private TableColumn<input, String> tblcode;
+    private TableColumn<InTM, String> tblcode;
     @FXML
-    private TableColumn<input, Double> tblprice;
+    private TableColumn<InTM, Double> tblprice;
     @FXML
-    private TableColumn<input, Integer> tblamount;
+    private TableColumn<InTM, Integer> tblamount;
     @FXML
-    private TableColumn<input, Double> tbltotal;
+    private TableColumn<InTM, Double> tbltotal;
     @FXML
     private JFXButton btninput;
     @FXML
@@ -102,6 +101,9 @@ public class InputController implements Initializable {
     ArrayList<InTM2> items3 = new ArrayList<>();
     inputDao inDao = new inputDao();
     input input;
+    InTM InTM;
+    @FXML
+    private TextField txtid2;
 
     /**
      * Initializes the controller class.
@@ -110,7 +112,6 @@ public class InputController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         generateDateTime();
-        fillCBB();
         settxtoweid();
         showIn();
     }
@@ -154,11 +155,11 @@ public class InputController implements Initializable {
         try {
             int id = getRowCount();
             if (id < 9) {
-                this.txtinput.setText("T00" + (id + 1));
+                this.txtinput.setText("L00" + (id + 1));
             } else if (id < 99) {
-                this.txtinput.setText("T0" + (id + 1));
+                this.txtinput.setText("L0" + (id + 1));
             } else {
-                this.txtinput.setText("T" + (id + 1));
+                this.txtinput.setText("L" + (id + 1));
             }
 
         } catch (Exception e) {
@@ -174,13 +175,13 @@ public class InputController implements Initializable {
             total = count * Double.parseDouble(txtprice.getText());
             txttt.setText(String.valueOf(total));
             txtto.setText(count + "");
-            String IDProduct = cbb.getValue();
+            String IDProduct = txtid2.getText();
             Double Price = Double.parseDouble(txtprice.getText());
             Integer Amount = Integer.parseInt(txtqty.getText());
             Double Total = Double.parseDouble(txttt.getText());
-            input rowData = new input(IDProduct, Price, Amount, Total);
-            items.add(rowData);
-            tblin.setItems(FXCollections.observableArrayList(items));
+            InTM rowData = new InTM(IDProduct, Price, Amount,Total);
+            items2.add(rowData);
+            tblin.setItems(FXCollections.observableArrayList(items2));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -198,15 +199,15 @@ public class InputController implements Initializable {
         double Total = Double.parseDouble(txttt.getText());
         Integer Amount = Integer.parseInt(txtqty.getText());
         double Price = Double.parseDouble(txtprice.getText());
-        String IDProduct = cbb.getValue();
-        String ProductID = cbb.getValue();
+        String IDProduct =txtid2.getText();
+        String ProductID =txtid2.getText();
        Integer Inventory = Integer.parseInt(txtto.getText());
         Integer Amountinput = Integer.parseInt(txtqty.getText());
         String Dateinput = txtdate.getText();
         double OriginalPrice = Double.parseDouble(txtprice.getText());
         try {
-            boolean printAndSave = inDao.placeOrder(new input(InputID, DateInvoicee, Total, Amount, Price, IDProduct, ProductID, Inventory, Amountinput, Dateinput, OriginalPrice));
-//                boolean printAndSave = inDao.placeOrder2(new input(InputID, DateInvoicee, Total, items2, items3));
+ //           boolean printAndSave = inDao.placeOrder(new input(InputID, DateInvoicee, Total, Amount, Price, IDProduct, ProductID, Inventory, Amountinput, Dateinput, OriginalPrice));
+               boolean printAndSave = inDao.placeOrder2(new input(InputID, DateInvoicee, Total, items2));
             if (printAndSave) {
                 (new Alert(Alert.AlertType.CONFIRMATION, "Input Successfully", new ButtonType[]{ButtonType.OK})).show();
                 String tilte = "Input SUCCESS";
@@ -248,6 +249,7 @@ public class InputController implements Initializable {
         tblprice.setText("");
         tblamount.setText("");
         tbltotal.setText("");
+        txtid2.setText("");
     }
 
     @FXML

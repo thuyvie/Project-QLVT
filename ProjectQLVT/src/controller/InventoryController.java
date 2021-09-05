@@ -58,8 +58,6 @@ public class InventoryController implements Initializable {
     @FXML
     private TableColumn<wh, String> tblitem;
     @FXML
-    private TableColumn<wh, String> tblname;
-    @FXML
     private TableColumn<wh, Integer> tblinventory;
     @FXML
     private TableColumn<wh, Integer> tblamount;
@@ -109,7 +107,7 @@ public class InventoryController implements Initializable {
         ResultSet rs;
         int sum = 0;
         try {
-            String sql = ("SELECT warehouse.ID, warehouse.ProductID,product.namepro,SUM(Inventory) AS 'Inventory',SUM(Amountinput) AS 'Amountinput',warehouse.Dateinput,warehouse.IDInput FROM warehouse INNER JOIN product ON warehouse.ProductID = product.itemCode INNER JOIN input ON warehouse.IDInput = input.InputID GROUP BY ProductID ORDER BY ID DESC");
+            String sql = ("SELECT warehouse.ID, warehouse.ProductID,SUM(Inventory) AS 'Inventory',SUM(Amountinput) AS 'Amountinput',warehouse.Dateinput,warehouse.IDInput FROM warehouse INNER JOIN input ON warehouse.IDInput = input.InputID GROUP BY ProductID ORDER BY ID DESC");
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
@@ -117,7 +115,6 @@ public class InventoryController implements Initializable {
                 wh w = new wh();
                 w.setID(rs.getString("ID"));
                 w.setProductID(rs.getString("ProductID"));
-                w.setNamepro(rs.getString("namepro"));
                 w.setInventory(rs.getInt("Inventory"));
                 w.setAmountinput(rs.getInt("Amountinput"));
                 w.setDateinput(rs.getString("Dateinput"));
@@ -132,7 +129,6 @@ public class InventoryController implements Initializable {
 
     public void showIn() {
         ObservableList<wh> list = findAll();
-        tblname.setCellValueFactory(new PropertyValueFactory<>("namepro"));
         tblid.setCellValueFactory(new PropertyValueFactory<>("ID"));
         tblitem.setCellValueFactory(new PropertyValueFactory<>("ProductID"));
         tblinventory.setCellValueFactory(new PropertyValueFactory<>("Inventory"));
@@ -143,7 +139,6 @@ public class InventoryController implements Initializable {
     }
 
     public void search() {
-        tblname.setCellValueFactory(new PropertyValueFactory<>("namepro"));
         tblid.setCellValueFactory(new PropertyValueFactory<>("ID"));
         tblitem.setCellValueFactory(new PropertyValueFactory<>("ProductID"));
         tblinventory.setCellValueFactory(new PropertyValueFactory<>("Inventory"));

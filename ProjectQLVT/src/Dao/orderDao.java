@@ -89,7 +89,7 @@ public class orderDao {
    }
    private boolean updateOrdStock(ArrayList<dtmTM> orderItems) throws Exception{
        for(dtmTM orderdetail : orderItems){
-           boolean isUpdateStock = updateOrdStock(orderdetail);
+           boolean isUpdateStock = updateOrdStock2(orderdetail);
            if(!isUpdateStock){
                return false;
            }
@@ -100,6 +100,10 @@ public class orderDao {
      
    public boolean updateOrdStock (dtmTM orderdetail) throws Exception{
        String sql = "Update warehouse inner join product on warehouse.ProductID = product.itemCode set inventory= inventory-? where itemCode=?";       
+               return CrudUtil.executeUpdate(sql,orderdetail.getQTY(), orderdetail.getCode());
+   }
+    public boolean updateOrdStock2 (dtmTM orderdetail) throws Exception{
+       String sql = "Update warehouse set inventory= inventory-? where ProductID=?";       
                return CrudUtil.executeUpdate(sql,orderdetail.getQTY(), orderdetail.getCode());
    }
    

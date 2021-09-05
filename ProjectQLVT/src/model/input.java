@@ -99,14 +99,13 @@ public class input {
         this.allInDetail = allInDetail;
     }
 
-    public input(String InputID, String Date, Double Total, ArrayList<InTM> allInDetail, ArrayList<InTM2> allInDetail2) {
+    public input(String InputID, String Date, Double Total, ArrayList<InTM> allInDetail) {
         this.InputID = InputID;
         this.Date = Date;
         this.Total = Total;
         this.allInDetail = allInDetail;
-        this.allInDetail2 = allInDetail2;
     }
-
+    
     public ArrayList<InTM2> getAllInDetail2() {
         return allInDetail2;
     }
