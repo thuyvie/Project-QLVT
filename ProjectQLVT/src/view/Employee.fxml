@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane id="AnchorPane" prefHeight="600.0" prefWidth="919.0" style="-fx-background-color: #333645; -fx-background-radius: 0 40 40 0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeController">
+<Pane id="AnchorPane" prefHeight="600.0" prefWidth="919.0" style="-fx-background-color: #333645; -fx-background-radius: 0 40 40 0;" stylesheets="@../css/menuui.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeController">
     <children>
         <Pane layoutX="9.0" layoutY="8.0" prefHeight="584.0" prefWidth="900.0" style="-fx-background-color: #e8eaf6; -fx-background-radius: 40 40 40 40;">
             <TableView fx:id="tableproductview" layoutX="57.0" layoutY="366.0" onMouseClicked="#clickTable" prefHeight="176.0" prefWidth="789.0">
