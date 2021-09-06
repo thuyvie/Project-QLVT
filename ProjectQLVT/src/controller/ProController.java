@@ -69,7 +69,7 @@ public class ProController implements Initializable {
 
     @FXML
     private void warehouse(MouseEvent event) throws IOException {
-        setUi("Warehouse");
+        setUi("input");
         new FadeIn(context).play();
     }
     
