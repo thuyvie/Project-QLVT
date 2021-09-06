@@ -6,6 +6,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 
 import java.net.URL;
@@ -81,7 +82,9 @@ public class LoginController implements Initializable {
                 pst.setString(2, pass);
 
                 rs = pst.executeQuery();
-
+               
+                    
+                
                 if (username.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("123")) {
                     btnlogin.getScene().getWindow().hide();
                     Parent root = FXMLLoader.load(getClass().getResource("/view/MenuAd.fxml"));
@@ -124,6 +127,7 @@ public class LoginController implements Initializable {
                         }
                     }
                 }
+                
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
