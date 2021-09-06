@@ -36,7 +36,7 @@
                   <Insets left="10.0" top="32.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="btnlogin3" buttonType="RAISED" layoutX="20.0" layoutY="405.0" onMouseClicked="#warehouse" prefHeight="80.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);" styleClass="most-contacted-layout" text="WAREHOUSE">
+            <JFXButton fx:id="btnlogin3" buttonType="RAISED" layoutX="20.0" layoutY="405.0" onMouseClicked="#warehouse" prefHeight="80.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);" styleClass="most-contacted-layout" text="INPUT">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
