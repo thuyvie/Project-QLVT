@@ -77,7 +77,7 @@ public class DBConnect {
             Connection conn = getConnect();
             ObservableList<product> list = FXCollections.observableArrayList();
             try {
-                PreparedStatement ps = conn.prepareStatement("SELECT product.itemCode, product.namepro, product.vendorid, vendor.vendorname, product.description, product.size, product.price, product.qty, product.batchid, product.IDCate, cateproduct.NameCate FROM product INNER JOIN vendor ON product.vendorid = vendor.vendorID INNER JOIN cateproduct ON product.IDCate = cateproduct.ID ORDER BY itemCode DESC");
+                PreparedStatement ps = conn.prepareStatement("SELECT product.itemCode, product.namepro, product.vendorid, vendor.vendorname, product.description, product.size, product.price, product.batchid, product.IDCate, cateproduct.NameCate FROM product INNER JOIN vendor ON product.vendorid = vendor.vendorID INNER JOIN cateproduct ON product.IDCate = cateproduct.ID ORDER BY itemCode DESC");
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     list.add(new product(rs.getString("itemCode"), rs.getString("namepro"),rs.getString("vendorname"),rs.getString("description"), rs.getString("size"),rs.getString("batchid"),rs.getString("NameCate")));

@@ -76,7 +76,7 @@ public class DsproController implements Initializable {
         Statement stmt;
         ResultSet rs;
         try {
-            String sql = "SELECT product.itemCode, product.namepro, product.vendorid, vendor.vendorname, product.description, product.size, product.price, product.qty, product.batchid, product.IDCate, cateproduct.NameCate FROM product INNER JOIN vendor ON product.vendorid = vendor.vendorID INNER JOIN cateproduct ON product.IDCate = cateproduct.ID ORDER BY itemCode DESC";
+            String sql = "SELECT product.itemCode, product.namepro, product.vendorid, vendor.vendorname, product.description, product.size, product.price, product.batchid, product.IDCate, cateproduct.NameCate FROM product INNER JOIN vendor ON product.vendorid = vendor.vendorID INNER JOIN cateproduct ON product.IDCate = cateproduct.ID ORDER BY itemCode DESC";
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
@@ -89,7 +89,6 @@ public class DsproController implements Initializable {
                 pro.setDescription(rs.getString("description"));
                 pro.setSize(rs.getString("size"));
                 pro.setPrice(rs.getDouble("price"));
-                pro.setQty(rs.getInt("qty"));
                 pro.setBatchid(rs.getString("batchid"));
                 pro.setIDCate(rs.getInt("IDCate"));
                 pro.setNameCate(rs.getString("NameCate"));
