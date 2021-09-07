@@ -302,6 +302,7 @@ public class OrdController implements Initializable {
 
     }
 
+
     @FXML
     private void orderAction(ActionEvent event) {
 
@@ -367,37 +368,90 @@ public class OrdController implements Initializable {
             }
         }
     }
+    private boolean validateUpdate(){
+         String errorMessage = "";
 
+        if (txtqty.getText() == null || txtqty.getText().length() == 0) {
+            errorMessage += "Quantity not supplied!";
+        } else {
+            double quantity = Double.parseDouble(txtqty.getText());
+            String available = txttrangthai.getText();
+            double availableQuantity = Double.parseDouble(available.substring(0));
+
+            if (quantity > availableQuantity) {
+                errorMessage += "Out of Stock!";
+            }
+        }
+
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Please input the valid number of products");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
+            txtqty.setText("");
+
+            return false;
+        }
+    }
     @FXML
     private void deleteAction(ActionEvent event) {
-//        items.remove(index);
-//        dtm.setItems(FXCollections.observableArrayList(items));
-//        reloadTotalQty();
-        double tot = 0;
-        tot = Integer.parseInt(txtqty.getText()) * Double.parseDouble(txtprice.getText());
-        int selectedIndex = dtm.getSelectionModel().getSelectedIndex();
-
-        if (selectedIndex >= 0) {
-            dtm.getItems().remove(selectedIndex);
-            items.remove(selectedIndex);
-                rs = rs - tot;
+        try {
+            double tot = 0;
+            tot = Integer.parseInt(txtqty.getText()) * Double.parseDouble(txtprice.getText());
+            int selectedIndex = dtm.getSelectionModel().getSelectedIndex();
             
+            if (selectedIndex >= 0) {
+                dtm.getItems().remove(selectedIndex);
+                items.remove(selectedIndex);
+                rs = rs - tot;
+                
+            }
+            
+            int qty = 0;
+            double total = 0;
+            double rs = 0;
+            for (dtmTM dtmTM : items) {
+                qty = Integer.parseInt(dtmTM.getQTY());
+                double p = Double.parseDouble(dtmTM.getPrice());
+                total = p * Integer.parseInt(dtmTM.getQTY());
+                rs += total;
+            }
+            txtqantity.setText(qty + "");
+            txttotal.setText(total + "");
+            txtrs.setText(rs + "");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        int qty = 0;
-        double total = 0;
-        double rs = 0;
-        for (dtmTM dtmTM : items) {
-            qty = Integer.parseInt(dtmTM.getQTY());
-            double p = Double.parseDouble(dtmTM.getPrice());
-            total = p * Integer.parseInt(dtmTM.getQTY());
-            rs += total;
-        }
-        txtqantity.setText(qty + "");
-        txttotal.setText(total + "");
-        txtrs.setText(rs + "");
+        
+//        try {
+//            int index = dtm.getSelectionModel().getSelectedIndex();
+//            if(index >0){
+//                dtm.getItems().remove(index);
+//            }else if(index == 0){
+//               dtm.getItems().remove(index);
+//               
+//            }
+//        } catch (Exception e) {
+//        }
     }
-
+////    private void calcution(){
+////         double subTotalPrice = 0.0;
+////        subTotalPrice = dtm.getItems().stream().map(
+////                (item) -> item.getTotal()).reduce(subTotalPrice, (accumulator, _item) -> accumulator + _item);
+////
+////        if (subTotalPrice > 0) {
+////            paymentButton.setDisable(false);
+////            double vat = (double) subTotalPrice * 0.025;
+////            double netPayablePrice = (double) (Math.abs((subTotalPrice + vat) - 5));
+////
+////            subTotalField.setText(String.valueOf(subTotalPrice));
+////            vatField.setText(String.valueOf(vat));
+////            netPayableField.setText(String.valueOf(netPayablePrice));
+//        }
+//    }
     @FXML
     private void adddiscountKey(KeyEvent event) {
     }
@@ -451,7 +505,8 @@ public class OrdController implements Initializable {
                     txtitemcode.setText(pro.getItemCode());
                     txtitemname.setText(pro.getNamepro());
                     txtprice.setText(String.valueOf(pro.getPrice()));
-                    
+//                    txttrangthai.setText(String.valueOf(pro.getW().getInventory()));
+//                    txttrangthai.setText(String.valueOf(pro.getInventory()));
                 } else {
                     String tilte = "Searched Product Not Found";
                     String message = "Try Again";
@@ -492,18 +547,46 @@ public class OrdController implements Initializable {
         System.out.println(IDEmp + "IDEmp");
     }
 
-    @FXML
-    private void OKAction(ActionEvent event) {
-        int i = 1;
-        count = Integer.parseInt(txtqty.getText());
+    public void set() {
+        count += Integer.parseInt(txtqty.getText());
         txtqantity.setText(count + "");
         double total = 0;
-
         total = Integer.parseInt(txtqty.getText()) * Double.parseDouble(txtprice.getText());
         rs = rs + total;
         txttotal.setText(String.valueOf(total));
         txtrs.setText(rs + "");
-        i++;
+        for (int i = 0; i < items.size() - 1; i++) {
+            for (int j = i + 1; j < items.size(); j++) {
+                if (items.get(i).getCode() == items.get(j).getCode() && items.get(i).getName() == items.get(j).getName()) {
+                    items.get(i).setQTY(items.get(i).getQTY() + items.get(j).getQTY());
+                    items.remove(j);
+                    j--;
+                    String code = txtitemcode.getText();
+                    String name = txtitemname.getText();
+                    String price = txtprice.getText();
+                    String QTY = txtqty.getText();
+                    Double Total = Double.parseDouble(txttotal.getText());
+                    dtmTM rowData = new dtmTM(code, name, price, QTY, Total);
+                    items.add(rowData);
+                    dtm.setItems(FXCollections.observableArrayList(items));
+                }
+            }
+        }
+    }
+
+    @FXML
+    private void OKAction(ActionEvent event) {
+//        int i = 1;
+        count += Integer.parseInt(txtqty.getText());
+        txtqantity.setText(count + "");
+        double total = 0;
+        for (int i = 0; i < count; i++) {
+            total = Integer.parseInt(txtqty.getText()) * Double.parseDouble(txtprice.getText());
+        }
+        rs = rs + total;
+        txttotal.setText(String.valueOf(total));
+        txtrs.setText(rs + "");
+//        i++;
         String code = txtitemcode.getText();
         String name = txtitemname.getText();
         String price = txtprice.getText();
@@ -512,6 +595,21 @@ public class OrdController implements Initializable {
         dtmTM rowData = new dtmTM(code, name, price, QTY, Total);
         items.add(rowData);
         dtm.setItems(FXCollections.observableArrayList(items));
+//        if (validateUpdate()) {
+//            count += Integer.parseInt(txtqty.getText());
+//             txtqantity.setText(count + "");
+//            String code = txtitemcode.getText();
+//            String name = txtitemname.getText();
+//            double price = Double.parseDouble(txtprice.getText());
+//            double QTY = Double.parseDouble(txtqty.getText());
+//            double Total = price * QTY;
+//            rs = rs + total;
+//            txttotal.setText(String.valueOf(total));
+//            txtrs.setText(rs + "");
+//            dtmTM rowData = new dtmTM(code, name, price, QTY, Total);
+//        items.add(rowData);
+//        dtm.setItems(FXCollections.observableArrayList(items));
+//        }
     }
 
     @FXML

@@ -53,6 +53,11 @@ public class wh {
         this.Dateinput = Dateinput;
         this.IDInput = IDInput;
     }
+
+    public wh(String ID, int Inventory) {
+        this.ID = ID;
+        this.Inventory = Inventory;
+    }
     
     public wh() {
     }

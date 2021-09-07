@@ -33,6 +33,8 @@ public class ord {
     Double Total;
     String itemCode;
     String namepro;
+    String WareHouseID;
+    private wh w;
     public ord() {
     }
 
@@ -148,6 +150,20 @@ public class ord {
         this.Price = Price;
         this.Total = Total;
     }
+
+    public ord(String OrdID, String NameCus, String PhoneCus, String EmailCus, String AddressCus, String dateOrd, String timeOrd, ArrayList<dtmTM> allOrderDetail, Double amount, String note, String WareHouseID) {
+        this.OrdID = OrdID;
+        this.NameCus = NameCus;
+        this.PhoneCus = PhoneCus;
+        this.EmailCus = EmailCus;
+        this.AddressCus = AddressCus;
+        this.dateOrd = dateOrd;
+        this.timeOrd = timeOrd;
+        this.allOrderDetail = allOrderDetail;
+        this.amount = amount;
+        this.note = note;
+        this.WareHouseID = WareHouseID;
+    }
     
     public String getOrdID() {
         return OrdID;
@@ -157,11 +173,13 @@ public class ord {
         this.OrdID = OrdID;
     }
 
-    
+    public wh getW() {
+        return w;
+    }
 
-    
-    
-
+    public void setW(wh w) {
+        this.w = w;
+    }
    
 
     public customer getIdcus() {

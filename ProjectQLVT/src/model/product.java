@@ -23,6 +23,8 @@ public class product {
     int IDCate;
     String NameCate;
     private catepro cate;
+    private wh w;
+    private int Inventory;
     public product() {
     }
 
@@ -39,6 +41,17 @@ public class product {
     public product(String itemCode, String namepro) {
         this.itemCode = itemCode;
         this.namepro = namepro;
+    }
+
+    public product(String itemCode, String namepro, String vendorname, String description, String size, String batchid, String NameCate, int Inventory) {
+        this.itemCode = itemCode;
+        this.namepro = namepro;
+        this.vendorname = vendorname;
+        this.description = description;
+        this.size = size;
+        this.batchid = batchid;
+        this.NameCate = NameCate;
+        this.Inventory = Inventory;
     }
     
     public String getItemCode() {
@@ -178,6 +191,38 @@ public class product {
         this.IDCate = IDCate;
         this.NameCate = NameCate;
         this.cate = cate;
+    }
+
+    public product(String itemCode, String namepro, String vendorid, String vendorname, String description, String size, Double price, vendorlot ven, int IDCate, String NameCate, catepro cate, wh w, int Inventory) {
+        this.itemCode = itemCode;
+        this.namepro = namepro;
+        this.vendorid = vendorid;
+        this.vendorname = vendorname;
+        this.description = description;
+        this.size = size;
+        this.price = price;
+        this.ven = ven;
+        this.IDCate = IDCate;
+        this.NameCate = NameCate;
+        this.cate = cate;
+        this.w = w;
+        this.Inventory = Inventory;
+    }
+
+    public wh getW() {
+        return w;
+    }
+
+    public void setW(wh w) {
+        this.w = w;
+    }
+
+    public int getInventory() {
+        return Inventory;
+    }
+
+    public void setInventory(int Inventory) {
+        this.Inventory = Inventory;
     }
     
     
