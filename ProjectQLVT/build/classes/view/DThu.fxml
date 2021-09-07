@@ -6,20 +6,14 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="584.0" prefWidth="725.0" style="-fx-background-radius: 40;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="controller.DThuController">
+<Pane id="AnchorPane" prefHeight="600.0" prefWidth="919.0" style="-fx-background-color: #333645;" styleClass="pane" stylesheets="@../css/menuui.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DThuController">
    <children>
-      <Pane layoutX="54.0" layoutY="47.0" prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #ff4757;">
+      <Pane fx:id="context" layoutX="13.0" layoutY="8.0" prefHeight="584.0" prefWidth="899.0" style="-fx-background-color: #b1e3b3; -fx-background-radius: 40 40 40 40;">
+         <Pane layoutX="180.0" layoutY="47.0" prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #ff4757;">
          <children>
-            <JFXButton layoutX="1.0" layoutY="4.0" prefHeight="175.0" prefWidth="200.0" style="transitionColor: #ff4757; -fx-alignment: TOP-CENTER;" text="TOTAL MONEY" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </JFXButton>
             <ImageView fitHeight="53.0" fitWidth="58.0" layoutX="78.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resouces/revenue.png" />
@@ -32,38 +26,43 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Pane layoutX="384.0" layoutY="47.0" prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #6F69AC;" />
-      <JFXButton layoutX="384.0" layoutY="48.0" prefHeight="175.0" prefWidth="200.0" style="-fx-alignment: TOP_CENTER;" text="Total Owe" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXButton>
-      <Label fx:id="totalowe" layoutX="484.0" layoutY="153.0" prefHeight="42.0" prefWidth="131.0">
+      <Pane layoutX="515.0" layoutY="47.0" prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #6F69AC;" />
+      <Label fx:id="totalowe" layoutX="628.0" layoutY="153.0" prefHeight="42.0" prefWidth="131.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <ImageView fitHeight="53.0" fitWidth="58.0" layoutX="468.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="53.0" fitWidth="58.0" layoutX="601.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resouces/salary.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tbltotal" layoutX="335.0" layoutY="229.0" prefHeight="328.0" prefWidth="370.0">
+      <TableView fx:id="tbltotal" layoutX="408.0" layoutY="223.0" prefHeight="328.0" prefWidth="439.0">
         <columns>
-          <TableColumn fx:id="tblname" prefWidth="139.19997596740723" style="-fx-alignment: center;" text="Name Customer" />
-          <TableColumn fx:id="tblphone" prefWidth="115.20001220703125" style="-fx-alignment: center;" text="Phone Customer" />
-            <TableColumn fx:id="tblowe" prefWidth="112.0" style="-fx-alignment: center;" text="Owe" />
+          <TableColumn fx:id="tblname" prefWidth="152.00006103515625" style="-fx-alignment: center;" text="Name Customer" />
+          <TableColumn fx:id="tblphone" prefWidth="144.6666259765625" style="-fx-alignment: center;" text="Phone Customer" />
+            <TableColumn fx:id="tblowe" prefWidth="141.3333740234375" style="-fx-alignment: center;" text="Owe" />
         </columns>
       </TableView>
-      <Label layoutX="105.0" layoutY="238.0" prefHeight="36.0" prefWidth="175.0" text="Debt Customer List --&gt;">
+      <Label layoutX="164.0" layoutY="256.0" prefHeight="36.0" prefWidth="175.0" text="Debt Customer List --&gt;">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <ImageView fitHeight="128.0" fitWidth="158.0" layoutX="3.0" layoutY="456.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/Logo3.png" />
-         </image>
-      </ImageView>
+      <JFXButton layoutX="181.0" layoutY="47.0" prefHeight="175.0" prefWidth="200.0" style="transitionColor: #ff4757; -fx-alignment: TOP-CENTER;" text="TOTAL MONEY" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="515.0" layoutY="47.0" prefHeight="175.0" prefWidth="200.0" style="-fx-alignment: TOP_CENTER;" text="Total Owe" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+         <ImageView fitHeight="269.0" fitWidth="289.0" layoutX="51.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../image/icon.png" />
+            </image>
+         </ImageView></Pane>
    </children>
-</AnchorPane>
+</Pane>
