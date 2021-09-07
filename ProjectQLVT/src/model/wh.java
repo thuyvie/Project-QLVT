@@ -10,6 +10,7 @@ package model;
  * @author Mun Chan
  */
 public class wh {
+
     String ID;
     String ProductID;
     String namepro;
@@ -28,7 +29,7 @@ public class wh {
         this.IDInput = IDInput;
     }
 
-    public wh(String ID, String ProductID, int Inventory, int Amountinput,String Dateinput, Double Price,  String IDInput) {
+    public wh(String ID, String ProductID, int Inventory, int Amountinput, String Dateinput, Double Price, String IDInput) {
         this.ID = ID;
         this.ProductID = ProductID;
         this.Inventory = Inventory;
@@ -54,11 +55,21 @@ public class wh {
         this.IDInput = IDInput;
     }
 
+    public wh(String ProductID, int Inventory, int Amountinput, String Dateinput, Double Price, String IDInput) {
+        this.ProductID = ProductID;
+        this.Inventory = Inventory;
+        this.Amountinput = Amountinput;
+
+        this.Dateinput = Dateinput;
+        this.Price = Price;
+        this.IDInput = IDInput;
+    }
+
     public wh(String ID, int Inventory) {
         this.ID = ID;
         this.Inventory = Inventory;
     }
-    
+
     public wh() {
     }
 
@@ -93,7 +104,6 @@ public class wh {
     public void setAmountinput(int Amountinput) {
         this.Amountinput = Amountinput;
     }
-    
 
     public Double getPrice() {
         return Price;
@@ -102,7 +112,7 @@ public class wh {
     public void setPrice(Double Price) {
         this.Price = Price;
     }
-    
+
     public String getIDInput() {
         return IDInput;
     }
@@ -114,7 +124,7 @@ public class wh {
     public void setDateinput(String Dateinput) {
         this.Dateinput = Dateinput;
     }
-    
+
     public void setIDInput(String IDInput) {
         this.IDInput = IDInput;
     }
@@ -126,5 +136,5 @@ public class wh {
     public void setNamepro(String namepro) {
         this.namepro = namepro;
     }
-    
+
 }

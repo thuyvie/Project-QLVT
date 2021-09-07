@@ -66,17 +66,16 @@ public class inputDao {
     }
 
     public boolean insertWareHouse(wh ware) throws Exception {
-        String sql = "INSERT INTO warehouse( ID, ProductID, Inventory, Amountinput, Dateinput, OriginalPrice, IDInput)"
-                + "values(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO warehouse( ProductID, Inventory, Amountinput, Dateinput, OriginalPrice, IDInput)"
+                + "values(?,?,?,?,?,?)";
         try (
                  Connection con = DBConnect.getConnect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
-            pstmt.setString(1, ware.getID());
-            pstmt.setString(2, ware.getProductID());
-            pstmt.setInt(3, ware.getInventory());
-            pstmt.setInt(4, ware.getAmountinput());
-            pstmt.setString(5, ware.getDateinput());
-            pstmt.setDouble(6, ware.getPrice());
-            pstmt.setString(7, ware.getIDInput());
+            pstmt.setString(1, ware.getProductID());
+            pstmt.setInt(2, ware.getInventory());
+            pstmt.setInt(3, ware.getAmountinput());
+            pstmt.setString(4, ware.getDateinput());
+            pstmt.setDouble(5, ware.getPrice());
+            pstmt.setString(6, ware.getIDInput());
             return pstmt.executeUpdate() > 0;
         }
     }
@@ -128,7 +127,7 @@ public class inputDao {
                 );
                 if (inputDetailAdd) {
                     boolean ispayAdd = insertWareHouse(
-                            new wh(getRandomNumberString(), i.getProductID(), i.getInventory(), i.getAmountinput(), i.getDateinput(), i.getOriginalPrice(), i.getInputID())
+                            new wh(i.getProductID(), i.getInventory(), i.getAmountinput(), i.getDateinput(), i.getOriginalPrice(), i.getInputID())
                     );
                 }
                 con.commit();

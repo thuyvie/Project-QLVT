@@ -98,7 +98,7 @@ public class LoginController implements Initializable {
                         stage.show();
                     } else {
 
-                        if (rank.equalsIgnoreCase("2")) {
+                        if (rank.equalsIgnoreCase("3")) {
                             btnlogin.getScene().getWindow().hide();
                             Parent root = FXMLLoader.load(getClass().getResource("/view/MenuUI.fxml"));
                             Stage stage = new Stage();
@@ -107,7 +107,7 @@ public class LoginController implements Initializable {
                             stage.show();
                         } else {
 
-                            if (rank.equalsIgnoreCase("3")) {
+                            if (rank.equalsIgnoreCase("2")) {
                                 btnlogin.getScene().getWindow().hide();
                                 Parent root = FXMLLoader.load(getClass().getResource("/view/MenuSale.fxml"));
                                 Stage stage = new Stage();
