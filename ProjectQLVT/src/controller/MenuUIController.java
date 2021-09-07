@@ -128,7 +128,7 @@ public class MenuUIController implements Initializable {
 
     @FXML
     private void page5(MouseEvent event) {
-        loadUI("Revenue");
+        loadUI("DThu");
     }
 
 }
