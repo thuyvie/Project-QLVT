@@ -59,7 +59,7 @@
                   <Label layoutX="91.0" layoutY="131.0" prefHeight="18.0" prefWidth="62.0" text="UserName" />
                   <PasswordField fx:id="tfpassword" layoutX="91.0" layoutY="233.0" prefHeight="26.0" prefWidth="271.0" />
                   <Label layoutX="91.0" layoutY="202.0" prefHeight="18.0" prefWidth="62.0" text="Password" />
-                  <JFXButton fx:id="btnlogin" buttonType="RAISED" layoutX="147.0" layoutY="281.0" onAction="#handleButtonAction" prefHeight="42.0" prefWidth="150.0" style="-fx-background-color: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); -fx-background-radius: 50px;" text="SIGN IN">
+                  <JFXButton fx:id="btnlogin" buttonType="RAISED" layoutX="152.0" layoutY="296.0" onAction="#handleButtonAction" prefHeight="42.0" prefWidth="150.0" style="-fx-background-color: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); -fx-background-radius: 50px;" text="SIGN IN">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

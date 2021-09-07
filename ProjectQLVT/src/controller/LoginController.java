@@ -29,8 +29,12 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
+import jdk.jfr.Category;
+import util.DBConnect;
 
 /**
  * FXML Controller class
@@ -56,13 +60,13 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     }
 
     @FXML
     private void Close(MouseEvent event) {
         System.exit(0);
     }
+
 
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
@@ -82,52 +86,56 @@ public class LoginController implements Initializable {
                 pst.setString(2, pass);
 
                 rs = pst.executeQuery();
-               
-                    
-                
-                if (username.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("123")) {
-                    btnlogin.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("/view/MenuAd.fxml"));
-                    Stage stage = new Stage();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
 
-                } else {
-                    if (username.equalsIgnoreCase("manage") && pass.equalsIgnoreCase("123456")) {
+                if (rs.next()) {
+                    String rank = rs.getString("IDCateEmp");
+                    if (rank.equalsIgnoreCase("1")) {
                         btnlogin.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("/view/MenuUI.fxml"));
+                        Parent root = FXMLLoader.load(getClass().getResource("/view/MenuAd.fxml"));
                         Stage stage = new Stage();
                         Scene scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
                     } else {
-                        if (username.equalsIgnoreCase("sale") && pass.equalsIgnoreCase("123")) {
+
+                        if (rank.equalsIgnoreCase("2")) {
                             btnlogin.getScene().getWindow().hide();
-                            Parent root = FXMLLoader.load(getClass().getResource("/view/MenuSale.fxml"));
+                            Parent root = FXMLLoader.load(getClass().getResource("/view/MenuUI.fxml"));
                             Stage stage = new Stage();
                             Scene scene = new Scene(root);
                             stage.setScene(scene);
                             stage.show();
                         } else {
-                            if (username.equalsIgnoreCase("warestaff") && pass.equalsIgnoreCase("123")) {
+
+                            if (rank.equalsIgnoreCase("3")) {
                                 btnlogin.getScene().getWindow().hide();
-                                Parent root = FXMLLoader.load(getClass().getResource("/view/MenuWare.fxml"));
+                                Parent root = FXMLLoader.load(getClass().getResource("/view/MenuSale.fxml"));
                                 Stage stage = new Stage();
                                 Scene scene = new Scene(root);
                                 stage.setScene(scene);
                                 stage.show();
                             } else {
-                                JOptionPane.showMessageDialog(null, "Login Failed");
-                                
-                                tfusername.setText("");
-                                tfpassword.setText("");
-                                tfusername.requestFocus();
+
+                                if (rank.equalsIgnoreCase("4")) {
+                                    btnlogin.getScene().getWindow().hide();
+                                    Parent root = FXMLLoader.load(getClass().getResource("/view/MenuWare.fxml"));
+                                    Stage stage = new Stage();
+                                    Scene scene = new Scene(root);
+                                    stage.setScene(scene);
+                                    stage.show();
+
+                                }
                             }
                         }
                     }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Account or password doesn't exist");
+
+                    tfusername.setText("");
+                    tfpassword.setText("");
+                    tfusername.requestFocus();
                 }
-                
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -136,5 +144,6 @@ public class LoginController implements Initializable {
             }
         }
     }
+
 
 }

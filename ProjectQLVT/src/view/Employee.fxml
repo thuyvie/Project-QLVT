@@ -15,12 +15,12 @@
         <Pane layoutX="9.0" layoutY="8.0" prefHeight="584.0" prefWidth="900.0" style="-fx-background-color: #e8eaf6; -fx-background-radius: 40 40 40 40;">
             <TableView fx:id="tableproductview" layoutX="57.0" layoutY="366.0" onMouseClicked="#clickTable" prefHeight="176.0" prefWidth="789.0">
                 <columns>
-                    <TableColumn fx:id="tblname" prefWidth="162.00000762939453" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Name" />
-                    <TableColumn fx:id="tblphone" prefWidth="127.99995422363281" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Phone" />
-                    <TableColumn fx:id="tblaccount" prefWidth="168.00003051757812" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Account" />
-                    <TableColumn fx:id="tblsalary" prefWidth="103.33331298828125" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Salary" />
-                    <TableColumn fx:id="tblrank" prefWidth="98.66668701171875" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" text="Rank" />
-                    <TableColumn fx:id="tbldelete" prefWidth="125.6666259765625" style="-fx-background-color: linear-gradient( #FCD8D4,   #64C9CF); -fx-alignment: center;" />
+                    <TableColumn fx:id="tblname" prefWidth="162.00000762939453" style="-fx-alignment: center;" text="Name" />
+                    <TableColumn fx:id="tblphone" prefWidth="127.99995422363281" style="-fx-alignment: center;" text="Phone" />
+                    <TableColumn fx:id="tblaccount" prefWidth="168.00003051757812" style="-fx-alignment: center;" text="Account" />
+                    <TableColumn fx:id="tblsalary" prefWidth="103.33331298828125" style="-fx-alignment: center;" text="Salary" />
+                    <TableColumn fx:id="tblrank" prefWidth="98.66668701171875" style="-fx-alignment: center;" text="Rank" />
+                    <TableColumn fx:id="tbldelete" prefWidth="125.6666259765625" style="-fx-alignment: center;" />
                 </columns>
             </TableView>
             <Label layoutX="377.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" text="Name " />
