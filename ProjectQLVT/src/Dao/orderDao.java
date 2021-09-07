@@ -177,9 +177,9 @@ public class orderDao {
                     if (ispayAdd) {
 //                        boolean updateStock = updateOrdStock(o.getAllOrderDetail());
 //                        if (updateStock) {
-                            boolean ouput = insertOutput(
-                                    new output(o.getOrdID(), o.getDateOrd(), o.getOrdID())
-                            );
+//                            boolean ouput = insertOutput(
+//                                    new output(o.getOrdID(), o.getDateOrd(), o.getOrdID())
+//                            );
 //                           if(ouput){
 //                           boolean outdetail = addOutDetail(o);
 //                           }
@@ -305,12 +305,13 @@ public class orderDao {
 
     }
 
-    public product searchPro(String itemCode) {
+    public product searchPro(String ProductID) {
         ObservableList<product> listproduct = FXCollections.observableArrayList();
-        String sql = "select product.namepro,product.itemCode,product.price from  product where itemCode ='" + itemCode + "'";
+        String sql = "SELECT product.itemCode,product.namepro,product.price,SUM(warehouse.Inventory) AS 'Inventory', warehouse.ProductID FROM warehouse, product WHERE warehouse.ProductID = product.itemCode GROUP BY warehouse.ProductID, product.itemCode";
         Statement stmt;
         try (
-                 Connection con = DBConnect.getConnect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
+                 Connection con = DBConnect.getConnect();  
+                 PreparedStatement pstmt = con.prepareStatement(sql);) {
             try ( ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
                     product pro = new product();
@@ -318,7 +319,7 @@ public class orderDao {
                     pro.setNamepro(rs.getString("namepro"));
                     pro.setPrice(rs.getDouble("price"));
 //                pro.setW(new wh(rs.getString("ProductID"), rs.getInt("Inventory")));
-//                    pro.setInventory(rs.getInt("Inventory"));
+                    pro.setInventory(rs.getInt("Inventory"));
                     return pro;
                 }
             }

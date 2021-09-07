@@ -25,6 +25,7 @@ public class product {
     private catepro cate;
     private wh w;
     private int Inventory;
+    String ProductID;
     public product() {
     }
 
@@ -52,6 +53,14 @@ public class product {
         this.batchid = batchid;
         this.NameCate = NameCate;
         this.Inventory = Inventory;
+    }
+
+    public String getProductID() {
+        return ProductID;
+    }
+
+    public void setProductID(String ProductID) {
+        this.ProductID = ProductID;
     }
     
     public String getItemCode() {
