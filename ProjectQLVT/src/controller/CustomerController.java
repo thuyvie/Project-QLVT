@@ -99,7 +99,7 @@ public class CustomerController implements Initializable {
         Statement stmt;
         ResultSet rs;
         try {
-             String sql = "SELECT  customer.NameCus,customer.PhoneCus,customer.EmailCus,customer.AddressCus, customer.ID FROM customer ORDER BY ID DESC";
+             String sql = "SELECT  customer.NameCus,customer.PhoneCus,customer.EmailCus,customer.AddressCus FROM customer ORDER BY ID DESC";
             Connection con = DBConnect.getConnect();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
@@ -109,7 +109,7 @@ public class CustomerController implements Initializable {
                 cus.setPhoneCus(rs.getString("PhoneCus"));
                 cus.setEmailCus(rs.getString("EmailCus"));
                 cus.setAddressCus(rs.getString("AddressCus"));
-                cus.setID(rs.getString("ID"));
+//                cus.setID(rs.getString("ID"));
                 listcus.add(cus);
             }
         } catch (Exception e) {
@@ -175,7 +175,7 @@ public class CustomerController implements Initializable {
      
         private void ClearText() {
         txtname.setText(null);
-        txtphone.getText();
+        txtphone.setText(null);
         txtemail.setText(null);
         txtaddress.setText(null);
         }
@@ -187,7 +187,7 @@ public class CustomerController implements Initializable {
         txtphone.setText(cus.getPhoneCus());
         txtemail.setText(cus.getEmailCus());
         txtaddress.setText(cus.getAddressCus());
-        txtid.setText(cus.getID());
+//        txtid.setText(cus.getID());
     }
 
     @FXML

@@ -30,6 +30,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
@@ -65,7 +66,7 @@ public class CateproController implements Initializable {
     @FXML
     private JFXButton btnup;
     @FXML
-    private TextField txtid;
+    private Label txtid;
     @FXML
     private JFXButton btnclear;
 
@@ -306,7 +307,6 @@ public class CateproController implements Initializable {
 
     @FXML
     private void ClearAction(ActionEvent event) {
-        txtid.clear();
         txtname.clear();
     }
 

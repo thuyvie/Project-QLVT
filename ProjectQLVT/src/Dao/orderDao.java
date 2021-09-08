@@ -305,9 +305,9 @@ public class orderDao {
 
     }
 
-    public product searchPro(String ProductID) {
+    public product searchPro(String itemCode) {
         ObservableList<product> listproduct = FXCollections.observableArrayList();
-        String sql = "SELECT product.itemCode,product.namepro,product.price,SUM(warehouse.Inventory) AS 'Inventory', warehouse.ProductID FROM warehouse, product WHERE warehouse.ProductID = product.itemCode GROUP BY warehouse.ProductID, product.itemCode";
+        String sql = "SELECT product.itemCode,product.namepro,product.price,SUM(warehouse.Inventory) AS 'Inventory', warehouse.ProductID FROM warehouse, product WHERE warehouse.ProductID = '"+itemCode+"' AND product.itemCode = '"+itemCode+"' GROUP BY warehouse.ProductID";
         Statement stmt;
         try (
                  Connection con = DBConnect.getConnect();  

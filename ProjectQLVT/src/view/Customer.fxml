@@ -44,8 +44,8 @@
                <Image url="@../image/Logo3.png" />
             </image>
          </ImageView>
-         <TextField fx:id="txtid" layoutX="86.0" layoutY="280.0" />
-         <Label layoutX="88.0" layoutY="247.0" prefHeight="27.0" prefWidth="92.0" text="ID" />
+         <TextField fx:id="txtid" layoutX="86.0" layoutY="280.0" visible="false" />
+         <Label layoutX="88.0" layoutY="247.0" prefHeight="27.0" prefWidth="92.0" text="ID" visible="false" />
         </Pane>
     </children>
 </AnchorPane>

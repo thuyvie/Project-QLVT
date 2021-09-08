@@ -129,6 +129,8 @@ public class OrdController implements Initializable {
     int total;
     int qty;
     int stockQuantity;
+    int i;
+    int j;
     double rs = 0;
     private int index;
     orderDao ordDao = new orderDao();
@@ -426,7 +428,7 @@ public class OrdController implements Initializable {
             double availableQuantity = Double.parseDouble(available.substring(0));
 
             if (quantity > availableQuantity) {
-                errorMessage += "Out of Stock!";
+                errorMessage += "Out of Stock Or Not Enough Products To Offer";
             }
         }
 
@@ -485,21 +487,6 @@ public class OrdController implements Initializable {
 //        } catch (Exception e) {
 //        }
     }
-////    private void calcution(){
-////         double subTotalPrice = 0.0;
-////        subTotalPrice = dtm.getItems().stream().map(
-////                (item) -> item.getTotal()).reduce(subTotalPrice, (accumulator, _item) -> accumulator + _item);
-////
-////        if (subTotalPrice > 0) {
-////            paymentButton.setDisable(false);
-////            double vat = (double) subTotalPrice * 0.025;
-////            double netPayablePrice = (double) (Math.abs((subTotalPrice + vat) - 5));
-////
-////            subTotalField.setText(String.valueOf(subTotalPrice));
-////            vatField.setText(String.valueOf(vat));
-////            netPayableField.setText(String.valueOf(netPayablePrice));
-//        }
-//    }
 
     @FXML
     private void adddiscountKey(KeyEvent event) {
@@ -647,6 +634,15 @@ public class OrdController implements Initializable {
 //        items.add(rowData);
 //        dtm.setItems(FXCollections.observableArrayList(items));
         if (validateUpdate()) {
+            for (int i = 0; i < items.size() - 1; i++) {
+            for (int j = i + 1; j < items.size(); j++) {
+                if (items.get(i).getCode() == items.get(j).getCode() && items.get(i).getName() == items.get(j).getName()) {
+                    items.get(i).setQTY(items.get(i).getQTY() + items.get(j).getQTY());
+                    items.remove(j);
+                    j--;
+                }
+            }
+        }
             count += Integer.parseInt(txtqty.getText());
             txtqantity.setText(count + "");
             double total = 0;
@@ -662,9 +658,11 @@ public class OrdController implements Initializable {
             String price = txtprice.getText();
             String QTY = txtqty.getText();
             Double Total = Double.parseDouble(txttotal.getText());
-            dtmTM rowData = new dtmTM(code, name, price, QTY, Total);
-            items.add(rowData);
-            dtm.setItems(FXCollections.observableArrayList(items));
+            
+                dtmTM rowData = new dtmTM(code, name, price, QTY, Total);
+                items.add(rowData);
+                dtm.setItems(FXCollections.observableArrayList(items));
+
         }
     }
 

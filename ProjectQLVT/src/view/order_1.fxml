@@ -157,9 +157,9 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="134.0" layoutY="168.0" prefHeight="31.0" prefWidth="82.0" textFill="#5e5b5b">
+                  <Label layoutX="134.0" layoutY="168.0" prefHeight="31.0" prefWidth="82.0" text="Stock:" textFill="#790d0d">
                      <font>
-                        <Font name="Symbol" size="11.0" />
+                        <Font name="Symbol" size="12.0" />
                      </font>
                   </Label>
                   <ImageView fx:id="box" fitHeight="31.0" fitWidth="45.0" layoutX="81.0" onMouseClicked="#BoxAction" pickOnBounds="true" preserveRatio="true">
