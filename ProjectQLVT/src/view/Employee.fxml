@@ -38,8 +38,8 @@
             <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="591.0" layoutY="104.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
             <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="591.0" layoutY="164.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
             <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="591.0" layoutY="227.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />
-            <TextField fx:id="txtid" layoutX="134.0" layoutY="91.0" />
-            <Label layoutX="134.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" text="ID" />
+            <TextField fx:id="txtid" editable="false" layoutX="134.0" layoutY="91.0" visible="false" />
+            <Label layoutX="134.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" text="ID" visible="false" />
             <JFXButton fx:id="btnclear" buttonType="RAISED" layoutX="591.0" layoutY="287.0" onAction="#ClearAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #F6A9A9; -fx-background-radius: 15;" text="CLEAR" />
             <ImageView fitHeight="105.0" fitWidth="197.0" layoutX="692.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                 <image>
