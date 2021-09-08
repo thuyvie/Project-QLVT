@@ -56,13 +56,13 @@ public class OrderController implements Initializable {
 
     @FXML
     private void receipt(MouseEvent event) throws IOException {
-        setUi("order_1");
+        setUi("showPayment");
         new FadeIn(context).play();
     }
 
     @FXML
     private void order(MouseEvent event) throws IOException {
-        setUi("showPayment");
+        setUi("order_1");
         new FadeIn(context).play();
     }
 

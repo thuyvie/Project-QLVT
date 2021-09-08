@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package controller;
+
 import Dao.CateEmpDao;
 import Dao.EmpDao;
 import Dao.productDao;
 import Dao.vendorDao;
 import Dao.CateEmpDao;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -50,6 +52,7 @@ import util.DBConnect;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import model.catemp;
 
 /**
@@ -84,7 +87,8 @@ public class EmployeeController implements Initializable {
     @FXML
     private TableColumn<emp, String> tblsalary;
     @FXML
-    private TableColumn<emp, String> tblrank;    @FXML
+    private TableColumn<emp, String> tblrank;
+    @FXML
     private TextField txtsalary;
     @FXML
     private JFXComboBox<String> cbb;
@@ -101,6 +105,11 @@ public class EmployeeController implements Initializable {
     private TextField txtaccount;
     @FXML
     private TableColumn<emp, String> tbldelete;
+    @FXML
+    private JFXCheckBox pass_toggle;
+    @FXML
+    private TextField pass_text;
+
     /**
      * Initializes the controller class.
      */
@@ -109,7 +118,9 @@ public class EmployeeController implements Initializable {
         // TODO
         showEmp();
         fillCBB();
-    }    
+        this.showpass(null);
+    }
+
     public ObservableList<emp> findAll() {
         ObservableList<emp> listpro = FXCollections.observableArrayList();
         Statement stmt;
@@ -136,6 +147,7 @@ public class EmployeeController implements Initializable {
         }
         return listpro;
     }
+
     public void showEmp() {
         ObservableList<emp> list = findAll();
         tblname.setCellValueFactory(new PropertyValueFactory<>("NameEmp"));
@@ -192,7 +204,8 @@ public class EmployeeController implements Initializable {
         tbldelete.setCellFactory(cellFoctory);
         tableproductview.setItems(list);
     }
-        private void ClearText() {
+
+    private void ClearText() {
         txtid.setText(null);
         txtname.setText(null);
         cbb.getItems();
@@ -201,7 +214,8 @@ public class EmployeeController implements Initializable {
         txtphone.setText(null);
         txtsalary.setText(null);
     }
-        public void fillCBB() {
+
+    public void fillCBB() {
         ResultSet rs;
         try {
             ObservableList<String> listven = FXCollections.observableArrayList();
@@ -216,8 +230,7 @@ public class EmployeeController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }  
-            
+    }
 
     @FXML
     private void clickTable(MouseEvent event) {
@@ -240,39 +253,39 @@ public class EmployeeController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Please Enter Key Word ");
                 alert.showAndWait();
-            } else{ 
+            } else {
                 emp empl = empDao.searchEmp(txtname.getText());
                 if (empl != null) {
-                txtid.setText(empl.getID());
-                txtname.setText(empl.getNameEmp());
-                cbb.setValue(empl.getCate().getEmpCate());
-                txtaccount.setText(empl.getAccount());
-                txtpassword.setText(empl.getPassword());
-                txtsalary.setText(String.valueOf(empl.getSalary()));
-                txtphone.setText(empl.getPhoneEmp());
-                String tilte = "Employee Searched ";
-                String message = "Employee Is " + "" + txtname.getText() + "";
-                tray.notification.TrayNotification tray = new TrayNotification();
-                AnimationType type = AnimationType.POPUP;
+                    txtid.setText(empl.getID());
+                    txtname.setText(empl.getNameEmp());
+                    cbb.setValue(empl.getCate().getEmpCate());
+                    txtaccount.setText(empl.getAccount());
+                    txtpassword.setText(empl.getPassword());
+                    txtsalary.setText(String.valueOf(empl.getSalary()));
+                    txtphone.setText(empl.getPhoneEmp());
+                    String tilte = "Employee Searched ";
+                    String message = "Employee Is " + "" + txtname.getText() + "";
+                    tray.notification.TrayNotification tray = new TrayNotification();
+                    AnimationType type = AnimationType.POPUP;
 
-                tray.setAnimationType(type);
-                tray.setTitle(tilte);
-                tray.setMessage(message);
-                tray.setNotificationType(NotificationType.SUCCESS);
-                tray.showAndDismiss(Duration.millis(3000));
-            } else {
-                String tilte = "Searched Employee Not Found";
-                String message = "Try Again";
-                tray.notification.TrayNotification tray = new TrayNotification();
-                AnimationType type = AnimationType.POPUP;
+                    tray.setAnimationType(type);
+                    tray.setTitle(tilte);
+                    tray.setMessage(message);
+                    tray.setNotificationType(NotificationType.SUCCESS);
+                    tray.showAndDismiss(Duration.millis(3000));
+                } else {
+                    String tilte = "Searched Employee Not Found";
+                    String message = "Try Again";
+                    tray.notification.TrayNotification tray = new TrayNotification();
+                    AnimationType type = AnimationType.POPUP;
 
-                tray.setAnimationType(type);
-                tray.setTitle(tilte);
-                tray.setMessage(message);
-                tray.setNotificationType(NotificationType.ERROR);
-                tray.showAndDismiss(Duration.millis(3000));
-            }
+                    tray.setAnimationType(type);
+                    tray.setTitle(tilte);
+                    tray.setMessage(message);
+                    tray.setNotificationType(NotificationType.ERROR);
+                    tray.showAndDismiss(Duration.millis(3000));
                 }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -333,7 +346,7 @@ public class EmployeeController implements Initializable {
     @FXML
     private void UpdateAction(ActionEvent event) throws Exception {
         try {
-           emp emp = new emp();
+            emp emp = new emp();
             emp.setID(txtid.getText());
             emp.setNameEmp(txtname.getText());
             emp.setPhoneEmp(txtphone.getText());
@@ -382,7 +395,7 @@ public class EmployeeController implements Initializable {
 
     @FXML
     private void ClearAction(ActionEvent event) {
-         if (event.getSource() == btnclear) {
+        if (event.getSource() == btnclear) {
             ClearText();
         }
     }
@@ -390,11 +403,23 @@ public class EmployeeController implements Initializable {
 //    @FXML
 //    private void vendorAction(ActionEvent event) {
 //    }
-
     @FXML
     private void vendorAction(ActionEvent event) {
     }
 
+    @FXML
+    public void showpass(ActionEvent event) {
+                if (pass_toggle.isSelected()) {
+                    pass_text.setText(txtpassword.getText());
+                    pass_text.setVisible(true);
+                    txtpassword.setVisible(false);
+                    return;
+                }else{
+                txtpassword.setText(pass_text.getText());
+                txtpassword.setVisible(true);
+                pass_text.setVisible(false);
+                }
 
     
-}
+    }
+ }
