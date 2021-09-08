@@ -26,25 +26,25 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Pane layoutX="515.0" layoutY="47.0" prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #6F69AC;" />
+      <Pane layoutX="515.0" layoutY="47.0" prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #6F69AC;" visible="false" />
       <Label fx:id="totalowe" layoutX="628.0" layoutY="153.0" prefHeight="42.0" prefWidth="131.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <ImageView fitHeight="53.0" fitWidth="58.0" layoutX="601.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="53.0" fitWidth="58.0" layoutX="601.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../resouces/salary.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tbltotal" layoutX="408.0" layoutY="223.0" prefHeight="328.0" prefWidth="439.0">
+      <TableView fx:id="tbltotal" layoutX="408.0" layoutY="257.0" prefHeight="307.0" prefWidth="441.0">
         <columns>
           <TableColumn fx:id="tblname" prefWidth="152.00006103515625" style="-fx-alignment: center;" text="Name Customer" />
           <TableColumn fx:id="tblphone" prefWidth="144.6666259765625" style="-fx-alignment: center;" text="Phone Customer" />
             <TableColumn fx:id="tblowe" prefWidth="141.3333740234375" style="-fx-alignment: center;" text="Owe" />
         </columns>
       </TableView>
-      <Label layoutX="164.0" layoutY="256.0" prefHeight="36.0" prefWidth="175.0" text="Debt Customer List --&gt;">
+      <Label layoutX="408.0" layoutY="214.0" prefHeight="36.0" prefWidth="175.0" text="Debt Customer List ">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
@@ -54,7 +54,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="515.0" layoutY="47.0" prefHeight="175.0" prefWidth="200.0" style="-fx-alignment: TOP_CENTER;" text="Total Owe" textFill="WHITE">
+      <JFXButton layoutX="515.0" layoutY="47.0" prefHeight="175.0" prefWidth="200.0" style="-fx-alignment: TOP_CENTER;" text="Total Owe" textFill="WHITE" visible="false">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

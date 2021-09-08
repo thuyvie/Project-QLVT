@@ -304,7 +304,7 @@ public class EmployeeController implements Initializable {
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.SUCCESS);
                 showEmp();
-
+                ClearText();
             } else {
                 (new Alert(Alert.AlertType.ERROR, "Emp Not Added ", new ButtonType[]{ButtonType.OK})).show();
                 tilte = "Added Un Successful";
@@ -337,11 +337,11 @@ public class EmployeeController implements Initializable {
             emp.setID(txtid.getText());
             emp.setNameEmp(txtname.getText());
             emp.setPhoneEmp(txtphone.getText());
-            emp.setAccount(txtaccount.getText());
+//            emp.setAccount(txtaccount.getText());
             emp.setPassword(txtpassword.getText());
             emp.setSalary(Double.parseDouble(txtsalary.getText()));
-            catemp cate = camDao.findByName(cbb.getValue());
-            emp.setCate(cate);
+//            catemp cate = camDao.findByName(cbb.getValue());
+//            emp.setCate(cate);
             String tilte;
             String message;
             TrayNotification tray = new TrayNotification();
@@ -356,6 +356,7 @@ public class EmployeeController implements Initializable {
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.SUCCESS);
                 showEmp();
+                ClearText();
             } else {
                 (new Alert(Alert.AlertType.ERROR, "Employee Not Updated ", new ButtonType[]{ButtonType.OK})).show();
                 tilte = "Updated Un Successful";
@@ -367,19 +368,8 @@ public class EmployeeController implements Initializable {
             tray.showAndDismiss(Duration.millis(3000));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (SQLException ex) {
-            String tilte = "Employe Is Already On The Sever";
-            String message = "Employee Is Not Updated";
-            tray.notification.TrayNotification tray = new TrayNotification();
-            AnimationType type = AnimationType.POPUP;
-            tray.setAnimationType(type);
-            tray.setTitle(tilte);
-            tray.setMessage(message);
-            tray.setNotificationType(NotificationType.NOTICE);
-            tray.showAndDismiss(Duration.millis(3000));
-        }
     }
-
+}
     @FXML
     private void ClearAction(ActionEvent event) {
          if (event.getSource() == btnclear) {

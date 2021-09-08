@@ -419,7 +419,7 @@ public class OrdController implements Initializable {
 
     private boolean validateUpdate() {
         String errorMessage = "";
-
+        count = Integer.parseInt(txtqty.getText());
         if (txtqty.getText() == null || txtqty.getText().length() == 0) {
             errorMessage += "Quantity not supplied!";
         } else {

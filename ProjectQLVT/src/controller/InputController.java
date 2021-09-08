@@ -167,10 +167,19 @@ public class InputController implements Initializable {
         }
     }
     double total = 0;
-
+    private boolean up(){
+        String errorMessage = "";
+        count = Integer.parseInt(txtqty.getText());
+        if (txtqty.getText() == null || txtqty.getText().length() == 0) {
+            errorMessage += "Quantity not supplied!";
+        }
+        return false;
+    }
     @FXML
     private void OKAction(ActionEvent event) {
         try {
+            
+            if(up()){
             count = Integer.parseInt(txtqty.getText());
             total = count * Double.parseDouble(txtprice.getText());
             txttt.setText(String.valueOf(total));
@@ -181,8 +190,8 @@ public class InputController implements Initializable {
             Double Total = Double.parseDouble(txttt.getText());
             InTM rowData = new InTM(IDProduct, Price, Amount,Total);
             items2.add(rowData);
-            tblin.setItems(FXCollections.observableArrayList(items2));
-
+            tblin.setItems(FXCollections.observableArrayList(items2)); 
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

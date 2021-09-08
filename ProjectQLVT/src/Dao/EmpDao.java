@@ -38,18 +38,18 @@ public class EmpDao {
      public boolean update(emp emp)
             throws Exception {
         String sql = "update emp"
-                + " set NameEmp =?, PhoneEmp =?, Account = ?,Password=?, Salary = ?,IDCateEmp =?"
+                + " set NameEmp =?, PhoneEmp =?, Password = ?, Salary = ?"
                 + " where ID = ?";
         try (
                 Connection con = DBConnect.getConnect();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
-                pstmt.setString(7, emp.getID());
+                pstmt.setString(5, emp.getID());
                 pstmt.setString(1, emp.getNameEmp());
                 pstmt.setString(2, emp.getPhoneEmp());
-                pstmt.setString(3, emp.getAccount());
-                pstmt.setString(4, emp.getPassword());
-                pstmt.setDouble(5, emp.getSalary());
-                pstmt.setString(6, emp.getCate().getID());
+//                pstmt.setString(3, emp.getAccount());
+                pstmt.setString(3, emp.getPassword());
+                pstmt.setDouble(4, emp.getSalary());
+//                pstmt.setString(6, emp.getCate().getID());
                 
             return pstmt.executeUpdate() > 0;
         }
