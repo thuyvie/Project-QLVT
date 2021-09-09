@@ -53,7 +53,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import model.catemp;
+import util.CrudUtil;
 
 /**
  * FXML Controller class
@@ -75,7 +77,7 @@ public class EmployeeController implements Initializable {
     @FXML
     private JFXButton btnup;
     @FXML
-    private TextField txtid;
+    private Label txtid;
     @FXML
     private JFXButton btnclear;
     @FXML
@@ -119,8 +121,31 @@ public class EmployeeController implements Initializable {
         showEmp();
         fillCBB();
         this.showpass(null);
+        settxtoweid();
+    }
+     public int getRowCount() throws ClassNotFoundException, SQLException {
+        String SQL = "SELECT COUNT(ID) FROM emp";
+        ResultSet resultSet = CrudUtil.executeQuery(SQL);
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        return -1;
     }
 
+    public void settxtoweid() {
+        try {
+            int id = getRowCount();
+            if (id < 9) {
+                this.txtid.setText((id + 1) + "");
+            } else if (id < 99) {
+                this.txtid.setText((id + 1) + "");
+            } else {
+                this.txtid.setText((id + 1) + "");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public ObservableList<emp> findAll() {
         ObservableList<emp> listpro = FXCollections.observableArrayList();
         Statement stmt;
@@ -295,7 +320,7 @@ public class EmployeeController implements Initializable {
     private void insertAction(ActionEvent event) throws Exception {
         try {
             emp emp = new emp();
-            emp.setID(txtid.getText());
+//            emp.setID(txtid.getText());
             emp.setNameEmp(txtname.getText());
             emp.setPhoneEmp(txtphone.getText());
             emp.setAccount(txtaccount.getText());
@@ -329,17 +354,7 @@ public class EmployeeController implements Initializable {
             tray.showAndDismiss(Duration.millis(3000));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (SQLException ex) {
-            String tilte = "Account Employee Is Already On The Sever";
-            String message = "Employee Is Not Added";
-            tray.notification.TrayNotification tray = new TrayNotification();
-            AnimationType type = AnimationType.POPUP;
-            tray.setAnimationType(type);
-            tray.setTitle(tilte);
-            tray.setMessage(message);
-            tray.setNotificationType(NotificationType.NOTICE);
-            tray.showAndDismiss(Duration.millis(3000));
-        }
+            }
         showEmp();
     }
 
@@ -390,9 +405,6 @@ public class EmployeeController implements Initializable {
         }
     }
 
-//    @FXML
-//    private void vendorAction(ActionEvent event) {
-//    }
     @FXML
     private void vendorAction(ActionEvent event) {
     }

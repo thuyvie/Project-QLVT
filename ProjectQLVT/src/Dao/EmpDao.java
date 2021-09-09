@@ -19,18 +19,18 @@ import model.catemp;
  */
 public class EmpDao {
     public boolean insert(emp emp)throws Exception {
-        String sql = "INSERT INTO emp( ID, NameEmp, PhoneEmp, Account, Password, Salary,IDCateEmp)"
-                + "values(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO emp( NameEmp, PhoneEmp, Account, Password, Salary,IDCateEmp)"
+                + "values(?,?,?,?,?,?)";
         try (
                 Connection con = DBConnect.getConnect();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
-                pstmt.setString(1, emp.getID());
-                pstmt.setString(2, emp.getNameEmp());
-                pstmt.setString(3, emp.getPhoneEmp());
-                pstmt.setString(4, emp.getAccount());
-                pstmt.setString(5, emp.getPassword());
-                pstmt.setDouble(6, emp.getSalary());
-                pstmt.setString(7, emp.getCate().getID());
+//                pstmt.setString(1, emp.getID());
+                pstmt.setString(1, emp.getNameEmp());
+                pstmt.setString(2, emp.getPhoneEmp());
+                pstmt.setString(3, emp.getAccount());
+                pstmt.setString(4, emp.getPassword());
+                pstmt.setDouble(5, emp.getSalary());
+                pstmt.setString(6, emp.getCate().getID());
             return pstmt.executeUpdate() > 0;
         }
 

@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="658.0" style="-fx-background-radius: 40 40 40 40;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CateproController">
    <children>
@@ -17,12 +18,18 @@
             <TableColumn fx:id="tbldelete" prefWidth="105.5999755859375" style="-fx-alignment: center;" />
          </columns>
       </TableView>
-      <Label layoutX="416.0" layoutY="140.0" prefHeight="27.0" prefWidth="134.0" text="Name Category Product" />
+      <Label layoutX="410.0" layoutY="140.0" prefHeight="27.0" prefWidth="140.0" text="Name Category Product">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
       <TextField fx:id="txtname" layoutX="408.0" layoutY="181.0" />
       <JFXButton fx:id="btnsearch" buttonType="RAISED" layoutX="215.0" layoutY="265.0" onAction="#SearchAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #96BAFF; -fx-background-radius: 15;" text="SEARCH" />
       <JFXButton fx:id="btninsert" buttonType="RAISED" layoutX="372.0" layoutY="265.0" onAction="#insertAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #E8E46E; -fx-background-radius: 15;" text="INSERT" />
       <JFXButton fx:id="btnup" buttonType="RAISED" layoutX="63.0" layoutY="265.0" onAction="#UpdateAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #EBA83A; -fx-background-radius: 15;" text="UPDATE" />
-      <Label layoutX="169.0" layoutY="140.0" prefHeight="27.0" prefWidth="92.0" text="ID" />
+      <Label layoutX="155.0" layoutY="140.0" prefHeight="27.0" prefWidth="92.0" text="ID">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
       <JFXButton fx:id="btnclear" buttonType="RAISED" layoutX="521.0" layoutY="265.0" onAction="#ClearAction" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #F6A9A9; -fx-background-radius: 15;" text="CLEAR" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="450.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -34,6 +41,9 @@
             <Image url="@../image/Logo3.png" />
          </image>
       </ImageView>
-      <Label fx:id="txtid" layoutX="155.0" layoutY="183.0" prefHeight="27.0" prefWidth="119.0" />
+      <Label fx:id="txtid" layoutX="155.0" layoutY="183.0" prefHeight="27.0" prefWidth="119.0" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
    </children>
 </AnchorPane>

@@ -179,7 +179,7 @@ public class InputController implements Initializable {
     private void OKAction(ActionEvent event) {
         try {
             
-            if(up()){
+           
             count = Integer.parseInt(txtqty.getText());
             total = count * Double.parseDouble(txtprice.getText());
             txttt.setText(String.valueOf(total));
@@ -191,7 +191,7 @@ public class InputController implements Initializable {
             InTM rowData = new InTM(IDProduct, Price, Amount,Total);
             items2.add(rowData);
             tblin.setItems(FXCollections.observableArrayList(items2)); 
-            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
